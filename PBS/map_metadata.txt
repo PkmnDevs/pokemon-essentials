@@ -395,3 +395,65 @@ Name = Tiall Region
 Outdoor = true
 MapPosition = 1,13,16
 BattleBack = city
+#=============================
+#========^ Example ^==========
+#=============================
+
+
+#=============================
+#========v  CUSTOM  v=========
+#=============================
+[033] # Player Town
+Name = Magic Conch Camp
+Outdoor = true
+ShowArea = true
+#-------------------------------
+[076] # Route 1
+Name = Ihm Pass
+Outdoor = true
+ShowArea = true
+HealingSpot = 76,8,10
+BattleBack = field
+#-------------------------------
+[077] # Fat PokeCenter
+Name = Paul Blart Mall Camp
+Outdoor = true
+ShowArea = true
+HealingSpot = 77,8,15
+#-------------------------------
+[078] # Gaymer Pond
+Name = Gaymer Pond
+Outdoor = true
+ShowArea = true
+BattleBack = field
+#-------------------------------
+[079] # Route 2
+Name = Modernfare Road
+Outdoor = true
+ShowArea = true
+BattleBack = field
+#-------------------------------
+[080] # Ellinia
+Name = Ellinia
+Outdoor = true
+ShowArea = true
+DarkMap = true
+BattleBack = forest
+#-------------------------------
+[081] # Town Moot
+Name = Moot
+Outdoor = true
+ShowArea = true
+HealingSpot = 81,23,59
+#-------------------------------
+[082] # Gym 2 : Grotto Gym v1
+Name = Grotto Gym
+ShowArea = true
+DarkMap = true
+BattleBack = field
+#-------------------------------
+[083] # Gym 2 : Grotto Gym v2
+Name = Grotto Gym
+ShowArea = true
+DarkMap = true
+BattleBack = field

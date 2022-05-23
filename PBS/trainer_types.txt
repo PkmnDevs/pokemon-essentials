@@ -399,3 +399,26 @@ Gender = Male
 BaseMoney = 100
 BattleBGM = Battle Champion
 VictoryBGM = Battle victory leader
+#=============================
+#========^ Original ^=========
+#=============================
+
+
+#=============================
+#========v  CUSTOM  v=========
+#=============================
+[LEADER_Ash]
+Name = Gym Leader
+BaseMoney = 16
+BattleBGM = Battle Gym Leader
+VictoryBGM = Battle victory leader
+Gender = Male
+#-------------------------------
+[LEADER_Ivy]
+Name = Gym Leader
+BaseMoney = 60
+BattleBGM = Battle Gym Leader
+VictoryBGM = Battle victory leader
+Gender = Female
+SkillLevel = 100
+#-------------------------------

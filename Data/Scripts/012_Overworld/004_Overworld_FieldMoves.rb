@@ -247,6 +247,20 @@ def pbSmashEvent(event)
   $PokemonMap&.addErasedEvent(event.id)
 end
 
+def pbCutMachete
+  pbMessage(_INTL("This tree looks like it can be cut down!\1"))
+  if $bag.pbHasItem?(:RUSTYMACHETE) || $bag.pbHasItem?(:MACHETE)
+    if pbConfirmMessage(_INTL("Would you like to cut it?"))
+      pbMessage(_INTL("You cut the tree with your Machete."))
+      if $bag.pbHasItem?(:RUSTYMACHETE)
+        $bag.pbDeleteItem(:RUSTYMACHETE)
+        pbMessage(_INTL("Your \\c[1]{1} \\c[0]breaks!", GameData::Item.get(:RUSTYMACHETE).name))
+      end
+      return true
+    end
+  end
+  return false
+end
 
 
 #===============================================================================

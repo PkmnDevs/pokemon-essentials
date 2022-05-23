@@ -116,3 +116,292 @@ Pokemon = CHARIZARD,63
     Item = SITRUSBERRY
 Pokemon = BLASTOISE,63
     Item = SITRUSBERRY
+#==============================================================================
+#========^ Example ^===========================================================
+#==============================================================================
+
+
+#==============================================================================
+#========v  CUSTOM  v==========================================================
+#==============================================================================
+[RIVAL1,ButtButt,1] # ROUTE 2
+LoseText = "Not too shabby."
+Pokemon = FLETCHLING,17
+    Gender = female
+    Moves = PECK,EMBER,TAILWIND,ATTRACT
+    AbilityIndex = 2
+Pokemon = SLAKOTH,15
+    Gender = female
+    Moves = SCRATCH,YAWN,COVET,SWAGGER
+#-------------------------------
+[RIVAL1,ButtButt,2] # TODO
+LoseText = "Not too shabby."
+Pokemon = PIDGEOTTO,17
+Pokemon = RATTATA,15
+Pokemon = CHARMANDER,18
+#-------------------------------
+[RIVAL1,ButtButt,3] # TODO
+LoseText = "Not too shabby."
+Pokemon = PIDGEOTTO,17
+Pokemon = SLAKING,15
+    Ability = SHADOWTAG
+Pokemon = SQUIRTLE,18
+
+
+#===============================
+### GYM LEADERS
+#===============================
+[LEADER_Ash,Ash] # GYM 1
+Items = FULLRESTORE
+LoseText = "Fuck."
+Pokemon = PIKACHU,7
+    Gender = male
+    Moves = AGILITY,NASTYPLOT,TAILWHIP
+    AbilityIndex = 2
+    IV = 0,0,0,0,0,0
+    EV = 0,0,0,0,0,0
+Pokemon = MRMIME,9
+    Name = Dad
+    Gender = male
+    Moves = POWERSWAP,ENCORE,ROLEPLAY,PROTECT
+    AbilityIndex = 0
+    Item = SITRUSBERRY
+    IV = 0,0,0,0,0,0
+    EV = 0,0,0,0,0,0
+    Ball = HEAVYBALL
+#-------------------------------
+[LEADER_Ivy,Ivy] # GYM 2
+Items = FULLRESTORE
+LoseText = "Nature always wins."
+Pokemon = FLAPPLE,18
+    Gender = male
+    Moves = LEECHSEED,WINGATTACK,DRAGONBREATH,WITHDRAW
+    AbilityIndex = 0
+    IV = 31,31,31,31,31,31
+    EV = 50,50,50,50,50,50
+    Ball = PREMIERBALL
+Pokemon = EXEGGUTOR,21
+    Form = 1
+    Name = Girth
+    Gender = male
+    Moves = DRAGONHAMMER,MEGADRAIN,HYPNOSIS,CONFUSION
+    AbilityIndex = 2
+    Item = SITRUSBERRY
+    IV = 31,31,31,31,31,31
+    EV = 50,50,50,50,50,50
+    Ball = SAFARIBALL
+
+
+#===============================
+### Minibosses
+#===============================
+#-------------------------------
+[LASS,Elena] # MiniBoss: RUNNING SHOES
+LoseText = "Oh Allah! Please, stay away!"
+Pokemon = SLOWPOKE,17
+    Ball = PREMIERBALL
+Pokemon = SANDILE,15
+    Ball = PREMIERBALL
+#-------------------------------
+[FISHERMAN,Shu] # MiniBoss: OLD ROD
+LoseText = "No please, that's my grandfather's old rod!"
+Pokemon = SHELLDER,11
+Pokemon = PALPITOAD,13
+Pokemon = MARILL,13
+Pokemon = WIMPOD,12
+Pokemon = CHEWTLE,14
+Pokemon = STARYU,16
+  Shiny = yes
+  Moves = PSYBEAM,BRINE,POWERGEM,CONFUSERAY
+  AbilityIndex = 2
+  Item = ORANBERRY
+  IV = 20,20,20,20,20,20
+  Ball = DIVEBALL
+
+
+#===============================
+### Route 2
+#===============================
+[YOUNGSTER,Soap] # Route 2
+LoseText = "REEEEEEEEE"
+Pokemon = RATTATA,11
+  IV = 31,31,31,31,31,31
+#-------------------------------
+[YOUNGSTER,Roach] # Route 2
+LoseText = "Not enough turtles in this shitty ass game."
+Pokemon = SQUIRTLE,9
+Pokemon = CHEWTLE,10
+Pokemon = TORKOAL,12
+Pokemon = TURTWIG,8
+Pokemon = SHUCKLE,11
+  Shiny = yes
+#-------------------------------
+[YOUNGSTER,Shepherd] # Route 2
+LoseText = "Koffing, use smokescree- wait."
+Pokemon = KOFFING,13
+Pokemon = SHAYMIN,13
+#-------------------------------
+[YOUNGSTER,Price] # Route 2
+LoseText = "Aww, I lost."
+Pokemon = ETERNATUS,11
+  Shiny = yes
+  Moves = SELFDESTRUCT
+  IV = 1,1,1,1,1,1
+#-------------------------------
+[YOUNGSTER,Ramirez] # Route 2
+LoseText = "Now I die an honorable death."
+Pokemon = YAMPER,12
+Pokemon = EKANS,12
+#-------------------------------
+[YOUNGSTER,Allen] # Route 2
+LoseText = "This game is stupid."
+Pokemon = PAWNIARD,12
+Pokemon = PYUKUMUKU,12
+Pokemon = DEERLING,10
+#-------------------------------
+[YOUNGSTER,Makarov] # Route 2
+LoseText = "геймеры объединяйтесь"
+Pokemon = ELGYEM,15
+Pokemon = KLANG,15
+Pokemon = GOLDEEN,16
+
+
+#===============================
+### Gym 2 v1
+#===============================
+# Three trainers: first
+[LASS,Hentai] # Gym 2
+Pokemon = TANGELA,16
+#-------------------------------
+# Three trainers: doubleA
+[POKEMONRANGER_M,Clint] # Gym 2
+Pokemon = GIBLE,15
+#-------------------------------
+# Three trainers: doubleB
+[POKEMONRANGER_F,Also Clint] # Gym 2
+Pokemon = AXEW,15
+#-------------------------------
+# Double 1: doubleA
+[COOLTRAINER_F,Brittany] # Gym 2
+LoseText = "We don't even work here."
+Pokemon = BELLOSSOM,16
+#-------------------------------
+# Double 1: doubleB
+[COOLTRAINER_M,Dante] # Gym 2
+LoseText = "We've been trying to get out of here for 3 days."
+Pokemon = DRATINI,16
+#-------------------------------
+# Double 2: doubleA
+[AROMALADY,Upskirt] # Gym 2
+Pokemon = GOOMY,17
+#-------------------------------
+# Double 2: doubleB
+[LASS,Analonly] # Gym 2
+Pokemon = PANSAGE,17
+#-------------------------------
+# 1
+[POKEMONBREEDER,Karen] # Gym 2
+Pokemon = COTTONEE,16
+Pokemon = SNOVER,16
+Pokemon = BAGON,14
+#-------------------------------
+# 2
+[SAILOR,Davy] # Gym 2
+LoseText = "You killed my only food."
+Pokemon = DRATINI,18
+Pokemon = APPLIN,15
+#-------------------------------
+# 3
+[PAINTER,Ross] # Gym 2
+LoseText = "Lombre..? Lombre!? HE'S DEAD. NOOOOO."
+Pokemon = LOMBRE,19
+#-------------------------------
+# 4
+[YOUNGSTER,Mike] # Gym 2
+Pokemon = SEWADDLE,14
+Pokemon = SWABLU,15
+Pokemon = AXEW,16
+#-------------------------------
+# 5
+[SWIMMER2_F,Sarah] # Gym 2
+Pokemon = APPLIN,16
+Pokemon = DREEPY,16
+
+#===============================
+### Gym 2 v2
+#===============================
+# Double 1: doubleA
+[PICNICKER,May] # Gym 2
+LoseText = "I only lost because I can't even pronounce my pokemon's name."
+Pokemon = JANGMOO,14
+#-------------------------------
+# Double 1: doubleB
+[CAMPER,Troy] # Gym 2
+LoseText = "That's it. I give up on being a trainer."
+Pokemon = CACNEA,14
+#-------------------------------
+# Double 2: doubleA
+[BEAUTY,Virgin] # Gym 2
+Pokemon = LEAFEON,17
+#-------------------------------
+# Double 2: doubleB
+[LADY,Wench] # Gym 2
+Pokemon = DEINO,17
+#-------------------------------
+# Double 3: doubleA
+[CAMPER,Alex] # Gym 2
+LoseText = "This is my sister."
+Pokemon = ODDISH,14
+Pokemon = SNIVY,15
+#-------------------------------
+# Double 3: doubleB
+[AROMALADY,Ashley] # Gym 2
+LoseText = "We're in love."
+Pokemon = NOIBAT,14
+Pokemon = TYRUNT,15
+#-------------------------------
+# 1
+[GENTLEMAN,Paul] # Gym 2
+Pokemon = VIBRAVA,19
+#-------------------------------
+# 2
+[POKEMONBREEDER,April] # Gym 2
+Pokemon = APPLIN,17
+Pokemon = EXEGGCUTE,17
+#-------------------------------
+# 3
+[BURGLAR,Darren] # Gym 2
+LoseText = "You took my seeds."
+Pokemon = SUNKERN,15
+Pokemon = SEEDOT,15
+Pokemon = FERROSEED,15
+#-------------------------------
+# 4
+[AROMALADY,Diana] # Gym 2
+Pokemon = SHELGON,19
+#-------------------------------
+# 5
+[YOUNGSTER,Karl] # Gym 2
+LoseText = "That was a real gamer moment. XD"
+Pokemon = GIBLE,17
+Pokemon = ROWLET,15
+#-------------------------------
+# 6
+[BEAUTY,Blair] # Gym 2
+Pokemon = PHANTUMP,16
+Pokemon = PUMPKABOO,16
+Pokemon = DREEPY,16
+#-------------------------------
+# 7
+[LADY,Triss] # Gym 2
+Pokemon = LURANTIS,20
+#-------------------------------
+# 8
+[PICNICKER,Wendy] # Gym 2
+Pokemon = CHESPIN,15
+Pokemon = GOOMY,15
+
+
+#===============================
+###
+#===============================

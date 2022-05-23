@@ -102,6 +102,10 @@ module Battle::CatchAndStoreMixin
       end
       # Record a Shadow Pokémon's species as having been caught
       pbPlayer.pokedex.set_shadow_pokemon_owned(pkmn.species) if pkmn.shadowPokemon?
+      # Give the captured pkmn some decent IVs
+      pbImproveIVs(pkmn)
+      pbImproveEVs(pkmn)
+      pkmn.calc_stats
       # Store caught Pokémon
       pbStorePokemon(pkmn)
     end

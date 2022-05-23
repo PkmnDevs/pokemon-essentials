@@ -3,7 +3,7 @@
 [0]
 StartMoney = 3000
 StartItemStorage = POTION
-Home = 3,7,5,8
+Home = 76,8,10,6
 StorageCreator = Bill
 WildBattleBGM = Battle wild
 TrainerBattleBGM = Battle trainer
@@ -27,3 +27,11 @@ RunCharset = girl_run
 CycleCharset = girl_bike
 SurfCharset = girl_surf
 FishCharset = girl_fish_offset
+#=============================
+#========^ Example ^==========
+#=============================
+
+
+#=============================
+#========v  CUSTOM  v=========
+#=============================

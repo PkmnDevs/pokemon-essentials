@@ -287,3 +287,27 @@ def pbHasEgg?(species)
   return true if species == baby   # Is an egg species without incense
   return false
 end
+
+#===============================================================================
+# Improve IVs and EVs
+#===============================================================================
+def pbImproveIVs(pkmn)
+  GameData::Stat.each_main do |s|
+    if pkmn.iv[s.id] == 0 # If your IV is zero, replace it with MAX
+      pkmn.iv[s.id] = Pokemon::IV_STAT_LIMIT
+    elsif pkmn.iv[s.id] <= (Pokemon::IV_STAT_LIMIT - 20) # If your IV is less than MAX-20, add 15 to it.
+      pkmn.iv[s.id] += 15
+    elsif pkmn.iv[s.id] <= (Pokemon::IV_STAT_LIMIT - 10) # If your IV is less than MAX-10, add 10 to it.
+      pkmn.iv[s.id] += 10
+    end
+    if pkmn.iv[s.id] > Pokemon::IV_STAT_LIMIT # Failsafe if you go over limit.
+      pkmn.iv[s.id] = Pokemon::IV_STAT_LIMIT
+    end
+  end
+end
+
+def pbImproveEVs(pkmn)
+  GameData::Stat.each_main do |s|
+    pkmn.ev[s.id] += 30 # Give 30 evs to all stats
+  end
+end
