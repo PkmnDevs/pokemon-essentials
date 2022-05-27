@@ -8,19 +8,20 @@ Creating our own game: Multiple Small Regions each with their own protagonist th
 [Following Pokemon EX](https://reliccastle.com/resources/516/)  
 [Elite Battle: DX](https://luka-sj.com/res/ebdx)   -->
 [Gen 8 Move Animation Project](https://www.pokecommunity.com/showthread.php?t=446303)  
-<!-- [FL Unreal Time](https://www.pokecommunity.com/showthread.php?t=285831)  
-[EVs and IVs Summary](https://reliccastle.com/resources/703/)  
+[FL Unreal Time](https://www.pokecommunity.com/showthread.php?t=285831)  
+<!-- [EVs and IVs Summary](https://reliccastle.com/resources/703/)  
 [Relearn Moves](https://reliccastle.com/resources/933/)  
 
 ### Assets
 
 [Voltseon's Pause Menu](https://reliccastle.com/resources/692/)  
 [Ekat's Public Gen 3 Tilesets](https://reliccastle.com/threads/3669/)  
-[Kyle Dove Tileset](https://reliccastle.com/resources/15/)  
 [The Darkest Resource Pack](https://reliccastle.com/resources/897/)  
 [Ghosts of Knowledge Knesho Resource Pack](https://reliccastle.com/resources/900/)  
 [Platinum Battle Transitions](https://reliccastle.com/resources/898/)  
 [Pokeball Animations](https://reliccastle.com/resources/909/)   -->
+[ENL's Pre-Looped Music Library](https://reliccastle.com/resources/663/)  
+[Kyle Dove Tileset](https://reliccastle.com/resources/15/)  
 
 ### Developer Tools
 

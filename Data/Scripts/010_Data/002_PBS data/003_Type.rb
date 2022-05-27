@@ -69,9 +69,9 @@ end
 
 module Effectiveness
   INEFFECTIVE            = 0
-  NOT_VERY_EFFECTIVE_ONE = 1
+  NOT_VERY_EFFECTIVE_ONE = 1.5 # x0.75 multiplier
   NORMAL_EFFECTIVE_ONE   = 2
-  SUPER_EFFECTIVE_ONE    = 4
+  SUPER_EFFECTIVE_ONE    = 3 # x1.5 multiplier
   NORMAL_EFFECTIVE       = NORMAL_EFFECTIVE_ONE**3
 
   module_function
