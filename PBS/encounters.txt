@@ -302,3 +302,74 @@ Land,21
     10,PIKACHU,11,14
     10,SANDSHREW_1,11,14
     10,VULPIX_1,11,14
+#=============================
+#========^ Example ^=========
+#=============================
+
+
+#=============================
+#========v  CUSTOM  v=========
+#=============================
+[076] # Route 1
+LandMorning,10
+    30,DIGLETT,6,10
+    30,PONYTA,6,10
+    20,RUFFLET,6,10
+    10,AMAURA,6,10
+    5,EEVEE,6,10
+    5,AXEW,6,10
+LandDay,10
+    30,PONYTA,6,10
+    30,SHELMET,6,10
+    20,ORICORIO_1,6,10
+    10,EEVEE,6,10
+    5,AMAURA,6,10
+    5,CHESPIN,6,10
+LandNight,10
+    30,DIGLETT_1,6,10
+    30,WOOBAT,6,10
+    20,FOONGUS,6,10
+    10,VENIPEDE,6,10
+    5,EEVEE,6,10
+    5,PHANTUMP,6,10
+#-------------------------------
+[078] # Forest pond
+OldRod
+    30,SHELLDER,8,15
+    10,TYMPOLE,8,15
+    20,MARILL,11,17
+    15,WIMPOD,8,15
+    10,CHEWTLE,11,17
+    15,STARYU,11,17
+#-------------------------------
+[079] # Route 2
+LandMorning,10
+    20,ESPURR,9,13
+    25,PICHU,9,13
+    10,DRATINI,8,12
+    25,SWABLU,9,13
+    20,LILLIPUP,9,13
+LandDay,10
+    30,SCATTERBUG,9,13
+    30,SKWOVET,9,13
+    20,APPLIN,8,12
+    10,KUBFU,9,13
+    5,HAPPINY,8,12
+    5,CHESPIN,8,13
+LandNight,10
+    30,NIDORANmA,9,13
+    30,IGGLYBUFF,8,12
+    20,JYNX,15,17
+    10,FERROSEED,9,13
+    10,LUNATONE,12,15
+#-------------------------------
+[080] # Deep Forest
+Land,21
+    15,KOMALA,11,14
+    10,SALANDIT,11,14
+    20,SPINARAK,11,14
+    15,HERACROSS,12,15
+    10,MISMAGIUS,13,17
+    15,GRUBBIN,10,13
+    5,IMPIDIMP,11,14
+    10,TANGELA,11,14

@@ -121,6 +121,36 @@ module Console
     end
   end
 
+  # yellow message
+  def echo_yellow(msg)
+    echo markup_style("#{msg}", text: :yellow)
+  end
+
+  # cyan message
+  def echo_cyan(msg)
+    echo markup_style("#{msg}", text: :cyan)
+  end
+
+  # light red message
+  def echo_lred(msg)
+    echo markup_style("#{msg}", text: :light_red)
+  end
+
+  # light green message
+  def echo_lgreen(msg)
+    echo markup_style("#{msg}", text: :green)
+  end
+
+  # light blue message
+  def echo_lblue(msg)
+    echo markup_style("#{msg}", text: :light_blue)
+  end
+
+  # light blue message
+  def echo_lcyan(msg)
+    echo markup_style("#{msg}", text: :light_cyan)
+  end
+
   #-----------------------------------------------------------------------------
   # Markup options
   #-----------------------------------------------------------------------------

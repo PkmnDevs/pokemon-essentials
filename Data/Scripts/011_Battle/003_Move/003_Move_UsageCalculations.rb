@@ -126,6 +126,15 @@ class Battle::Move
       target.damageState.affection_missed = true if r < threshold
       return false
     end
+    # Display output to console
+    Console.echo_lcyan _INTL("\n\n%s targeted %s!" % [user.name,target.name])
+    if r > threshold
+      Console.echo _INTL("\n[ACCURACY ROLL] Modifiers: %s = " % [modifiers])
+      Console.echo_lred _INTL("Miss Threshold: %d, Accuracy Roll: %d" % [threshold,r])
+    else
+      Console.echo _INTL("\n[ACCURACY ROLL] Modifiers: %s = " % [modifiers])
+      Console.echo_lgreen _INTL("Miss Threshold: %d, Accuracy Roll: %d" % [threshold,r])
+    end
     return r < threshold
   end
 
@@ -285,11 +294,15 @@ class Battle::Move
     atk     = [(atk     * multipliers[:attack_multiplier]).round, 1].max
     defense = [(defense * multipliers[:defense_multiplier]).round, 1].max
     damage  = ((((2.0 * user.level / 5) + 2).floor * baseDmg * atk / defense).floor / 50).floor + 2
+    Console.echo _INTL("\n[CALC DMG] (user lvl %d, move base dmg %d, user's atk %d, opponent's defense %d) = dmg %d" % [user.level, baseDmg, atk, defense, damage])
     damage  = [(damage * multipliers[:final_damage_multiplier]).round, 1].max
+    Console.echo _INTL("\n[Final damage multiplier] %f" % [multipliers[:final_damage_multiplier]])
+    Console.echo_cyan _INTL("\n[RESULT DMG] %d" % [damage])
     target.damageState.calcDamage = damage
   end
 
   def pbCalcDamageMultipliers(user, target, numTargets, type, baseDmg, multipliers)
+    Console.echo_cyan _INTL("\n[MOVE TYPE] %s" % [type])
     # Global abilities
     if (@battle.pbCheckGlobalAbility(:DARKAURA) && type == :DARK) ||
        (@battle.pbCheckGlobalAbility(:FAIRYAURA) && type == :FAIRY)
@@ -431,25 +444,31 @@ class Battle::Move
     if target.damageState.critical
       if Settings::NEW_CRITICAL_HIT_RATE_MECHANICS
         multipliers[:final_damage_multiplier] *= 1.5
+        Console.echo _INTL("\n[CRITICAL HIT! multiplier] 1.5")
       else
         multipliers[:final_damage_multiplier] *= 2
+        Console.echo _INTL("\n[CRITICAL HIT! multiplier] 2.0")
       end
     end
     # Random variance
     if !self.is_a?(Battle::Move::Confusion)
       random = 85 + @battle.pbRandom(16)
       multipliers[:final_damage_multiplier] *= random / 100.0
+      Console.echo _INTL("\n[RANDOM VARIANCE dmg multiplier] %f" % [(random / 100.0)])
     end
     # STAB
     if type && user.pbHasType?(type)
       if user.hasActiveAbility?(:ADAPTABILITY)
         multipliers[:final_damage_multiplier] *= 2
+        Console.echo _INTL("\n[STAB multiplier] 2.0")
       else
         multipliers[:final_damage_multiplier] *= 1.5
+        Console.echo _INTL("\n[STAB multiplier] 1.5")
       end
     end
     # Type effectiveness
     multipliers[:final_damage_multiplier] *= target.damageState.typeMod.to_f / Effectiveness::NORMAL_EFFECTIVE
+    Console.echo _INTL("\n[EFFECTIVENESS multiplier] %f" % [target.damageState.typeMod.to_f / Effectiveness::NORMAL_EFFECTIVE])
     # Burn
     if user.status == :BURN && physicalMove? && damageReducedByBurn? &&
        !user.hasActiveAbility?(:GUTS)

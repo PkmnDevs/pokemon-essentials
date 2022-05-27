@@ -60,8 +60,8 @@ class DarknessSprite < SpriteWrapper
     super
   end
 
-  def radiusMin; return 64;  end   # Before using Flash
-  def radiusMax; return 176; end   # After using Flash
+  def radiusMin; return 128;  end   # Before using Flash
+  def radiusMax; return 224; end   # After using Flash
 
   def radius=(value)
     @radius = value

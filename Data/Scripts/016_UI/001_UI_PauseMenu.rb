@@ -59,6 +59,7 @@ class PokemonPauseMenu_Scene
       Graphics.update
       Input.update
       pbUpdateSceneMap
+      pbShowInfo(pbGetTimeNow.strftime("%I:%M %p"))
       if Input.trigger?(Input::BACK) || Input.trigger?(Input::ACTION)
         ret = -1
         break

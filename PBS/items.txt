@@ -6082,3 +6082,26 @@ Pocket = 8
 Price = 0
 Flags = KeyItem
 Description = A faded sea chart that shows the way to a certain island.
+#=============================
+#=====^ Original Items ^======
+#=============================
+
+
+#=============================
+#=====v  CUSTOM ITEMS  v======
+#=============================
+[RUSTYMACHETE]
+Name = Rusty Machete
+NamePlural = Rusty Machetes
+Pocket = 8
+Price = 0
+Flags = KeyItem
+Description = "It can cut down small trees, but will break after use."
+#-------------------------------
+[MACHETE]
+Name = Machete
+NamePlural = Machetes
+Pocket = 8
+Price = 0
+Flags = KeyItem
+Description = "It can cut down small trees."
