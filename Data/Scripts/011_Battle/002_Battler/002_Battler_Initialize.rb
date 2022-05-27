@@ -85,9 +85,13 @@ class Battle::Battler
     @pokemonIndex = idxParty
     @participants = []   # Participants earn Exp. if this battler is defeated
     @moves        = []
+    @moves_names  = []
     pkmn.moves.each_with_index do |m, i|
       @moves[i] = Battle::Move.from_pokemon_move(@battle, m)
+      @moves_names[i] = @moves[i].name
     end
+    Console.echo_lred _INTL("\n\n[HEALTH] %s currently has %s HP" % [@species,@hp])
+    Console.echo_yellow _INTL("\n[MOVESET] %s has the moves %s" % [@species,@moves_names])
   end
 
   def pbInitEffects(batonPass)

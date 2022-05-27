@@ -4,13 +4,13 @@ Creating our own game: Multiple Small Regions each with their own protagonist th
 
 ### Plugins used
 
-<!-- [Gen 8 Project](https://reliccastle.com/threads/3829/)  
-[Following Pokemon EX](https://reliccastle.com/resources/516/)  
-[Elite Battle: DX](https://luka-sj.com/res/ebdx)   -->
+[Gen 8 Project](https://reliccastle.com/threads/3829/)  
+[Following Pokemon EX](https://reliccastle.com/resources/516/)
 [Gen 8 Move Animation Project](https://www.pokecommunity.com/showthread.php?t=446303)  
 [FL Unreal Time](https://www.pokecommunity.com/showthread.php?t=285831)  
-<!-- [EVs and IVs Summary](https://reliccastle.com/resources/703/)  
-[Relearn Moves](https://reliccastle.com/resources/933/)  
+[EVs and IVs Summary](https://reliccastle.com/resources/703/)  
+<!-- [Relearn Moves](https://reliccastle.com/resources/933/)  
+[Elite Battle: DX](https://luka-sj.com/res/ebdx)   
 
 ### Assets
 
