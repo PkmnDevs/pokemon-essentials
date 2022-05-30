@@ -485,6 +485,16 @@ my_file = open("./PBS/pokemon.txt")
 string_list = my_file.readlines()
 my_file.close()
 
+# ==================
+# ==  VARIABLES   ==
+# ==================
+
+name = "" # Current pokemon name from file
+newEvoLevel = 0 # New evolution level based on getEvolutionInfo() and Variables above.
+uniqueEvos = [] # Store all pokemon names that have unique evolution method. Their evolutions need to be looked-into/updated manually.
+cantFind = [] # Store all pokemon names that can't be found in API. Their base stats and evolutions need to be looked-into/updated manually.
+skipPkmn = False # If a pkmn name is not in the API, we need to skip lines of the file until we reach the next "InternalName ="
+newFileContents = "" # I guess I have to build the new file here?
 
 # =====================
 # ==  GET PKMN INFO  ==
@@ -508,6 +518,13 @@ def getEvolutionInfo(name):
     pokemonSpeciesURL = "https://pokeapi.co/api/v2/pokemon-species/"
     pokemonSpeciesURL = pokemonSpeciesURL + name
     r = requests.get(url = pokemonSpeciesURL, headers = headers)
+    if r.status_code == 404:
+        print("Cannot find [" + name + "] in API.")
+        cantFind.append(name)
+        global skipPkmn
+        skipPkmn = True # Skip the rest of the lines of the file until we get to the next pkmn.
+        print("\n==============================================\n")
+        return ("get","gud")
     data = r.json()
 
     # Get evolution chain json
@@ -540,39 +557,20 @@ def getEvolutionInfo(name):
 # ==  CALC STATS  ==
 # ==================
 
-displayName = "" # some display names are different from database/API names, causing errors.
-name = "" # Current pokemon name from file
-newEvoLevel = 0 # New evolution level based on getEvolutionInfo() and Variables above.
-uniqueEvos = [] # Store all pokemon names that have unique evolution method. Their evolutions need to be looked-into/updated manually.
-cantFind = [] # Store all pokemon names that can't be found in API. Their base stats and evolutions need to be looked-into/updated manually.
-skipPkmn = False # If a pkmn name is not in the API, we need to skip lines of the file until we reach the next "InternalName ="
-newFileContents = "" # I guess I have to build the new file here?
 print("")
 
 for x in string_list:
 
-    if "InternalName =" in x: # Get Pokemon's name, evolution chain, and evolution stage.
+    if x.startswith("Name ="): # Get Pokemon's name, evolution chain, and evolution stage.
         words = x.split()
         name = words[-1]
         print(name)
-
-        # Some pokemon names in the database are written uniquely (ex: NIDORANfe, NIDORANma), so they will not be found in the API. This checks and records that.
-        if displayName.lower() != name.lower() :
-            print("Cannot find [" + name + "] in API.")
-            cantFind.append(name)
-            skipPkmn = True # Skip the rest of the lines of the file until we get to the next pkmn.
-            print("\n==============================================\n")
-            continue # Don't run getEvolutionInfo(name)
-
         skipPkmn = False
         evoStage, evoChain = getEvolutionInfo(name)
+
+    if skipPkmn == False and x.startswith("BaseStats = "): # Edit the string containing "BaseStats" to use the new, more balanced, base stats. Depends on evoChain and evoStage.
         print("EvoStage (Can be BASIC, STAGE1, STAGE2): " + evoStage)
         print("Total number of evolutions in chain (Can be 0, 1, 2): " + str(evoChain))
-    elif "Name =" in x: # Capture displayName to see if it is different from internalName (variable "name")
-        words = x.split()
-        displayName = words[-1]
-
-    if skipPkmn == False and "BaseStats = " in x: # Edit the string containing "BaseStats" to use the new, more balanced, base stats. Depends on evoChain and evoStage.
         newEvoLevel = 0
 
         txt = x.split()
@@ -640,7 +638,7 @@ for x in string_list:
         if newEvoLevel == 0:
             print("==============================================\n")
 
-    if skipPkmn == False and "Evolutions = " in x: # Set new evolve level
+    if skipPkmn == False and x.startswith("Evolutions = "): # Set new evolve level
         print("\noriginal evolution method:\n" + x)
         if newEvoLevel != 0:
             # print("newEvoLevel: {0}".format(newEvoLevel))
