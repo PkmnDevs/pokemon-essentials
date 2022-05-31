@@ -622,6 +622,10 @@ for x in string_list:
                         elif statTotal > CHAIN2_STAGE2: # Nerf Stronger Pkmn
                             stats = [(stat - ((statTotal - CHAIN2_STAGE2) // 12)) for stat in stats]
 
+        # Ensure no stats go below 1        
+        for stat in stats:
+            if stat <= 0:
+                stat = 1
 
         statsTemp = stats.copy()
         x = "BaseStats = " + ", ".join(map(str, statsTemp)) + "\n"
