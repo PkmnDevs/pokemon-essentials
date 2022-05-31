@@ -92,6 +92,7 @@ class Battle::Move
 
   # Accuracy calculations for one-hit KO moves are handled elsewhere.
   def pbAccuracyCheck(user, target)
+    Console.echo_lcyan _INTL("\n\n%s targeted %s!" % [user.name,target.name])
     # "Always hit" effects and "always hit" accuracy
     return true if target.effects[PBEffects::Telekinesis] > 0
     return true if target.effects[PBEffects::Minimize] && tramplesMinimize? && Settings::MECHANICS_GENERATION >= 6
@@ -127,7 +128,6 @@ class Battle::Move
       return false
     end
     # Display output to console
-    Console.echo_lcyan _INTL("\n\n%s targeted %s!" % [user.name,target.name])
     if r > threshold
       Console.echo _INTL("\n[ACCURACY ROLL] Modifiers: %s = " % [modifiers])
       Console.echo_lred _INTL("Miss Threshold: %d, Accuracy Roll: %d" % [threshold,r])

@@ -118,7 +118,7 @@ module Followers
   def clear(*args)
     # Don't remove the Following Pokemon if game has been started over
     if $game_temp.starting_over
-      $game_temp.followers.remove_except_following_pkmn
+      $game_temp.followers.remove_all_except_following_pkmn
     else
       __followingpkmn__clear(*args)
     end

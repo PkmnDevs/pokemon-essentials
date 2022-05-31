@@ -26,8 +26,6 @@ EventHandlers.add(:on_enter_map, :erase_following_pkmn, proc { |_old_map_id|
   }
 })
 
-
-
 class FollowerSprites
   #-----------------------------------------------------------------------------
   # Updating the refresh method to allow clearing of base event in all maps,

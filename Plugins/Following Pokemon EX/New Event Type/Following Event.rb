@@ -222,4 +222,18 @@ class Game_FollowerFactory
     end
   end
   #-----------------------------------------------------------------------------
+  # Method to remove all Followers except Following Pokemon
+  #-----------------------------------------------------------------------------
+  def remove_all_except_following_pkmn
+    followers = $PokemonGlobal.followers
+    followers.each_with_index do |follower, i|
+      next if follower.following_pkmn?
+      followers[i] = nil
+      @events[i] = nil
+      @last_update += 1
+    end
+    followers.compact!
+    @events.compact!
+  end
+  #-----------------------------------------------------------------------------
 end
