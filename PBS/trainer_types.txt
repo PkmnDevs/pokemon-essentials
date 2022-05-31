@@ -192,6 +192,7 @@ BaseMoney = 60
 Name = Youngster
 Gender = Male
 BaseMoney = 16
+IntroBGM = Metal gear solid Alert Theme
 #-------------------------------
 [LASS]
 Name = Lass
