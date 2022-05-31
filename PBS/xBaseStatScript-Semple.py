@@ -263,6 +263,36 @@ Category = Flame
 Pokedex = Moltres is a legendary bird Pokémon that can control fire. If injured, it is said to dip its body in the molten magma of a volcano to burn and heal itself.
 Generation = 1
 #-------------------------------
+[MUNCHLAX]
+Name = Munchlax
+Types = NORMAL
+BaseStats = 135,85,40,5,40,85
+GenderRatio = FemaleOneEighth
+GrowthRate = Slow
+BaseExp = 78
+EVs = HP,1
+CatchRate = 50
+Happiness = 50
+Abilities = PICKUP,THICKFAT
+HiddenAbilities = GLUTTONY
+Moves = 1,LICK,1,TACKLE,4,DEFENSECURL,8,RECYCLE,12,COVET,16,BITE,20,STOCKPILE,20,SWALLOW,24,SCREECH,28,BODYSLAM,32,FLING,36,AMNESIA,40,METRONOME,44,FLAIL,48,BELLYDRUM,52,LASTRESORT
+TutorMoves = AMNESIA,ATTRACT,BLIZZARD,BODYSLAM,BRICKBREAK,BULLDOZE,CHARM,DOUBLETEAM,EARTHQUAKE,ENCORE,ENDURE,FACADE,FIREBLAST,FIREPUNCH,FLAMETHROWER,FLING,FOCUSPUNCH,GUNKSHOT,HIDDENPOWER,HYDROPUMP,HYPERVOICE,ICEBEAM,ICEPUNCH,ICYWIND,MEGAKICK,MEGAPUNCH,METRONOME,PAYDAY,PROTECT,PSYCHIC,RAINDANCE,RECYCLE,REST,RETALIATE,ROCKCLIMB,ROCKSLIDE,ROCKSMASH,ROCKTOMB,ROUND,SANDSTORM,SCREECH,SEEDBOMB,SELFDESTRUCT,SHADOWBALL,SHOCKWAVE,SLEEPTALK,SNORE,SOLARBEAM,STOMPINGTANTRUM,STRENGTH,SUBSTITUTE,SUNNYDAY,SUPERPOWER,SURF,SWAGGER,THUNDER,THUNDERBOLT,THUNDERPUNCH,UPROAR,WATERPULSE,WHIRLPOOL,WORKUP,ZENHEADBUTT
+EggMoves = AFTERYOU,BELCH,CHARM,COUNTER,CURSE,DOUBLEEDGE,FISSURE,LICK,SELFDESTRUCT,WHIRLWIND,ZENHEADBUTT
+EggGroups = Undiscovered
+HatchSteps = 10240
+Incense = FULLINCENSE
+Height = 0.6
+Weight = 105.0
+Color = Black
+Shape = Bipedal
+Category = Big Eater
+Pokedex = It wolfs down its weight in food once a day, swallowing food whole with almost no chewing.
+Generation = 4
+WildItemCommon = LEFTOVERS
+WildItemUncommon = LEFTOVERS
+WildItemRare = LEFTOVERS
+Evolutions = SNORLAX,Happiness,
+#-------------------------------
 [SNORLAX]
 Name = Snorlax
 Types = NORMAL
@@ -622,10 +652,11 @@ for x in string_list:
                         elif statTotal > CHAIN2_STAGE2: # Nerf Stronger Pkmn
                             stats = [(stat - ((statTotal - CHAIN2_STAGE2) // 12)) for stat in stats]
 
-        # Ensure no stats go below 1        
-        for stat in stats:
-            if stat <= 0:
-                stat = 1
+        # Ensure no stats go below 1
+        for i in range(len(stats)):
+            if stats[i] <= 0:
+                stats[i] = 1
+                print("[WARN] There was a stat with a value of less than 1.")
 
         statsTemp = stats.copy()
         x = "BaseStats = " + ", ".join(map(str, statsTemp)) + "\n"

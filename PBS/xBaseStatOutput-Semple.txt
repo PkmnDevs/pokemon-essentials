@@ -8274,11 +8274,12 @@ original baseStats:
 HP, Atk, Def, Spe, SpA, SpD
 135, 85, 40, 5, 40, 85
 original statTotal: 390
+[WARN] There was a stat with a value of less than 1.
 
 new baseStats:
 HP, Atk, Def, Spe, SpA, SpD
-130, 80, 35, 0, 35, 80
-new statTotal: 360
+130, 80, 35, 1, 35, 80
+new statTotal: 361
 
 original evolution method:
 Evolutions = SNORLAX,Happiness,
