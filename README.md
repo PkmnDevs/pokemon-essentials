@@ -37,9 +37,17 @@ Creating our own game: Multiple Small Regions each with their own protagonist th
 
 ## Workflow
 
-There will be a _master_ branch and a _develop_ branch.
+__Branches:__
 
-_develop_ will be were we push up changes.
+* _master_ :: This is a branch we do not intend to manage. It is from the repo we forked: Maruno's. Occasionally we will pull Maruno's changes down into _pkmn-accord-dev_. (Well, pull changes into a diff branch first, test what broke, then push to _pkmn-accord-dev_)
+
+* _dev_ :: Same as above, but with newer changes from Maruno. Occasionally we will pull down this branch into _pkmn-accord-dev_. (Same clarification as above).
+
+* _POKEMON\_ACCORD_ :: The master branch. Should be a stable build of the game that anyone can play. (Just a copy of _pkmn-accord-dev_ when it's in best condition). Should tag this branch with release version numbers when we have significant progress on the game.
+
+* _pkmn-accord-dev_ :: The most up to date changes that are hopefully in decent condition. May sometimes be in bad condition as we use this branch to organize/name all our WIP Maps. Otherwise, fingers crossed that it is stable. Should get pushed up to _POKEMON\_ACCORD_ when we want to make a "new release".
+
+* _{your name}/{anything}_ :: These branches are your personal branches. Make all the changes you want. Just don't fuck up the Map organization! This will get pushed into _pkmn-accord-dev_ either when the changes made are ready, or when we need to do some map organization.
 
 Periodically, we will force all Work In Progress branches into _develop_ and then change all the _MapInfo_ (names, grouping) in the dev branch and push it to master.
 
@@ -47,24 +55,43 @@ Periodically, we will force all Work In Progress branches into _develop_ and the
 ==  __WORKFLOW__  ==
 ================
 
-1. Create a new branch off of _develop_. Naming Pattern: `your-first-name/whatever-you-want`
+1. Create a new branch off of _pkmn-accord-dev_. Naming Pattern: `your-first-name/whatever-you-want`
 
-2. If you are going to edit a new map, find a blank map in the list. Note it's ID. Post in the Map Claiming discord channel: `Claiming MapXXX for <map name> [in <parent map name + ID>]` (Make sure no one else has already claimed it!)
+2. If you are going to edit a new map, find a blank map in the list. Note it's ID. Post in the Map Claiming discord channel: `Claiming MapXXX for <map name> [in <parent map ID + name>]` (Make sure no one else has already claimed it! Ex: "Claiming Map069 for PokeCenter in Map050 - Pallet Town")
 
-3. Then, when you are going to edit a WIP map, post a comment in Map Communication discord channel: `Working on MapXXX".` (Make sure no one else is also working on it!)
+3. Make your edits. __DO NOT MOVE THE MAPS AROUND__. (Like, in the editor, do not drag them and organize them). Commit and Push up changes to your own branch as much as you want.
 
-4. Make your edits. __DO NOT MOVE THE MAPS AROUND__. Commit and Push up changes to your own branch as much as you want.
+4. When you are ready to push your personal branch to _pkmn-accord-dev_, first Pull from _pkmn-accord-dev_. (In Github Remote Desktop App: While on your branch, click on the "Branch" tab in the taskbar. Select "Compare to Branch". Select the _pkmn-accord-dev_ branch. Choose to make a merge commit to pull dev into your branch. If there are merge conflicts, they should only be on MapInfo.rxdata and/or Systems.rxdata. Select to keep your branch's version for both resolution steps.)
 
-5. When you are ready to push your branch to dev, first Pull from dev. (In Github Remote Desktop App: While on your branch, click on the "Branch" tab in the taskbar. Select "Compare to Branch". Select the dev branch. Choose to make a merge commit to pull dev into your branch. If there are merge conflicts, they should only be on MapInfo.rxdata and/or Systems.rxdata. Select to keep your branch's version for both resolution steps.
+5. After that, push your personal branch up to the origin and create a Pull Request to merge your personal branch into the _pkmn-accord-dev_ branch.
 
-6. Push your branch up to the origin and create a Pull Request to merge your branch into the dev branch.
+Periodically steps 4 and 5 may be forced through even when you're not ready, so that _pkmn-accord-dev_ branch can contain all WIP maps, and then we can name and group some the sake of organization. To help keep communication clear on who is messing around with what map, we may want to make these discord posts: (Imagine the scenario where Emily made a map, but Ryan wants to fix some broken NPC dialogue on it while he has time. If they both edit the map on different branches, everything will break. So Emily has to either let Ryan make edits on her personal branch, or they need to take turns and not edit at the same time. These steps are to help enforce the latter, when needed.)
+
+6. When you are going to edit a WIP map, post a comment in Map Communication discord channel: `Working on MapXXX".`
 
 7. Edit your comment step (3) to say `NOT working on MapXXX` so that others know they can touch it now.
 
-Periodically steps 5 and 6 may be forced through even when you're not ready, so that dev can contain all WIP maps, and then we can name and group  some for:
+When we have a stable build in _pkmn-accord-dev_, we will push it to our master branch: _POKEMON\_ACCORD_
 
-8. Merge the dev branch into the master branch. Keep all the dev MapInfo.
+8. Merge the _pkmn-accord-dev_ branch into the _POKEMON\_ACCORD_ branch. Keep all the dev MapInfo.
 
+__WHEN PULLING IN LATEST MARUNO CHANGES:__
+
+1. Navigate to "our" _dev_ branch.
+
+2. Sync it with Maruno's _dev_ branch.
+
+3. Create a new branch off of _pkmn-accord-dev_
+
+4. Pull "our" _dev_ branch into the new branch you just made.
+
+5. Play-Test changes.
+
+6. If it's good stuff, push your new branch up into _pkmn-accord-dev_.
+
+====================
+==  __From Maruno:__  ==
+====================
 
 # Pokémon Essentials
 
