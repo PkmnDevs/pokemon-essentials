@@ -67,6 +67,8 @@ class Sprite_Character < RPG::Sprite
       @reflection = Sprite_Reflection.new(self, character, viewport)
     end
     @surfbase = Sprite_SurfBase.new(self, character, viewport) if character == $game_player
+    self.zoom_x = TilemapRenderer::ZOOM_X
+    self.zoom_y = TilemapRenderer::ZOOM_Y
     update
   end
 
@@ -103,33 +105,37 @@ class Sprite_Character < RPG::Sprite
       @character_hue  = @character.character_hue
       @oldbushdepth   = @character.bush_depth
       @charbitmap&.dispose
+      @charbitmap = nil
+      @bushbitmap&.dispose
+      @bushbitmap = nil
       if @tile_id >= 384
         @charbitmap = pbGetTileBitmap(@character.map.tileset_name, @tile_id,
                                       @character_hue, @character.width, @character.height)
         @charbitmapAnimated = false
-        @bushbitmap&.dispose
-        @bushbitmap = nil
         @spriteoffset = false
         @cw = Game_Map::TILE_WIDTH * @character.width
         @ch = Game_Map::TILE_HEIGHT * @character.height
         self.src_rect.set(0, 0, @cw, @ch)
         self.ox = @cw / 2
         self.oy = @ch
-      else
+      elsif @character_name != ""
         @charbitmap = AnimatedBitmap.new(
           "Graphics/Characters/" + @character_name, @character_hue
         )
         RPG::Cache.retain("Graphics/Characters/", @character_name, @character_hue) if @character == $game_player
         @charbitmapAnimated = true
-        @bushbitmap&.dispose
-        @bushbitmap = nil
         @spriteoffset = @character_name[/offset/i]
         @cw = @charbitmap.width / 4
         @ch = @charbitmap.height / 4
         self.ox = @cw / 2
+      else
+        self.bitmap = nil
+        @cw = 0
+        @ch = 0
       end
       @character.sprite_size = [@cw, @ch]
     end
+    return if !@charbitmap
     @charbitmap.update if @charbitmapAnimated
     bushdepth = @character.bush_depth
     if bushdepth == 0
@@ -153,8 +159,12 @@ class Sprite_Character < RPG::Sprite
         pbDayNightTint(self)
       end
     end
-    self.x          = @character.screen_x
-    self.y          = @character.screen_y
+    this_x = @character.screen_x
+    this_x = ((this_x - (Graphics.width / 2)) * TilemapRenderer::ZOOM_X) + (Graphics.width / 2) if TilemapRenderer::ZOOM_X != 1
+    self.x          = this_x
+    this_y = @character.screen_y
+    this_y = ((this_y - (Graphics.height / 2)) * TilemapRenderer::ZOOM_Y) + (Graphics.height / 2) if TilemapRenderer::ZOOM_Y != 1
+    self.y          = this_y
     self.z          = @character.screen_z(@ch)
     self.opacity    = @character.opacity
     self.blend_type = @character.blend_type
