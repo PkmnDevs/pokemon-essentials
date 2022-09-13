@@ -95,12 +95,13 @@ def pbStartOver(gameover = false)
       pbMessage(_INTL("\\w[]\\wm\\c[8]\\l[3]You scurry back to a Pokémon Center, protecting your exhausted Pokémon from any further harm..."))
     end
     pbCancelVehicles
-    pbRemoveDependencies
+    Followers.clear
     $game_switches[Settings::STARTING_OVER_SWITCH] = true
     $game_temp.player_new_map_id    = $PokemonGlobal.pokecenterMapId
     $game_temp.player_new_x         = $PokemonGlobal.pokecenterX
     $game_temp.player_new_y         = $PokemonGlobal.pokecenterY
     $game_temp.player_new_direction = $PokemonGlobal.pokecenterDirection
+    pbDismountBike
     $scene.transfer_player if $scene.is_a?(Scene_Map)
     $game_map.refresh
   else
@@ -120,12 +121,13 @@ def pbStartOver(gameover = false)
     end
     if homedata
       pbCancelVehicles
-      pbRemoveDependencies
+      Followers.clear
       $game_switches[Settings::STARTING_OVER_SWITCH] = true
       $game_temp.player_new_map_id    = homedata[0]
       $game_temp.player_new_x         = homedata[1]
       $game_temp.player_new_y         = homedata[2]
       $game_temp.player_new_direction = homedata[3]
+      pbDismountBike
       $scene.transfer_player if $scene.is_a?(Scene_Map)
       $game_map.refresh
     else

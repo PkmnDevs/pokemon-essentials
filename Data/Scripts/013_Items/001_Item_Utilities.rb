@@ -147,6 +147,7 @@ def pbChangeLevel(pkmn, new_level, scene)
   old_speed           = pkmn.speed
   pkmn.level = new_level
   pkmn.calc_stats
+  pkmn.hp = 1 if new_level > old_level && pkmn.species_data.base_stats[:HP] == 1
   scene.pbRefresh
   if old_level > new_level
     if scene.is_a?(PokemonPartyScreen)
@@ -765,8 +766,8 @@ def pbUseItemMessage(item)
   end
 end
 
-def pbCheckUseOnPokemon(_item, pkmn, _screen)
-  return pkmn && !pkmn.egg?
+def pbCheckUseOnPokemon(item, pkmn, _screen)
+  return pkmn && !pkmn.egg? && (!pkmn.hyper_mode || GameData::Item.get(item)&.is_scent?)
 end
 
 #===============================================================================
@@ -886,7 +887,7 @@ def pbChooseFossil(var = 0)
 end
 
 # Shows a list of items to choose from, with the chosen item's ID being stored
-# in the given Global Variable. Only items which the player has are listed.
+# in the given Game Variable. Only items which the player has are listed.
 def pbChooseItemFromList(message, variable, *args)
   commands = []
   itemid   = []
@@ -898,16 +899,16 @@ def pbChooseItemFromList(message, variable, *args)
     itemid.push(itm.id)
   end
   if commands.length == 0
-    $game_variables[variable] = 0
+    $game_variables[variable] = :NONE
     return nil
   end
   commands.push(_INTL("Cancel"))
   itemid.push(nil)
   ret = pbMessage(message, commands, -1)
   if ret < 0 || ret >= commands.length - 1
-    $game_variables[variable] = nil
+    $game_variables[variable] = :NONE
     return nil
   end
-  $game_variables[variable] = itemid[ret]
+  $game_variables[variable] = itemid[ret] || :NONE
   return itemid[ret]
 end

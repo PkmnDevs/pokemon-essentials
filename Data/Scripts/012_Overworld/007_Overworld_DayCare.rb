@@ -151,8 +151,8 @@ class DayCare
     end
 
     # If a Pokémon is bred with a Ditto, that Pokémon can pass down its Hidden
-    # Ability (80% chance). If neither Pokémon are Ditto, then the mother can
-    # pass down its ability (80% chance if Hidden, 60% chance if not).
+    # Ability (60% chance). If neither Pokémon are Ditto, then the mother can
+    # pass down its ability (60% chance if Hidden, 80% chance if not).
     # NOTE: This is how ability inheritance works in Gen 6+. Gen 5 is more
     #       restrictive, and even works differently between BW and B2W2, and I
     #       don't think that is worth adding in. Gen 4 and lower don't have
@@ -463,7 +463,7 @@ class DayCare
     day_care.reset_egg_counters
   end
 
-  def self.choose(text, choice_var)
+  def self.choose(message, choice_var)
     day_care = $PokemonGlobal.day_care
     case day_care.count
     when 0
@@ -474,13 +474,13 @@ class DayCare
       commands = []
       indices = []
       day_care.slots.each_with_index do |slot, i|
-        text = slot.choice_text
-        next if !text
-        commands.push(text)
+        choice_text = slot.choice_text
+        next if !choice_text
+        commands.push(choice_text)
         indices.push(i)
       end
       commands.push(_INTL("CANCEL"))
-      command = pbMessage(text, commands, commands.length)
+      command = pbMessage(message, commands, commands.length)
       $game_variables[choice_var] = (command == commands.length - 1) ? -1 : indices[command]
     end
   end

@@ -1,7 +1,7 @@
 #===============================================================================
 #
 #===============================================================================
-class MoveSelectionSprite < SpriteWrapper
+class MoveSelectionSprite < Sprite
   attr_reader :preselected
   attr_reader :index
 
@@ -314,11 +314,11 @@ class PokemonSummary_Scene
     # Show status/fainted/Pokérus infected icon
     status = -1
     if @pokemon.fainted?
-      status = GameData::Status.count
+      status = GameData::Status.count - 1
     elsif @pokemon.status != :NONE
       status = GameData::Status.get(@pokemon.status).icon_position
     elsif @pokemon.pokerusStage == 1
-      status = GameData::Status.count + 1
+      status = GameData::Status.count
     end
     if status >= 0
       imagepos.push(["Graphics/Pictures/statuses", 124, 100, 0, 16 * status, 44, 16])
@@ -405,7 +405,7 @@ class PokemonSummary_Scene
       ($player.pokedex.dexes_count - 1).times do |i|
         next if !$player.pokedex.unlocked?(i)
         num = pbGetRegionalNumber(i, @pokemon.species)
-        next if num <= 0
+        break if num <= 0
         dexnum = num
         dexnumshift = true if Settings::DEXES_WITH_OFFSETS.include?(i)
         break
