@@ -22998,3 +22998,32 @@ Shape = Bipedal
 Category = King
 Pokedex = Calyrex is a merciful Pokémon, capable of providing healing and blessings. It reigned over the Galar region in times of yore.
 Generation = 8
+#-------------------------------
+
+#=============================
+#========v  CUSTOM  v=========
+#=============================
+
+#-------------------------------
+[SPIDERMAUL]
+Name = Spidermaul
+Types = BUG,DARK
+BaseStats = 80, 100, 80, 95, 80, 85
+GenderRatio = Genderless
+GrowthRate = Medium
+BaseExp = 2500
+EVs = ATTACK,10,SPEED,5
+CatchRate = 3
+Happiness = 100
+Abilities = UNNERVE
+Moves = 8,INFESTATION,12,SCARYFACE,15,NIGHTSHADE,19,SHADOWSNEAK,28,SUCKERPUNCH,37,AGILITY,40,STICKYWEB,45,TOXICTHREAD,49,FURYSWIPES,53,SWORDSDANCE,58,FOCUSENERGY,61,FELLSTINGER
+TutorMoves = ATTRACT,BOUNCE,BUGBITE,BUGBUZZ,CONFIDE,DIG,DOUBLETEAM,ELECTROWEB,ENDURE,FACADE,FLASH,FOULPLAY,FRUSTRATION,GIGADRAIN,GIGAIMPACT,HIDDENPOWER,HYPERBEAM,INFESTATION,LEECHLIFE,POISONJAB,PROTECT,PSYCHIC,REST,RETURN,ROUND,SIGNALBEAM,SLEEPTALK,SLUDGEBOMB,SMARTSTRIKE,SNORE,SOLARBEAM,STOMPINGTANTRUM,STRUGGLEBUG,SUBSTITUTE,SUNNYDAY,SWAGGER,SWORDSDANCE,THIEF,THROATCHOP,VENOSHOCK,XSCISSOR
+EggGroups = Bug,Humanlike
+HatchSteps = 3072
+Height = 3.0
+Weight = 110.5
+Color = Red
+Shape = Insectoid
+Category = Sith
+Pokedex = When Obi-Wan did a sweet flip to super kill Darth Maul, the top half of Maul's body fell and landed on a spider. Now he eats flies for breakfast.
+Generation = 11
