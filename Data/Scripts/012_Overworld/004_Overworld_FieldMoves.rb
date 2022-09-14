@@ -249,11 +249,11 @@ end
 
 def pbCutMachete
   pbMessage(_INTL("This tree looks like it can be cut down!\1"))
-  if $bag.pbHasItem?(:RUSTYMACHETE) || $bag.pbHasItem?(:MACHETE)
+  if $bag.has?(:RUSTYMACHETE) || $bag.has?(:MACHETE)
     if pbConfirmMessage(_INTL("Would you like to cut it?"))
       pbMessage(_INTL("You cut the tree with your Machete."))
-      if $bag.pbHasItem?(:RUSTYMACHETE)
-        $bag.pbDeleteItem(:RUSTYMACHETE)
+      if $bag.has?(:RUSTYMACHETE)
+        $bag.remove(:RUSTYMACHETE, 1)
         pbMessage(_INTL("Your \\c[1]{1} \\c[0]breaks!", GameData::Item.get(:RUSTYMACHETE).name))
       end
       return true
