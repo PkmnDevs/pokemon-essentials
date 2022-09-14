@@ -10,7 +10,7 @@ Creating our own game: Multiple Small Regions each with their own protagonist th
 [FL Unreal Time](https://www.pokecommunity.com/showthread.php?t=285831)  
 [EVs and IVs Summary](https://reliccastle.com/resources/703/)  
 <!-- [Relearn Moves](https://reliccastle.com/resources/933/)  
-[Elite Battle: DX](https://luka-sj.com/res/ebdx)   
+[Elite Battle: DX](https://luka-sj.com/res/ebdx)   <-- This is super cool but was causing a lot of strange errors. Might be best to avoid using it.
 
 ### Assets
 
@@ -28,6 +28,7 @@ Creating our own game: Multiple Small Regions each with their own protagonist th
 [Trello](https://trello.com/pkmndevs)  
 [Miro](https://miro.com/welcome/eDN0TW1zSmtiZ1A5NUtiYjBKaUNxZnlzYU9EUlBxaHhGZmpiTk42RjVIbVFrd2J0M0RUMjVZd1NBTUpWWlpYY3wzNDU4NzY0NTIyNzcxODAzNzE4?invite_link_id=295639398454)  
 [How to contribute to our project](https://youtu.be/z1mddjl06Bc)
+Any custom images you add __MUST__ be compressed in [TinyPNG](https://tinypng.com/). This strips the image of some "image profile" thing that puts annoying warnings in the console.
 
 **Resources:**  
 [Wiki](https://essentialsdocs.fandom.com/wiki/Essentials_Docs_Wiki)  
@@ -59,7 +60,7 @@ Periodically, we will force all Work In Progress branches into _develop_ and the
 
 2. If you are going to edit a new map, find a blank map in the list. Note it's ID. Post in the Map Claiming discord channel: `Claiming MapXXX for <map name> [in <parent map ID + name>]` (Make sure no one else has already claimed it! Ex: "Claiming Map069 for PokeCenter in Map050 - Pallet Town")
 
-3. Make your edits. __DO NOT MOVE THE MAPS AROUND__. (Like, in the editor, do not drag them and organize them). Commit and Push up changes to your own branch as much as you want.
+3. Make your edits. __DO NOT MOVE THE MAPS AROUND OR NAME THEM__. (Like, in the editor, do not drag them and organize them) (However, you CAN change the Tileset, Width/Height, and BGM/BGS in the Map Properties.). Commit and Push up changes to your own branch as much as you want.
 
 4. When you are ready to push your personal branch to _pkmn-accord-dev_, first Pull from _pkmn-accord-dev_. (In Github Remote Desktop App: While on your branch, click on the "Branch" tab in the taskbar. Select "Compare to Branch". Select the _pkmn-accord-dev_ branch. Choose to make a merge commit to pull dev into your branch. If there are merge conflicts, they should only be on MapInfo.rxdata and/or Systems.rxdata. Select to keep your branch's version for both resolution steps.)
 
