@@ -5841,19 +5841,26 @@ BattlerPlayerX          = -5
 BattlerPlayerY          = 41
 BattlerEnemyX           = 3
 #-------------------------------
-[DARUMAKA,1]
+[DARUMAKA,2]
 BattlerEnemyY           = 68
 BattlerAltitude         = 0
 BattlerPlayerX          = 16
 BattlerPlayerY          = 70
 BattlerEnemyX           = -2
 #-------------------------------
-[DARMANITAN,2]
+[DARMANITAN,1]
 BattlerEnemyY           = 67
 BattlerAltitude         = 0
 BattlerPlayerX          = 16
 BattlerPlayerY          = 68
 BattlerEnemyX           = 0
+#-------------------------------
+[DARMANITAN,2]
+BattlerEnemyY           = 57
+BattlerAltitude         = 0
+BattlerPlayerX          = 17
+BattlerPlayerY          = 61
+BattlerEnemyX           = 4
 #-------------------------------
 [DARMANITAN,3]
 BattlerEnemyY           = 61
