@@ -6,7 +6,7 @@
 
 module Settings
   # The version of your game. It has to adhere to the MAJOR.MINOR.PATCH format.
-  GAME_VERSION = "1.0.0"
+  GAME_VERSION = "0.1.0"
 
   # The generation that the battle system follows. Used throughout the battle
   # scripts, and also by some other settings which are used in and out of battle
@@ -35,7 +35,8 @@ module Settings
   # The level of newly hatched Pokémon.
   EGG_LEVEL            = 1
   # The odds of a newly generated Pokémon being shiny (out of 65536).
-  SHINY_POKEMON_CHANCE = (MECHANICS_GENERATION >= 6) ? 16 : 8
+  # Default: SHINY_POKEMON_CHANCE = (MECHANICS_GENERATION >= 6) ? 16 : 8
+  SHINY_POKEMON_CHANCE = (MECHANICS_GENERATION >= 6) ? 316 : 8
   # Whether super shininess is enabled (uses a different shiny animation).
   SUPER_SHINY          = (MECHANICS_GENERATION >= 8)
   # The odds of a wild Pokémon/bred egg having Pokérus (out of 65536).
