@@ -196,14 +196,14 @@ Pokemon = EXEGGUTOR,21
 ### Minibosses
 #===============================
 #-------------------------------
-[LASS,Elena] # MiniBoss: RUNNING SHOES
+[LASS,Elena] # Route 1; MiniBoss: RUNNING SHOES
 LoseText = "Oh Allah! Please, stay away!"
 Pokemon = SLOWPOKE,17
     Ball = PREMIERBALL
 Pokemon = SANDILE,15
     Ball = PREMIERBALL
 #-------------------------------
-[FISHERMAN,Shu] # MiniBoss: OLD ROD
+[FISHERMAN,Shu] # Gaymer Pond; MiniBoss: OLD ROD
 LoseText = "No please, that's my grandfather's old rod!"
 Pokemon = SHELLDER,11
 Pokemon = PALPITOAD,13
