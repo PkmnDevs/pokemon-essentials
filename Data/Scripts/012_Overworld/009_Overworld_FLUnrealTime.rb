@@ -51,7 +51,7 @@
 if defined?(PluginManager) && !PluginManager.installed?("Unreal Time System")
   PluginManager.register({
     :name    => "Unreal Time System",
-    :version => "1.1",
+    :version => "1.1.1",
     :link    => "https://www.pokecommunity.com/showthread.php?t=285831",
     :credits => "FL"
   })
@@ -114,7 +114,7 @@ module UnrealTime
     target_seconds = hour*60*60+min*60+sec
     seconds_added = target_seconds-seconds_now
     seconds_added += day_seconds if seconds_added<0
-    $PokemonGlobal.newFrameCount+=seconds_added
+    add_seconds(seconds_added)
     PBDayNight.sheduleToneRefresh
   end
 
@@ -268,6 +268,7 @@ if UnrealTime::ENABLED
     end
 
     if UnrealTime::BATTLE_PASS
+  	  PokeBattle_Scene = Battle::Scene if !defined?(PokeBattle_Scene)
       class Battle::Scene
         alias :pbGraphicsUpdateold :pbGraphicsUpdate
         def pbGraphicsUpdate
