@@ -319,3 +319,18 @@ MenuHandlers.add(:pause_menu, :quit_game, {
     next false
   }
 })
+
+MenuHandlers.add(:pause_menu, :encounters, {
+  "name"      =>  _INTL("Encounters"),
+  "order"     => 55,
+  "effect"    => proc { |menu|
+    pbPlayDecisionSE
+    pbFadeOutIn {
+      scene = EncounterList_Scene.new
+      screen = EncounterList_Screen.new(scene)
+      screen.pbStartScreen
+      menu.pbRefresh
+    }
+    next false
+  }
+})
