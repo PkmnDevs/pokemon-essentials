@@ -9,12 +9,12 @@ Creating our own game: Multiple Small Regions each with their own protagonist th
 [Gen 8 Move Animation Project](https://www.pokecommunity.com/showthread.php?t=446303)  
 [FL Unreal Time](https://www.pokecommunity.com/showthread.php?t=285831)  
 [EVs and IVs Summary](https://reliccastle.com/resources/703/)  
-<!-- [Relearn Moves](https://reliccastle.com/resources/933/)  
-[Elite Battle: DX](https://luka-sj.com/res/ebdx)   <-- This is super cool but was causing a lot of strange errors. Might be best to avoid using it.
+[Relearn Moves](https://reliccastle.com/resources/933/)  
+<!-- [Elite Battle: DX](https://luka-sj.com/res/ebdx)   - This is super cool but was causing a lot of strange errors. Might be best to avoid using it.  -->
 
 ### Assets
 
-[Voltseon's Pause Menu](https://reliccastle.com/resources/692/)  
+<!-- [Voltseon's Pause Menu](https://reliccastle.com/resources/692/)  
 [Ekat's Public Gen 3 Tilesets](https://reliccastle.com/threads/3669/)  
 [The Darkest Resource Pack](https://reliccastle.com/resources/897/)  
 [Ghosts of Knowledge Knesho Resource Pack](https://reliccastle.com/resources/900/)  
