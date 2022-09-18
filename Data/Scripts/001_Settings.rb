@@ -93,7 +93,7 @@ module Settings
   # If a move taught by a TM/HM/TR replaces another move, this setting is
   # whether the machine's move retains the replaced move's PP (true), or whether
   # the machine's move has full PP (false).
-  TAUGHT_MACHINES_KEEP_OLD_PP          = (MECHANICS_GENERATION == 5)
+  TAUGHT_MACHINES_KEEP_OLD_PP          = (MECHANICS_GENERATION >= 5)
   # Whether the Move Relearner can also teach egg moves that the Pokémon knew
   # when it hatched and moves that the Pokémon was once taught by a TR. Moves
   # from the Pokémon's level-up moveset of the same or a lower level than the
