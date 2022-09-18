@@ -102,7 +102,7 @@ module EssentialsDeluxe
     "focus"                 => [:Self, "Trigger: 'focus'\nYour Pokémon harnesses its focus."],
     "focus_foe"             => [:Self, "Trigger: 'focus_foe'", "{1} harnesses its focus."],
     "focus_ally"            => [:Self, "Trigger: 'focus_ally'\nYour partner's Pokémon harnesses its focus."],
-    "focus_boss"            => [:Self, "Trigger: 'focus_boss'", "{1} harnesses its focus with the Enraged style."],  
+    "focus_boss"            => [:Self, "Trigger: 'focus_boss'", "{1} harnesses its focus with the Enraged style."],
     #---------------------------------------------------------------------------
     # Player-only Triggers
     #---------------------------------------------------------------------------
@@ -111,9 +111,9 @@ module EssentialsDeluxe
     "failedCapture"         => [:Self, "Trigger: 'failedCapture'\nYou failed to capture the targeted Pokémon."],
     "loss"                  => [:Self, "Trigger: 'loss'\nYou lost the battle."]
   }
-  
-  
-  
+
+
+
   #-----------------------------------------------------------------------------
   # Demo scenario vs. wild Rotom that shifts forms.
   #-----------------------------------------------------------------------------
@@ -148,8 +148,8 @@ module EssentialsDeluxe
       :terrain => :Electric
     }
   }
-  
-  
+
+
   #-----------------------------------------------------------------------------
   # Demo scenario vs. Rocket Grunt in a collapsing cave.
   #-----------------------------------------------------------------------------
@@ -157,7 +157,7 @@ module EssentialsDeluxe
     "turnCommand" => {
       :playsound  => "Mining collapse",
       :text    => "The cave ceiling begins to crumble down all around you!",
-      :speech  => ["I am not letting you escape!", 
+      :speech  => ["I am not letting you escape!",
                    "I don't care if this whole cave collapses down on the both of us...haha!"],
       :text_1  => "Defeat your opponent before time runs out!"
     },
@@ -173,11 +173,11 @@ module EssentialsDeluxe
       :status  => :CONFUSION
     },
     "turnEnd_3" => {
-      :text => ["You're running out of time!", 
+      :text => ["You're running out of time!",
                 "You need to escape immediately!"]
     },
     "turnEnd_4" => {
-      :text      => ["You failed to defeat your opponent in time!", 
+      :text      => ["You failed to defeat your opponent in time!",
                      "You were forced to flee the battle!"],
       :playsound => "Battle flee",
       :endbattle => 2
@@ -189,6 +189,33 @@ module EssentialsDeluxe
       :hp      => [2, "{1} is standing its ground!"],
       :stats   => [:DEFENSE, 2, :SPECIAL_DEFENSE, 2]
     },
+    "loss" => "Haha...you'll never make it out alive!"
+  }
+
+
+  #-----------------------------------------------------------------------------
+  # GYM LEADER ASH KETCUM
+  #-----------------------------------------------------------------------------
+  ASH_KETCHUM = {
+    "turnCommand" => {
+      :playsound  => "Pikachu speaks - Ash dies",
+      :text    => "You feel an immense pressure emmanting from the gym leader...",
+      :speech  => ["I am Ash Ketchum! From Pallet Town!",
+                   "Time to die.  ..For you.  !!"],
+      :text_1  => "Ash just turned his hat backwards! This is it! Life or death!"
+    },
+    "lowhp_foe" => {
+      :speech  => ["This is it {1}!",0,"Hit that {1} with everything you've got!"]
+      :anim    => [:BULKUP, :Self],
+      :playcry => true
+    },
+    "fainted_foe" => {
+      :speech  => ["How can this be happening?!"]
+    }
+    "afterLast_foe" => {
+      :speech  => "Kick his ass, {1}!",
+      :playcry => true
+    }
     "loss" => "Haha...you'll never make it out alive!"
   }
 end
