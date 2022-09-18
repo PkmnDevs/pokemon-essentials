@@ -224,7 +224,7 @@ module Settings
   # in the Pokédex so long as that species has been seen at all (true), or
   # whether each form needs to be seen specifically before that form appears in
   # the Pokédex (false).
-  DEX_SHOWS_ALL_FORMS = false
+  DEX_SHOWS_ALL_FORMS = true
   # An array of numbers, where each number is that of a Dex list (in the same
   # order as above, except the National Dex is -1). All Dex lists included here
   # will begin their numbering at 0 rather than 1 (e.g. Victini in Unova's Dex).

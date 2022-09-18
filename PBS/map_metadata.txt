@@ -408,11 +408,13 @@ BattleBack = city
 [033] # Player Town
 Name = Magic Conch Camp
 Outdoor = true
+MapPosition = 0,0,0 #temp value to avoid crashing
 ShowArea = true
 #-------------------------------
 [076] # Route 1
 Name = Ihm Pass
 Outdoor = true
+MapPosition = 0,0,0 #temp value to avoid crashing
 ShowArea = true
 HealingSpot = 76,8,10
 BattleBack = field
@@ -420,24 +422,28 @@ BattleBack = field
 [077] # Fat PokeCenter
 Name = Paul Blart Mall Camp
 Outdoor = true
+MapPosition = 0,0,0 #temp value to avoid crashing
 ShowArea = true
 HealingSpot = 77,8,15
 #-------------------------------
 [078] # Gaymer Pond
 Name = Gaymer Pond
 Outdoor = true
+MapPosition = 0,0,0 #temp value to avoid crashing
 ShowArea = true
 BattleBack = field
 #-------------------------------
 [079] # Route 2
 Name = Modernfare Road
 Outdoor = true
+MapPosition = 0,0,0 #temp value to avoid crashing
 ShowArea = true
 BattleBack = field
 #-------------------------------
 [080] # Ellinia
 Name = Ellinia
 Outdoor = true
+MapPosition = 0,0,0 #temp value to avoid crashing
 ShowArea = true
 DarkMap = true
 BattleBack = forest
@@ -445,17 +451,20 @@ BattleBack = forest
 [081] # Town Moot
 Name = Moot
 Outdoor = true
+MapPosition = 0,0,0 #temp value to avoid crashing
 ShowArea = true
 HealingSpot = 81,23,59
 #-------------------------------
 [082] # Gym 2 : Grotto Gym v1
 Name = Grotto Gym
+MapPosition = 0,0,0 #temp value to avoid crashing
 ShowArea = true
 DarkMap = true
 BattleBack = field
 #-------------------------------
 [083] # Gym 2 : Grotto Gym v2
 Name = Grotto Gym
+MapPosition = 0,0,0 #temp value to avoid crashing
 ShowArea = true
 DarkMap = true
 BattleBack = field
