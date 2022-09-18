@@ -459,3 +459,9 @@ Name = Grotto Gym
 ShowArea = true
 DarkMap = true
 BattleBack = field
+#-------------------------------
+[090] # Town 3
+Name = Town 3
+Outdoor = true
+ShowArea = true
+BattleBack = city
