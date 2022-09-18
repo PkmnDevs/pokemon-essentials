@@ -153,7 +153,7 @@ Pokemon = SQUIRTLE,18
 #===============================
 [LEADER_Ash,Ash] # GYM 1
 Items = FULLRESTORE
-LoseText = "Fuck."
+LoseText = "...Fuck."
 Pokemon = PIKACHU,7
     Gender = male
     Moves = AGILITY,NASTYPLOT,TAILWHIP

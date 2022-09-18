@@ -205,17 +205,21 @@ module EssentialsDeluxe
       :text_1  => "Ash just turned his hat backwards! This is it! Life or death!"
     },
     "lowhp_foe" => {
-      :speech  => ["This is it {1}!",0,"Hit that {1} with everything you've got!"]
+      :speech  => ["This is it {1}!",0,"\bHit that {1} with everything you've got!"],
       :anim    => [:BULKUP, :Self],
       :playcry => true
     },
     "fainted_foe" => {
       :speech  => ["How can this be happening?!"]
-    }
+    },
     "afterLast_foe" => {
       :speech  => "Kick his ass, {1}!",
       :playcry => true
+    },
+    "halfhp_final_foe" => {
+      :speech  => ["Daddy, noo!"],
+      :text    => "Leader Ash is starting to cry.",
+      :playcry => true
     }
-    "loss" => "Haha...you'll never make it out alive!"
   }
 end
