@@ -38,35 +38,29 @@
 47,East,8,52,West,0
 # Route 8 (69) - Safari Zone (66)
 69,North,0,66,South,10
-# Fat PokeCenter (77) - Route 1 (76)
-77,West,0,76,East,0
-# Gaymer Pond (78) - Route 1 (76)
-78,South,0,76,North,72
-# Gaymer Pond (78) - Fat PokeCenter (77)
-78,South,8,77,North,0
-# Route 2 (79) - Fat PokeCenter (77)
-79,West,25,77,East,0
-# Route 2 (79) - Gaymer Pond (78)
-79,West,0,78,East,0
-# MAP086 (86) - Gaymer Pond (78)
-86,South,0,78,North,51
-# Town Moot (81) - Route 2 (79)
-81,West,44,79,East,0
+# MAP089 (89) - MAP087 (87)
+89,South,0,87,North,0
+# Route 2 (79) - Town Moot (81)
+79,East,0,81,West,28
+# MAP086 (86) - Town Moot (81)
+86,East,12,81,West,0
+# MAP088 (88) - Town Moot (81)
+88,North,0,81,South,0
+# Fat PokeCenter (77) - Route 2 (79)
+77,East,0,79,West,25
+# Gaymer Pond (78) - Route 2 (79)
+78,East,0,79,West,0
 # MAP086 (86) - Route 2 (79)
 86,South,0,79,North,10
 # MAP088 (88) - Route 2 (79)
 88,West,0,79,East,21
-# MAP086 (86) - Town Moot (81)
-86,East,0,81,West,4
-# MAP087 (87) - Town Moot (81)
-87,West,0,81,East,35
-# MAP088 (88) - Town Moot (81)
-88,North,0,81,South,0
-# MAP089 (89) - Town Moot (81)
-89,West,0,81,East,0
+# Route 1 (76) - Fat PokeCenter (77)
+76,East,0,77,West,0
+# Gaymer Pond (78) - Fat PokeCenter (77)
+78,South,8,77,North,0
+# Gaymer Pond (78) - Route 1 (76)
+78,South,0,76,North,72
+# MAP086 (86) - Gaymer Pond (78)
+86,South,0,78,North,51
 # MAP088 (88) - MAP086 (86)
 88,West,0,86,East,61
-# MAP088 (88) - MAP087 (87)
-88,North,42,87,South,0
-# MAP089 (89) - MAP087 (87)
-89,South,0,87,North,0
