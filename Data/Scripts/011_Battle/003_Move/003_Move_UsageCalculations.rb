@@ -443,8 +443,8 @@ class Battle::Move
     # Critical hits
     if target.damageState.critical
       if Settings::NEW_CRITICAL_HIT_RATE_MECHANICS
-        multipliers[:final_damage_multiplier] *= 1.5
-        Console.echo _INTL("\n[CRITICAL HIT! multiplier] 1.5")
+        multipliers[:final_damage_multiplier] *= 1.25
+        Console.echo _INTL("\n[CRITICAL HIT! multiplier] 1.25")
       else
         multipliers[:final_damage_multiplier] *= 2
         Console.echo _INTL("\n[CRITICAL HIT! multiplier] 2.0")
@@ -459,11 +459,11 @@ class Battle::Move
     # STAB
     if type && user.pbHasType?(type)
       if user.hasActiveAbility?(:ADAPTABILITY)
-        multipliers[:final_damage_multiplier] *= 2
-        Console.echo _INTL("\n[STAB multiplier] 2.0")
+        multipliers[:final_damage_multiplier] *= 1.75
+        Console.echo _INTL("\n[STAB multiplier] 1.75")
       else
-        multipliers[:final_damage_multiplier] *= 1.5
-        Console.echo _INTL("\n[STAB multiplier] 1.5")
+        multipliers[:final_damage_multiplier] *= 1.25
+        Console.echo _INTL("\n[STAB multiplier] 1.25")
       end
     end
     # Type effectiveness

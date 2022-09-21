@@ -492,9 +492,9 @@ class Battle::AI
     # STAB
     if skill >= PBTrainerAI.mediumSkill && type && user.pbHasType?(type)
       if user.hasActiveAbility?(:ADAPTABILITY)
-        multipliers[:final_damage_multiplier] *= 2
+        multipliers[:final_damage_multiplier] *= 1.75
       else
-        multipliers[:final_damage_multiplier] *= 1.5
+        multipliers[:final_damage_multiplier] *= 1.25
       end
     end
     # Type effectiveness
