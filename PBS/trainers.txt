@@ -130,7 +130,7 @@ Pokemon = FLETCHLING,17
     Gender = female
     Moves = PECK,EMBER,TAILWIND,ATTRACT
     AbilityIndex = 2
-Pokemon = SLAKOTH,15
+Pokemon = SLAKOTH,20
     Gender = female
     Moves = SCRATCH,YAWN,COVET,SWAGGER
 #-------------------------------
@@ -217,6 +217,7 @@ Pokemon = STARYU,16
   Item = ORANBERRY
   IV = 20,20,20,20,20,20
   Ball = DIVEBALL
+  Ace = yes
 
 
 #===============================
@@ -235,6 +236,7 @@ Pokemon = TORKOAL,12
 Pokemon = TURTWIG,8
 Pokemon = SHUCKLE,11
   Shiny = yes
+  Ace = yes
 #-------------------------------
 [YOUNGSTER,Shepherd] # Route 2
 LoseText = "Koffing, use smokescree- wait."
@@ -264,6 +266,16 @@ LoseText = "геймеры объединяйтесь"
 Pokemon = ELGYEM,15
 Pokemon = KLANG,15
 Pokemon = GOLDEEN,16
+
+
+#===============================
+### Town Moot Beach
+#===============================
+#-------------------------------
+[TWINS,Witch & Bitch]
+LoseText = You're really good at battling!
+Pokemon = TURTWIG,18
+Pokemon = CHIMCHAR,18
 
 
 #===============================

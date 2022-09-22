@@ -41,6 +41,7 @@ module Game
     if $game_map&.events
       $game_map.events.each_value { |event| event.clear_starting }
     end
+    $game_system.initialize
     $game_temp.common_event_id = 0 if $game_temp
     $game_temp.begun_new_game = true
     $scene = Scene_Map.new
