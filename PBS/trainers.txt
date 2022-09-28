@@ -126,13 +126,13 @@ Pokemon = BLASTOISE,63
 #==============================================================================
 [RIVAL1,ButtButt,1] # ROUTE 2
 LoseText = "Not too shabby."
-Pokemon = FLETCHLING,17
-    Gender = female
-    Moves = PECK,EMBER,TAILWIND,ATTRACT
-    AbilityIndex = 2
 Pokemon = SLAKOTH,20
     Gender = female
     Moves = SCRATCH,YAWN,COVET,SWAGGER
+Pokemon = FLETCHLING,21
+    Gender = female
+    Moves = PECK,EMBER,TAILWIND,ATTRACT
+    AbilityIndex = 2
 #-------------------------------
 [RIVAL1,ButtButt,2] # TODO
 LoseText = "Not too shabby."
@@ -171,7 +171,7 @@ Pokemon = MRMIME,9
     Ball = HEAVYBALL
 #-------------------------------
 [LEADER_Ivy,Ivy] # GYM 2
-Items = FULLRESTORE
+Items = FULLRESTORE,MEGARING
 LoseText = "Nature always wins."
 Pokemon = FLAPPLE,18
     Gender = male
@@ -190,6 +190,13 @@ Pokemon = EXEGGUTOR,21
     IV = 31,31,31,31,31,31
     EV = 50,50,50,50,50,50
     Ball = SAFARIBALL
+Pokemon = SCEPTILE,20
+    Gender = male
+    Moves = DOUBLETEAM,DRAGONPULSE,ENERGYBALL,SUBSTITUTE
+    Item = SCEPTILITE
+    IV = 31,31,31,31,31,31
+    EV = 50,50,50,50,50,50
+    Ball = NETBALL
 
 
 #===============================
