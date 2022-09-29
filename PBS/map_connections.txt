@@ -43,7 +43,7 @@
 # Route 2 (79) - Town Moot (81)
 79,East,0,81,West,28
 # MAP086 (86) - Town Moot (81)
-86,East,12,81,West,0
+86,East,0,81,West,6
 # MAP088 (88) - Town Moot (81)
 88,North,0,81,South,0
 # Fat PokeCenter (77) - Route 2 (79)
@@ -63,4 +63,4 @@
 # MAP086 (86) - Gaymer Pond (78)
 86,South,0,78,North,51
 # MAP088 (88) - MAP086 (86)
-88,West,0,86,East,61
+88,West,0,86,East,43
