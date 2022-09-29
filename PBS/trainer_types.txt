@@ -423,3 +423,9 @@ VictoryBGM = Battle victory leader
 Gender = Female
 SkillLevel = 100
 #-------------------------------
+[BUGMASTER]
+Name = Bug Master
+Gender = Male
+BaseMoney = 16
+SkillLevel = 100
+#-------------------------------

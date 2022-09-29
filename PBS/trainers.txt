@@ -197,6 +197,7 @@ Pokemon = SCEPTILE,20
     IV = 31,31,31,31,31,31
     EV = 50,50,50,50,50,50
     Ball = NETBALL
+    Ace = yes
 
 
 #===============================
@@ -218,13 +219,25 @@ Pokemon = MARILL,13
 Pokemon = WIMPOD,12
 Pokemon = CHEWTLE,14
 Pokemon = STARYU,16
-  Shiny = yes
-  Moves = PSYBEAM,BRINE,POWERGEM,CONFUSERAY
-  AbilityIndex = 2
-  Item = ORANBERRY
-  IV = 20,20,20,20,20,20
-  Ball = DIVEBALL
-  Ace = yes
+    Shiny = yes
+    Moves = PSYBEAM,BRINE,POWERGEM,CONFUSERAY
+    AbilityIndex = 2
+    Item = ORANBERRY
+    IV = 20,20,20,20,20,20
+    Ball = DIVEBALL
+    Ace = yes
+#-------------------------------
+[BUGMASTER,Shino] # Town Moot; MiniBoss: EVIOLITE
+LoseText = "..."
+Pokemon = KARRABLAST,18
+    Moves = ACIDSPRAY,REFLECT,CONFUSERAY
+Pokemon = VENONAT,18
+    Moves = TOXIC,DISABLE,FLASH
+Pokemon = SHEDINJA,21
+    Moves = PHANTOMFORCE
+Pokemon = YANMEGA,21
+    Moves = AIRSLASH,SILVERWIND,ROOST,ATTRACT
+    Ace = yes
 
 
 #===============================
@@ -233,7 +246,7 @@ Pokemon = STARYU,16
 [YOUNGSTER,Soap] # Route 2
 LoseText = "REEEEEEEEE"
 Pokemon = RATTATA,11
-  IV = 31,31,31,31,31,31
+    IV = 31,31,31,31,31,31
 #-------------------------------
 [YOUNGSTER,Roach] # Route 2
 LoseText = "Not enough turtles in this shitty ass game."
@@ -242,8 +255,8 @@ Pokemon = CHEWTLE,10
 Pokemon = TORKOAL,12
 Pokemon = TURTWIG,8
 Pokemon = SHUCKLE,11
-  Shiny = yes
-  Ace = yes
+    Shiny = yes
+    Ace = yes
 #-------------------------------
 [YOUNGSTER,Shepherd] # Route 2
 LoseText = "Koffing, use smokescree- wait."
@@ -253,9 +266,9 @@ Pokemon = SHAYMIN,13
 [YOUNGSTER,Price] # Route 2
 LoseText = "Aww, I lost."
 Pokemon = ETERNATUS,11
-  Shiny = yes
-  Moves = SELFDESTRUCT
-  IV = 1,1,1,1,1,1
+    Shiny = yes
+    Moves = SELFDESTRUCT
+    IV = 1,1,1,1,1,1
 #-------------------------------
 [YOUNGSTER,Ramirez] # Route 2
 LoseText = "Now I die an honorable death."
