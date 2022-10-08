@@ -1,9 +1,18 @@
 ## New Level Cap System
 
+# DEFAULT SET UP:
+# When your pokemon is within two levels of the level cap, they will only gain 1/2 normal exp.
+# When your pokemon reaches the level cap, they will only gain 1/5 the normal exp.
+
 # To change the level cap, simply create an event that runs the script:
 # $game_system.level_cap = <new value>
 # To change the exp reduction rate, simply create an event that runs the script:
 # $game_system.exp_reduction_rate = <new value>
+# To change the number of levels below the level cap that you start receiving partially reduced exp, simply create an event that runs the script:
+# $game_system.slow_exp_levels_b4_cap = <new value>
+# To change the message displayed when gaining exp at a reduced rate, simply create an event that runs the scripts:
+# $game_system.exp_part_reduc_message = "<new value>"
+# $game_system.exp_full_reduc_message = "<new value>"
 
 
 # NOTE: If you have a saved game, and then start a new game, these values will be
@@ -16,12 +25,12 @@ class Game_System
   attr_accessor :level_cap
   attr_accessor :exp_reduction_rate
   alias initialize_cap initialize
-  def initialize
-    @level_cap          = 100
-    @exp_reduction_rate = 5
-  end
-  def level_cap
-    return @level_cap
+  def initialize ## DEFAULT VALUES
+    @level_cap               = 100 # Greatly reduce exp gain when after reaching this level.
+    @exp_reduction_rate      = 5 # Divide normal exp gain by this number to get the fully reduced exp gain after reaching @level_cap
+    @slow_exp_levels_b4_cap  = 2 # If you are within this many levels of the level cap, partially reduce exp gain. (at a rate of  [ @exp_reduction_rate / 2 ] rounded down)
+    @exp_part_reduc_message  = "has mastered this area and only got" # message displayed when gaining exp at a partially reduced rate. (starting at level [@level_cap - @slow_exp_levels_b4_cap])
+    @exp_full_reduc_message  = "has little left to learn here and only got" # message displayed when gaining exp at a fully reduced rate.
   end
 end
 
@@ -75,7 +84,7 @@ class Battle
       exp = exp.floor
       exp += 1 if isPartic || hasExpShare
       Console.echo _INTL("\n[EXP scale formula] Original EXP earned before lvl_cap check: %d" % [exp])
-      if pkmn.level >= level_cap - 2 # If you are at least within 2 levels of the level cap, do the following:
+      if pkmn.level >= level_cap - $game_system.slow_exp_levels_b4_cap # If you are at least within 2 levels of the level cap, do the following:
         if pkmn.level >= level_cap # If you are over the level cap, receive reduced exp
           exp /= exp_reduction_rate
           reduced_gain = 1
@@ -130,8 +139,10 @@ class Battle
     # "Exp gained" message
     if showMessages
       msg_reduction = "got" # Normal xp gain message
-      if reduced_gain != 0 # 0 = exp gain was not reduced, 1 = exp gain was fully reduced, 2 = exp gain was partially reduced, 3 = pkmn just reached level cap so only overflow exp was reduced
-        msg_reduction = "has little left to learn here and only got" # XP gain message when exp was reduced.
+      if reduced_gain == (1 || 3) # 0 = exp gain was not reduced, 1 = exp gain was fully reduced, 2 = exp gain was partially reduced, 3 = pkmn just reached level cap so only overflow exp was reduced
+        msg_reduction = $game_system.exp_full_reduc_message # XP gain message when exp was fully reduced.
+      elsif reduced_gain == 2
+        msg_reduction = $game_system.exp_part_reduc_message # XP gain message when exp was partially reduced.
       end
       if isOutsider
         pbDisplayPaused(_INTL("{1} {2} a boosted {3} Exp. Points!", pkmn.name, msg_reduction, expGained))

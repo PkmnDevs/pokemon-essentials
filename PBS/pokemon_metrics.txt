@@ -6223,3 +6223,15 @@ BackSprite = 0,47
 FrontSprite = -5,9
 ShadowX = 0
 ShadowSize = 3
+#-------------------------------
+
+#=============================
+#========v  CUSTOM  v=========
+#=============================
+
+#-------------------------------
+[SPIDERMAUL]
+BackSprite = 0,47
+FrontSprite = -5,9
+ShadowX = 0
+ShadowSize = 3

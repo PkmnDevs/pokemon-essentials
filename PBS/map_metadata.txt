@@ -453,7 +453,7 @@ Name = Moot
 Outdoor = true
 MapPosition = 0,0,0 #temp value to avoid crashing
 ShowArea = true
-HealingSpot = 81,23,59
+HealingSpot = 81,18,41
 #-------------------------------
 [082] # Gym 2 : Grotto Gym v1
 Name = Grotto Gym
@@ -468,3 +468,17 @@ MapPosition = 0,0,0 #temp value to avoid crashing
 ShowArea = true
 DarkMap = true
 BattleBack = field
+#-------------------------------
+[086] # Town Moot : Shino
+Name = Town Moot Shino
+Outdoor = true
+MapPosition = 0,0,0 #temp value to avoid crashing
+ShowArea = true
+BattleBack = xfield2
+#-------------------------------
+[088] # Town Moot : Beach
+Name = Town Moot Beach
+Outdoor = true
+MapPosition = 0,0,0 #temp value to avoid crashing
+ShowArea = false
+BattleBack = sand
