@@ -24,13 +24,16 @@
 class Game_System
   attr_accessor :level_cap
   attr_accessor :exp_reduction_rate
+  attr_accessor :slow_exp_levels_b4_cap
+  attr_accessor :exp_part_reduc_message
+  attr_accessor :exp_full_reduc_message
   alias initialize_cap initialize
   def initialize ## DEFAULT VALUES
     @level_cap               = 100 # Greatly reduce exp gain when after reaching this level.
     @exp_reduction_rate      = 5 # Divide normal exp gain by this number to get the fully reduced exp gain after reaching @level_cap
     @slow_exp_levels_b4_cap  = 2 # If you are within this many levels of the level cap, partially reduce exp gain. (at a rate of  [ @exp_reduction_rate / 2 ] rounded down)
-    @exp_part_reduc_message  = "has mastered this area and only got" # message displayed when gaining exp at a partially reduced rate. (starting at level [@level_cap - @slow_exp_levels_b4_cap])
-    @exp_full_reduc_message  = "has little left to learn here and only got" # message displayed when gaining exp at a fully reduced rate.
+    @exp_part_reduc_message  = "has little left to learn here and only got" # message displayed when gaining exp at a partially reduced rate. (starting at level [@level_cap - @slow_exp_levels_b4_cap])
+    @exp_full_reduc_message  = "has mastered this area and only got" # message displayed when gaining exp at a fully reduced rate.
   end
 end
 
@@ -50,6 +53,7 @@ class Battle
     level_cap = $game_system.level_cap
     level_cap_gap = growth_rate.exp_values[level_cap] - pkmn.exp
     exp_reduction_rate = $game_system.exp_reduction_rate
+    slow_exp_levels_b4_cap = $game_system.slow_exp_levels_b4_cap
     Console.echo_lblue _INTL("\n\n[LEVEL CAP] lvl_cap: %d , reduction_rate: %d" % [level_cap, exp_reduction_rate])
     # Main Exp calculation
     exp = 0
@@ -84,7 +88,7 @@ class Battle
       exp = exp.floor
       exp += 1 if isPartic || hasExpShare
       Console.echo _INTL("\n[EXP scale formula] Original EXP earned before lvl_cap check: %d" % [exp])
-      if pkmn.level >= level_cap - $game_system.slow_exp_levels_b4_cap # If you are at least within 2 levels of the level cap, do the following:
+      if pkmn.level >= level_cap - slow_exp_levels_b4_cap # If you are at least within 2 levels of the level cap, do the following:
         if pkmn.level >= level_cap # If you are over the level cap, receive reduced exp
           exp /= exp_reduction_rate
           reduced_gain = 1
@@ -92,7 +96,7 @@ class Battle
         else
           exp /= (exp_reduction_rate / 2) # If you are within 2 levels of the level cap, receive only partially reduced exp
           reduced_gain = 2
-          Console.echo _INTL("\n[EXP scale formula] When pkmn.lvl >= lvl_cap -2: Reduce by %d --> New Exp: %d" % [(exp_reduction_rate / 2), exp])
+          Console.echo _INTL("\n[EXP scale formula] When pkmn.lvl >= lvl_cap -%d: Reduce by %d --> New Exp: %d" % [slow_exp_levels_b4_cap, (exp_reduction_rate / 2), exp])
         end
       end
       if pkmn.level < level_cap && exp >= level_cap_gap # If your exp winnings make you reach the level cap, reduce the excess

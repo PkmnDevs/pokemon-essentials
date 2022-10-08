@@ -6232,6 +6232,6 @@ ShadowSize = 3
 #-------------------------------
 [SPIDERMAUL]
 BackSprite = 0,47
-FrontSprite = -5,9
-ShadowX = 0
+FrontSprite = -2,9
+ShadowX = -2
 ShadowSize = 3
