@@ -318,8 +318,9 @@ class Battle::Battler
   end
 
   def pbSleepDuration(duration = -1)
-    duration = 2 + @battle.pbRandom(3) if duration <= 0
+    duration = 3 + @battle.pbRandom(2) if duration <= 0 # Duration is 3-5 turns, and the pokemon wakes up on the last turn. (So if duration is 3, they will snooze 2 times, and wake up on their next attack.)
     duration = (duration / 2).floor if hasActiveAbility?(:EARLYBIRD)
+    Console.echo_lblue _INTL("\n[SLEEP DURATION] Target will sleep for %d turns" % [duration])
     return duration
   end
 
