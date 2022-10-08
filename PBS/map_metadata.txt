@@ -473,7 +473,7 @@ BattleBack = field
 Name = Town Moot Shino
 Outdoor = true
 MapPosition = 0,0,0 #temp value to avoid crashing
-ShowArea = true
+ShowArea = false
 BattleBack = xfield2
 #-------------------------------
 [088] # Town Moot : Beach

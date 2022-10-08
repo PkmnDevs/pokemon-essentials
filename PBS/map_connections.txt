@@ -51,7 +51,7 @@
 # Gaymer Pond (78) - Route 2 (79)
 78,East,0,79,West,0
 # MAP086 (86) - Route 2 (79)
-86,South,0,79,North,10
+86,South,0,79,North,20
 # MAP088 (88) - Route 2 (79)
 88,West,0,79,East,21
 # Route 1 (76) - Fat PokeCenter (77)
@@ -61,6 +61,6 @@
 # Gaymer Pond (78) - Route 1 (76)
 78,South,0,76,North,72
 # MAP086 (86) - Gaymer Pond (78)
-86,South,0,78,North,51
+86,South,0,78,North,61
 # MAP088 (88) - MAP086 (86)
 88,West,0,86,East,43
