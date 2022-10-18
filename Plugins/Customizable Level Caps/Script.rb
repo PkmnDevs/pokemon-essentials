@@ -84,17 +84,20 @@ class Battle
       levelAdjust = ((2 * level) + 10.0) / (pkmn.level + level + 10.0)
       levelAdjust = levelAdjust**5
       levelAdjust = Math.sqrt(levelAdjust)
+      if levelAdjust < 1.0 # Don't reduce EXP for being over leved against opponent. But DO increase exp if underleveled against opponent.
+        levelAdjust = 1.0
+      end
       exp *= levelAdjust
       exp = exp.floor
       exp += 1 if isPartic || hasExpShare
       Console.echo _INTL("\n[EXP scale formula] Original EXP earned before lvl_cap check: %d" % [exp])
-      if pkmn.level >= level_cap - slow_exp_levels_b4_cap # If you are at least within 2 levels of the level cap, do the following:
+      if pkmn.level >= level_cap - slow_exp_levels_b4_cap # If you are at least within slow_exp_levels_b4_cap levels of the level cap, do the following:
         if pkmn.level >= level_cap # If you are over the level cap, receive reduced exp
           exp /= exp_reduction_rate
           reduced_gain = 1
           Console.echo _INTL("\n[EXP scale formula] When pkmn.lvl >= lvl_cap: Reduce by %d --> New Exp: %d" % [exp_reduction_rate, exp])
         else
-          exp /= (exp_reduction_rate / 2) # If you are within 2 levels of the level cap, receive only partially reduced exp
+          exp /= (exp_reduction_rate / 2) # If you are within slow_exp_levels_b4_cap levels of the level cap, receive only partially reduced exp
           reduced_gain = 2
           Console.echo _INTL("\n[EXP scale formula] When pkmn.lvl >= lvl_cap -%d: Reduce by %d --> New Exp: %d" % [slow_exp_levels_b4_cap, (exp_reduction_rate / 2), exp])
         end
@@ -109,7 +112,7 @@ class Battle
       if a <= level_cap_gap
         exp = a
       else
-        exp /= 7
+        exp /= exp_reduction_rate
       end
     end
     # Foreign Pokémon gain more Exp

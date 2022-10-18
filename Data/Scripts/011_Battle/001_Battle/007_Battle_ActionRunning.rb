@@ -28,6 +28,12 @@ class Battle
   # duringBattle is true for replacing a fainted Pokémon during the End Of Round
   # phase, and false for choosing the Run command.
   def pbRun(idxBattler, duringBattle = false)
+    # Semple's block running on certain maps
+    if [80].include?($game_map.map_id) #Map IDs in array cannot have leading zeros I guess
+      pbDisplayPaused(_INTL("There's no where to run in this area!"))
+      return 0
+    end
+
     battler = @battlers[idxBattler]
     if battler.opposes?
       return 0 if trainerBattle?
