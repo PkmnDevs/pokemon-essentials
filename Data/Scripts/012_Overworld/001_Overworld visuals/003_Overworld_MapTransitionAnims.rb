@@ -90,9 +90,9 @@ def pbStartOver(gameover = false)
   $player.heal_party
   if $PokemonGlobal.pokecenterMapId && $PokemonGlobal.pokecenterMapId >= 0
     if gameover
-      pbMessage(_INTL("\\w[]\\wm\\c[8]\\l[3]After the unfortunate defeat, you scurry back to a Pokémon Center."))
+      pbMessage(_INTL("\\w[]\\wm\\c[8]\\l[3]You're bleeding out. This is the end. Except- wait! A Ho-oh is flying overhead! Their cum heals wounds! You manage to squeak out your mating call- UwU..."))
     else
-      pbMessage(_INTL("\\w[]\\wm\\c[8]\\l[3]You scurry back to a Pokémon Center, protecting your exhausted Pokémon from any further harm..."))
+      pbMessage(_INTL("\\w[]\\wm\\c[8]\\l[3]Darkness takes you... You stray out of thought and time..."))
     end
     pbCancelVehicles
     Followers.clear
@@ -115,7 +115,7 @@ def pbStartOver(gameover = false)
       return
     end
     if gameover
-      pbMessage(_INTL("\\w[]\\wm\\c[8]\\l[3]After the unfortunate defeat, you scurry back home."))
+      pbMessage(_INTL("\\w[]\\wm\\c[8]\\l[3]You fucking die."))
     else
       pbMessage(_INTL("\\w[]\\wm\\c[8]\\l[3]You face your defeat with honor and spread your legs..."))
     end

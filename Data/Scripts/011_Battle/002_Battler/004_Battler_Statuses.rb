@@ -492,7 +492,7 @@ class Battle::Battler
   end
 
   def pbConfusionDuration(duration = -1)
-    duration = 2 + @battle.pbRandom(4) if duration <= 0
+    duration = 3 + @battle.pbRandom(3) if duration <= 0
     return duration
   end
 

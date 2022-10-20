@@ -230,9 +230,9 @@ Pokemon = STARYU,16
 [BUGMASTER,Shino] # Town Moot; MiniBoss: EVIOLITE
 LoseText = "..."
 Pokemon = KARRABLAST,18
-    Moves = ACIDSPRAY,REFLECT,CONFUSERAY
+    Moves = REFLECT,CONFUSERAY,MEANLOOK
 Pokemon = VENONAT,18
-    Moves = TOXIC,DISABLE,FLASH
+    Moves = TOXIC,FLASH
 Pokemon = SHEDINJA,21
     Moves = PHANTOMFORCE
 Pokemon = YANMEGA,21
