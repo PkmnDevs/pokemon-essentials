@@ -2,6 +2,25 @@
 
 Creating our own game: Multiple Small Regions each with their own protagonist that meet up in the end.
 
+## WARNING !!!!! !!!!! !!!!!
+
+I broke something when adding plugins I guess :shrug: . The branch "emily-initialize-2" lets you load up for the first time and start a new game. But the branch "ryan-adding-plugins" will crash when you hit new game...\n
+Emily's branch was built off of Ryan's branch at one point, so whatever he added after that point is the thing that caused the issue. I need to look into it later.\n
+BUT, in the meantime, since everything worked fine on Ryan's computer, I realized the fact that he had a saved game was somehow bypassing the error?\n
+So the workaround for now is to:
+
+1) In GitHub desktop, click the menu-bar drop-down for "Repository".
+
+2) Select "Show in Explorer".
+
+3) Copy the folder called "Pokemon Accord".
+
+4) Now, in the search bar, type in %appdata%
+
+5) This should bring you inside a folder called your "Roaming" folder.
+
+6) Paste the folder you copied into here. This is where the saved games live, so now you will have a dummy saved-game and should be able to bypass the error!
+
 ### Plugins used
 
 [Gen 8 Project](https://reliccastle.com/threads/3829/)  
