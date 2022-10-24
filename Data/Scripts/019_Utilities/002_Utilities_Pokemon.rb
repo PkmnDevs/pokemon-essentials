@@ -289,10 +289,11 @@ def pbHasEgg?(species)
 end
 
 #===============================================================================
-# Improve IVs and EVs
+# Semple - Improve IVs and EVs
 #===============================================================================
 def pbImproveIVs(pkmn)
   GameData::Stat.each_main do |s|
+    Console.echo _INTL("\n[ORIGINAL IV] %s: %d" % [s.real_name_brief, pkmn.iv[s.id]])
     if pkmn.iv[s.id] == 0 # If your IV is zero, replace it with MAX
       pkmn.iv[s.id] = Pokemon::IV_STAT_LIMIT
     elsif pkmn.iv[s.id] <= (Pokemon::IV_STAT_LIMIT - 20) # If your IV is less than MAX-20, add 15 to it.
@@ -303,6 +304,7 @@ def pbImproveIVs(pkmn)
     if pkmn.iv[s.id] > Pokemon::IV_STAT_LIMIT # Failsafe if you go over limit.
       pkmn.iv[s.id] = Pokemon::IV_STAT_LIMIT
     end
+    Console.echo_lgreen _INTL("\n[NEW IV] %s: %d" % [s.real_name_brief, pkmn.iv[s.id]])
   end
 end
 

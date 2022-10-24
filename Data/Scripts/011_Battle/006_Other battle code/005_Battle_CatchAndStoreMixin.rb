@@ -3,6 +3,11 @@ module Battle::CatchAndStoreMixin
   # Store caught Pokémon
   #=============================================================================
   def pbStorePokemon(pkmn)
+    # Semple - Give the captured pkmn some decent IVs
+    Console.echo_yellow _INTL("\n\nBalancing IVs for %s..." % [pkmn.name])
+    pbImproveIVs(pkmn)
+    pbImproveEVs(pkmn)
+    pkmn.calc_stats
     # Nickname the Pokémon (unless it's a Shadow Pokémon)
     if !pkmn.shadowPokemon?
       if $PokemonSystem.givenicknames == 0 &&
@@ -96,17 +101,13 @@ module Battle::CatchAndStoreMixin
       if !pbPlayer.owned?(pkmn.species)
         pbPlayer.pokedex.set_owned(pkmn.species)
         if $player.has_pokedex
-          pbDisplayPaused(_INTL("{1}'s data was added to the Pokédex.", pkmn.name))
+          pbDisplayPaused(_INTL("{1}'s data was added to the Pokédicks.", pkmn.name))
           pbPlayer.pokedex.register_last_seen(pkmn)
           @scene.pbShowPokedex(pkmn.species)
         end
       end
       # Record a Shadow Pokémon's species as having been caught
       pbPlayer.pokedex.set_shadow_pokemon_owned(pkmn.species) if pkmn.shadowPokemon?
-      # Give the captured pkmn some decent IVs
-      pbImproveIVs(pkmn)
-      pbImproveEVs(pkmn)
-      pkmn.calc_stats
       # Store caught Pokémon
       pbStorePokemon(pkmn)
     end
