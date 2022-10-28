@@ -476,11 +476,11 @@ MapPosition = 0,0,0 #temp value to avoid crashing
 ShowArea = false
 BattleBack = xfield2
 #-------------------------------
-[088] # Town Moot : Beach
-Name = Town Moot Beach
+[088] # Town Moot : Grotto Beach
+Name = Grotto Beach
 Outdoor = true
 MapPosition = 0,0,0 #temp value to avoid crashing
-ShowArea = false
+ShowArea = true
 BattleBack = sand
 #-------------------------------
 [090] # Town 3

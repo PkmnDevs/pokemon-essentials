@@ -373,3 +373,12 @@ Land,21
     15,GRUBBIN,10,13
     5,IMPIDIMP,11,14
     10,TANGELA,11,14
+#-------------------------------
+[088] # Grotto Beach
+OldRod
+    30,ARROKUDA,10,17
+    10,SQUIRTLE,10,17
+    20,BARBOACH,13,19
+    15,FEEBAS,10,17
+    10,BIBAREL,13,19
+    15,SURSKIT,13,19

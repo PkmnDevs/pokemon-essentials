@@ -243,6 +243,20 @@ Pokemon = YANMEGA,21
 #===============================
 ### Route 2
 #===============================
+[CAMPER,Garret] # Route 1
+LoseText = "Farfetch'd? FARFETCH'D!? NOOOO"
+Pokemon = FARFETCHD,9
+#-------------------------------
+[PICNICKER,Stripperella] # Route 1
+LoseText = "Did you notice my Lopunny is actually a male, you sick pervert?"
+Pokemon = LOPUNNY,10
+    Gender = male
+    Shiny = yes
+
+
+#===============================
+### Route 2
+#===============================
 [YOUNGSTER,Soap] # Route 2
 LoseText = "REEEEEEEEE"
 Pokemon = RATTATA,11
@@ -250,11 +264,11 @@ Pokemon = RATTATA,11
 #-------------------------------
 [YOUNGSTER,Roach] # Route 2
 LoseText = "Not enough turtles in this shitty ass game."
-Pokemon = SQUIRTLE,9
-Pokemon = CHEWTLE,10
-Pokemon = TORKOAL,12
-Pokemon = TURTWIG,8
-Pokemon = SHUCKLE,11
+Pokemon = SQUIRTLE,10
+Pokemon = CHEWTLE,11
+Pokemon = TORKOAL,13
+Pokemon = TURTWIG,9
+Pokemon = SHUCKLE,12
     Shiny = yes
     Ace = yes
 #-------------------------------
@@ -272,8 +286,8 @@ Pokemon = ETERNATUS,11
 #-------------------------------
 [YOUNGSTER,Ramirez] # Route 2
 LoseText = "Now I die an honorable death."
-Pokemon = YAMPER,12
-Pokemon = EKANS,12
+Pokemon = YAMPER,13
+Pokemon = EKANS,13
 #-------------------------------
 [YOUNGSTER,Allen] # Route 2
 LoseText = "This game is stupid."
@@ -282,7 +296,7 @@ Pokemon = PYUKUMUKU,12
 Pokemon = DEERLING,10
 #-------------------------------
 [YOUNGSTER,Makarov] # Route 2
-LoseText = "геймеры объединяйтесь"
+LoseText = "Tsar Vladmir vill be most diszapyointed in me."
 Pokemon = ELGYEM,15
 Pokemon = KLANG,15
 Pokemon = GOLDEEN,16
@@ -296,7 +310,20 @@ Pokemon = GOLDEEN,16
 LoseText = You're really good at battling!
 Pokemon = TURTWIG,18
 Pokemon = CHIMCHAR,18
-
+#-------------------------------
+[SAILOR,Benboozle] # Route 2
+LoseText = "Do I exist only to lose?"
+Pokemon = METAPOD,17
+    Moves = MINIMIZE,COTTONGUARD,BATONPASS
+Pokemon = KAKUNA,17
+    Moves = MINIMIZE,TOXIC,BATONPASS
+Pokemon = MAGIKARP,18
+    Moves = AMNESIA,BATONPASS
+Pokemon = BIDOOF,16
+    Moves = SELFDESTRUCT
+Pokemon = SKARMORY,18
+    Shiny = yes
+    Ace = yes
 
 #===============================
 ### Gym 2 v1
