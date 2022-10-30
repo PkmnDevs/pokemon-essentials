@@ -303,15 +303,20 @@ Pokemon = GOLDEEN,16
 
 
 #===============================
-### Town Moot Beach
+### Town Moot Beach/Park
 #===============================
+[PSYCHIC_F,Shoni] # Park
+LoseText = "Am I partly to blame for their deaths?"
+Pokemon = DROWZEE,19
+Pokemon = CHINGLING,18
+Pokemon = HATENNA,17
 #-------------------------------
-[TWINS,Witch & Bitch]
+[TWINS,Witch & Bitch] # Beach
 LoseText = You're really good at battling!
 Pokemon = TURTWIG,18
 Pokemon = CHIMCHAR,18
 #-------------------------------
-[SAILOR,Benboozle] # Route 2
+[SAILOR,Benboozle] # Beach
 LoseText = "Do I exist only to lose?"
 Pokemon = METAPOD,17
     Moves = MINIMIZE,COTTONGUARD,BATONPASS
