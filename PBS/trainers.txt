@@ -173,14 +173,14 @@ Pokemon = MRMIME,9
 [LEADER_Ivy,Ivy] # GYM 2
 Items = FULLRESTORE,MEGARING
 LoseText = "Nature always wins."
-Pokemon = FLAPPLE,18
+Pokemon = FLAPPLE,17
     Gender = male
     Moves = LEECHSEED,WINGATTACK,DRAGONBREATH,WITHDRAW
     AbilityIndex = 0
     IV = 31,31,31,31,31,31
     EV = 50,50,50,50,50,50
     Ball = PREMIERBALL
-Pokemon = EXEGGUTOR,21
+Pokemon = EXEGGUTOR,20
     Form = 1
     Name = Girth
     Gender = male
@@ -190,7 +190,8 @@ Pokemon = EXEGGUTOR,21
     IV = 31,31,31,31,31,31
     EV = 50,50,50,50,50,50
     Ball = SAFARIBALL
-Pokemon = SCEPTILE,20
+Pokemon = SCEPTILE,19
+    Name = Venus
     Gender = male
     Moves = DOUBLETEAM,DRAGONPULSE,ENERGYBALL,SUBSTITUTE
     Item = SCEPTILITE
@@ -229,13 +230,13 @@ Pokemon = STARYU,16
 #-------------------------------
 [BUGMASTER,Shino] # Town Moot; MiniBoss: EVIOLITE
 LoseText = "..."
-Pokemon = KARRABLAST,18
+Pokemon = KARRABLAST,16
     Moves = REFLECT,CONFUSERAY,PROTECT
-Pokemon = VENONAT,18
+Pokemon = VENONAT,16
     Moves = TOXIC,FLASH
-Pokemon = SHEDINJA,21
+Pokemon = SHEDINJA,19
     Moves = PHANTOMFORCE
-Pokemon = YANMEGA,21
+Pokemon = YANMEGA,19
     Moves = AIRSLASH,SILVERWIND,ROOST,ATTRACT
     Ace = yes
 

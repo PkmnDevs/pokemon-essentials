@@ -55,6 +55,12 @@ Any custom images you add __MUST__ be compressed in [TinyPNG](https://tinypng.co
 [Reddit](https://www.reddit.com/r/PokemonRMXP/)  
 [Youtube Tutorial](https://www.youtube.com/watch?v=mlnzaEhH5cI&list=PLuIp7Uf7pllmpcFOHbj4r8cVQYywpRZB5)  
 
+.
+
+When adding new sounds, I found that I had to open them up in Adobe Audition and export them with the settings:  
+Format: .ogg  
+Sample Type: 44100 Hz, Stereo, 16-bit
+
 ## Workflow
 
 __Branches:__

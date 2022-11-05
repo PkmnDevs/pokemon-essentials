@@ -41,7 +41,8 @@ class Battle
     when 1, "Z-Move"  then @zMove[side][owner]         = set
     when 2, "Ultra"   then @ultraBurst[side][owner]    = set
     when 3, "Dynamax" then @dynamax[side][owner]       = set
-    when 4, "Zodiac"  then @zodiac[side][owner]        = set
+    when 4, "Style"   then @battleStyle[side][owner]   = set
+    when 5, "Zodiac"  then @zodiac[side][owner]        = set
     end
   end
 
@@ -56,8 +57,7 @@ class Battle
       return true if pbCanDynamax?(idxBattler)
     end
     if PluginManager.installed?("PLA Battle Styles")
-      return true if pbCanStrongStyle?(idxBattler)
-      return true if pbCanAgileStyle?(idxBattler)
+      return true if pbCanUseStyle?(idxBattler)
     end
     if PluginManager.installed?("Pokémon Birthsigns")
       return true if pbCanZodiacPower?(idxBattler)
@@ -65,6 +65,7 @@ class Battle
     if PluginManager.installed?("Focus Meter System")
       return true if pbCanUseFocus?(idxBattler)
     end
+    return true if pbCanCustom?(idxBattler)
     return false
   end
   
@@ -93,6 +94,7 @@ class Battle
     pbUnregisterStyle(idxBattler)       if PluginManager.installed?("PLA Battle Styles")
     pbUnregisterZodiacPower(idxBattler) if PluginManager.installed?("Pokémon Birthsigns")
     pbUnregisterFocus(idxBattler)       if PluginManager.installed?("Focus Meter System")
+    pbUnregisterCustom(idxBattler)
     pbClearChoice(idxBattler)
   end
   
@@ -137,22 +139,22 @@ class Battle
         end
       end
       if PluginManager.installed?("PLA Battle Styles")
-        @strong_style[side].each_with_index do |style, i|
-          @strong_style[side][i] = -1 if style >= 0
-        end
-        @agile_style[side].each_with_index do |style, i|
-          @agile_style[side][i] = -1 if style >= 0
+        @battleStyle[side].each_with_index do |style, i|
+          @battleStyle[side][i] = -1 if style >= 0
         end
       end
       if PluginManager.installed?("Pokémon Birthsigns")
         @zodiacPower[side].each_with_index do |zodiac, i|
-          @zodiacPower[side][i] = -1 if zodiac>=0
+          @zodiacPower[side][i] = -1 if zodiac >= 0
         end
       end
       if PluginManager.installed?("Focus Meter System")
         @focusMeter[side].each_with_index do |meter, i|
           @focusMeter[side][i] = -1 if meter >= 0
         end
+      end
+      @custom[side].each_with_index do |custom, i|
+        @custom[side][i] = -1 if custom >= 0
       end
     end
     pbCommandPhaseLoop(true)
@@ -190,9 +192,10 @@ class Battle
     pbAttackPhaseUltraBurst
     pbAttackPhaseZMoves
     pbAttackPhaseDynamax
+    pbAttackPhaseCustom
+    pbAttackPhaseStyles
     pbAttackPhaseRaidBoss
     pbAttackPhaseCheer
-    pbAttackPhaseStyles
     pbAttackPhaseMoves
   end
 end
@@ -203,6 +206,7 @@ end
 #-------------------------------------------------------------------------------
 class Battle::Scene
   def pbCommandMenuEx(idxBattler, texts, mode = 0)
+    has_info  = PluginManager.installed?("Enhanced UI")
     can_focus = PluginManager.installed?("Focus Meter System")
     pbShowWindow(COMMAND_BOX)
     cw = @sprites["commandWindow"]
@@ -227,18 +231,22 @@ class Battle::Scene
         pbPlayDecisionSE
         ret = cw.index
         @lastCmd[idxBattler] = ret
-        pbToggleFocusPanel(false) if can_focus && ret > 0
+        pbHidePluginUI if can_focus && ret > 0
         break
       elsif Input.trigger?(Input::BACK) && mode > 0
         pbPlayCancelSE
         break
       elsif Input.trigger?(Input::F9) && $DEBUG
         pbPlayDecisionSE
-        pbToggleFocusPanel(false) if can_focus
+        pbHidePluginUI
         ret = -2
         break
+      elsif has_info && Input.triggerex?(Settings::BATTLE_INFO_KEY)
+        pbHideFocusPanel
+        pbToggleBattleInfo
       elsif can_focus && Input.triggerex?(Settings::FOCUS_PANEL_KEY)
-        pbToggleFocusPanel 
+        pbHideBattleInfo
+        pbToggleFocusPanel
       end
     end
     return ret
@@ -259,16 +267,16 @@ class Battle::AI
       @battle.pbRegisterUltraBurst(idxBattler) if pbEnemyShouldUltraBurst?(idxBattler)
       @battle.pbRegisterDynamax(idxBattler) if pbEnemyShouldDynamax?(idxBattler)
     end
-    if PluginManager.installed?("PLA Battle Styles")
-      @battle.pbRegisterStrongStyle(idxBattler) if pbEnemyShouldStrongStyle?(idxBattler)
-      @battle.pbRegisterAgileStyle(idxBattler) if pbEnemyShouldAgileStyle?(idxBattler)
-    end
     if PluginManager.installed?("Pokémon Birthsigns")
       @battle.pbRegisterZodiacPower(idxBattler) if pbEnemyShouldZodiacPower?(idxBattler)
     end
     if PluginManager.installed?("Focus Meter System")
       @battle.pbRegisterFocus(idxBattler) if pbEnemyShouldFocus?(idxBattler)
     end
+    @battle.pbRegisterCustom(idxBattler) if pbEnemyShouldCustom?(idxBattler)
     pbChooseMoves(idxBattler)
+    if PluginManager.installed?("PLA Battle Styles") # Purposefully set after move selection.
+      @battle.pbRegisterStyle(idxBattler) if pbEnemyShouldUseStyle?(idxBattler)
+    end
   end
 end

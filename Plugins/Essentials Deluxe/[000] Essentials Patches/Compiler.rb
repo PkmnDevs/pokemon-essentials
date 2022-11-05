@@ -64,6 +64,9 @@ module Compiler
     plugin_write_all
     if !PLUGIN_FILES.empty?
       Console.echo_h1 _INTL("Writing all PBS/Plugin files")
+      if PluginManager.installed?("Improved Field Skills")
+        write_field_skills
+      end
       if PluginManager.installed?("ZUD Mechanics")
         write_dynamax_metrics
         write_power_moves
@@ -126,6 +129,7 @@ module Compiler
           f.write(sprintf("    Birthsign = %s\r\n", pkmn[:birthsign])) if PluginManager.installed?("Pokémon Birthsigns") && pkmn[:birthsign]
           f.write(sprintf("    DynamaxLvl = %d\r\n", pkmn[:dynamax_lvl])) if PluginManager.installed?("ZUD Mechanics") && pkmn[:dynamax_lvl]
           f.write("    Gigantamax = yes\r\n") if PluginManager.installed?("ZUD Mechanics") && pkmn[:gmaxfactor]
+		  f.write("    Mastery = yes\r\n") if PluginManager.installed?("PLA Battle Styles") && pkmn[:mastery] 
         end
       end
     }
@@ -182,10 +186,16 @@ module Compiler
                 compiled = true
               end
             when "Flags"
-              if ability.flags != contents[key]
-                contents[key] = [contents[key]] if !contents[key].is_a?(Array)
-                contents[key].compact!
-                ability.flags = contents[key]
+              contents[key] = [contents[key]] if !contents[key].is_a?(Array)
+              contents[key].compact!
+              contents[key].each do |flag|
+                next if ability.flags.include?(flag)
+                if flag.include?("Remove_")
+                  string = flag.split("_")
+                  ability.flags.delete(string[1])
+                else
+                  ability.flags.push(flag)
+                end
                 compiled = true
               end
             end
@@ -301,10 +311,16 @@ module Compiler
                 compiled = true
               end
             when "Flags"
-              if item.flags != contents[key]
-                contents[key] = [contents[key]] if !contents[key].is_a?(Array)
-                contents[key].compact!
-                item.flags = contents[key]
+              contents[key] = [contents[key]] if !contents[key].is_a?(Array)
+              contents[key].compact!
+              contents[key].each do |flag|
+                next if item.flags.include?(flag)
+                if flag.include?("Remove_")
+                  string = flag.split("_")
+                  item.flags.delete(string[1])
+                else
+                  item.flags.push(flag)
+                end
                 compiled = true
               end
             when "Pocket"
@@ -420,10 +436,16 @@ module Compiler
                 move_descriptions.push(contents[key])
               end
             when "Flags"
-              if move.flags != contents[key]
-                contents[key] = [contents[key]] if !contents[key].is_a?(Array)
-                contents[key].compact!
-                move.flags = contents[key]
+              contents[key] = [contents[key]] if !contents[key].is_a?(Array)
+              contents[key].compact!
+              contents[key].each do |flag|
+                next if move.flags.include?(flag)
+                if flag.include?("Remove_")
+                  string = flag.split("_")
+                  move.flags.delete(string[1])
+                else
+                  move.flags.push(flag)
+                end
               end
             when "Type"         then move.type          = contents[key] if move.type          != contents[key]
             when "Category"     then move.category      = contents[key] if move.category      != contents[key]
@@ -533,24 +555,46 @@ module Compiler
           schema.keys.each do |key|
             if nil_or_empty?(contents[key])
               contents[key] = nil
-              next
             end
             FileLineData.setSection(species_id, key, contents[key])
-            value = pbGetCsvRecord(contents[key], key, schema[key])
-            value = nil if value.is_a?(Array) && value.length == 0
-            contents[key] = value
+            if !contents[key].nil?
+              value = pbGetCsvRecord(contents[key], key, schema[key])
+              value = nil if value.is_a?(Array) && value.length == 0
+              contents[key] = value
+            end
             case key
             when "GenderRatio"
+              next if contents[key].nil?
               species.gender_ratio = contents[key]
             when "Habitat"
+              next if contents[key].nil?
               species.habitat = contents[key]
+            when "EggGroups"
+              if species.form > 0 && contents[key].nil?
+                base_groups = GameData::Species.get(species.species).egg_groups
+                species.egg_groups = base_groups
+              else
+                next if contents[key].nil?
+                contents[key] = [contents[key]] if !contents[key].is_a?(Array)
+                contents[key].compact!
+                species.egg_groups = contents[key]
+              end
             when "Flags"
-              species.flags = contents[key]
-            when "EggMoves", "EggGroups", "Offspring"      
+              contents[key] = [contents[key]] if !contents[key].is_a?(Array)
+              contents[key].compact!
+              contents[key].each do |flag|
+                next if species.flags.include?(flag)
+                if flag.include?("Remove_")
+                  string = flag.split("_")
+                  species.flags.delete(string[1])
+                else
+                  species.flags.push(flag)
+                end
+              end
+            when "EggMoves", "Offspring"
               contents[key] = [contents[key]] if !contents[key].is_a?(Array)
               contents[key].compact!
               species.egg_moves  = contents[key] if key == "EggMoves"
-              species.egg_groups = contents[key] if key == "EggGroups"
               species.offspring  = contents[key] if key == "Offspring"
             end
           end
@@ -567,6 +611,8 @@ module Compiler
       GameData::Species.save
       Compiler.write_pokemon
       Compiler.write_pokemon_forms
+      Compiler.compile_pokemon
+      Compiler.compile_pokemon_forms
     end
   end
   
@@ -579,6 +625,10 @@ module Compiler
         path = "PBS/Plugins/#{plugin}/#{file}.txt"
         mustCompile = true if safeExists?(path)
       end
+      if plugin == "Improved Field Skills"
+        path = "PBS/Plugins/#{plugin}/field_skills.txt"
+        mustCompile = true if !safeExists?(path)
+      end
     end
     return if !mustCompile
     FileLineData.clear
@@ -587,24 +637,30 @@ module Compiler
     if !PLUGIN_FILES.empty?
       echoln ""
       Console.echo_h1 _INTL("Compiling additional plugin data")
-	  compile_plugin_abilities
+      compile_plugin_abilities
       compile_plugin_items
       compile_plugin_moves
       compile_plugin_species_data
       echoln ""
+      if PluginManager.installed?("Improved Field Skills")
+        Console.echo_li "Improved Field Skills"
+        write_field_skills       # Depends on Species, Moves
+        Console.echo_li "Improved Field Skills"
+        compile_field_skills     # Depends on Species
+      end
       if PluginManager.installed?("ZUD Mechanics")
         Console.echo_li "ZUD Mechanics"
         compile_lair_maps
         Console.echo_li "ZUD Mechanics"
         compile_raid_ranks       # Depends on Species
         Console.echo_li "ZUD Mechanics"
-        compile_power_moves      # Depends on Move, Item, Type, Species
+        compile_power_moves      # Depends on Moves, Items, Types, Species
         Console.echo_li "ZUD Mechanics"
         compile_dynamax_metrics  # Depends on Species, Power Moves
       end
       if PluginManager.installed?("Pokémon Birthsigns")
         Console.echo_li "Pokémon Birthsigns"
-        compile_birthsigns       # Depends on Type, Move, Ability, Species
+        compile_birthsigns       # Depends on Types, Moves, Abilities, Species
       end
       echoln ""
       Console.echo_h2("Plugin data fully compiled", text: :green)

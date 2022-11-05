@@ -67,11 +67,33 @@ class Battle::Battler
   end
   
   #-----------------------------------------------------------------------------
+  # Edited to reduce appropriate move PP when using certain plugin mechanics.
+  #-----------------------------------------------------------------------------
+  def pbReducePP(move)
+    return true if usingMultiTurnAttack?
+    return true if move.pp < 0
+    return true if move.total_pp <= 0
+    return false if move.pp == 0
+    if move.pp > 0
+      pbSetPP(move, move.pp - 1)
+      if PluginManager.installed?("ZUD Mechanics") && move.powerMove?
+        c = @power_index
+        pbSetPP(@base_moves[c], @base_moves[c].pp - 1)
+      end
+      if PluginManager.installed?("PLA Battle Styles") && @battle_style > 0
+        pbSetPP(move, move.pp - 1) if move.pp > 0 && move.mastered?
+      end
+    end
+    return true
+  end
+  
+  #-----------------------------------------------------------------------------
   # Reverts to base moves. Used by plugins that change moves mid-battle.
   #-----------------------------------------------------------------------------
   def display_base_moves
     return if @base_moves.empty?
     for i in 0...@moves.length
+	  next if !@base_moves[i]
       if @base_moves[i].is_a?(Battle::Move)
         @moves[i] = @base_moves[i]
       else
@@ -91,8 +113,10 @@ class Battle::Battler
   def hasGmax?;        return false; end
   def gmax?;           return false; end
   def gmax_factor?;    return false; end
+  def hasStyles?;      return false; end
   def hasZodiacPower?; return false; end
   def celestial?;      return false; end
+  def focus_meter;     return 0;     end
 end
 
 
@@ -116,8 +140,10 @@ class Battle::FakeBattler
   def dynamax?;        return false; end
   def gmax?;           return false; end
   def gmax_factor?;    return false; end
+  def hasStyles?;      return false; end
   def hasZodiacPower?; return false; end
   def celestial?;      return false; end
+  def focus_meter;     return 0;     end
 end
 
 
@@ -156,7 +182,9 @@ class Battle::Move
     end
     return true if c > 50
     return true if user.effects[PBEffects::LaserFocus] > 0
-    c += 1 if highCriticalRate?
+    if highCriticalRate?
+      c += (PluginManager.installed?("PLA Battle Styles") && user.strong_style?) ? 2 : 1
+    end
     c += user.effects[PBEffects::FocusEnergy]
     c += user.effects[PBEffects::CriticalBoost]
     c += 1 if user.inHyperMode? && @type == :SHADOW
@@ -170,6 +198,41 @@ class Battle::Move
       return true
     end
     return false
+  end
+end
+
+
+#-------------------------------------------------------------------------------
+# Sets up battler icons for displays used in other plugins.
+#-------------------------------------------------------------------------------
+class Battle::Scene
+  alias dx_pbInitSprites pbInitSprites
+  def pbInitSprites
+    dx_pbInitSprites
+    if !pbInSafari?
+      @battle.allBattlers.each do |b|
+        @sprites["battler_icon#{b.index}"] = PokemonIconSprite.new(b.pokemon, @viewport)
+        @sprites["battler_icon#{b.index}"].setOffset(PictureOrigin::CENTER)
+        @sprites["battler_icon#{b.index}"].visible = false
+        @sprites["battler_icon#{b.index}"].z = 400
+        pbAddSpriteOutline(["battler_icon#{b.index}", @viewport, b.pokemon, PictureOrigin::CENTER])
+      end
+    end
+  end
+  
+  # Compatibility with SOS Battles.
+  if PluginManager.installed?("SOS Battles")
+    alias dx_pbSOSJoin pbSOSJoin
+    def pbSOSJoin(battlerindex, pkmn)
+      dx_pbSOSJoin(battlerindex, pkmn)
+      if !@sprites["battler_icon#{battlerindex}"]
+        @sprites["battler_icon#{battlerindex}"] = PokemonIconSprite.new(pkmn, @viewport)
+        @sprites["battler_icon#{battlerindex}"].setOffset(PictureOrigin::CENTER)
+        @sprites["battler_icon#{battlerindex}"].visible = false
+        @sprites["battler_icon#{battlerindex}"].z = 400
+        pbAddSpriteOutline(["battler_icon#{battlerindex}", @viewport, pkmn, PictureOrigin::CENTER])
+      end
+    end
   end
 end
 

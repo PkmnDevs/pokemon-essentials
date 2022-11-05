@@ -1,5 +1,5 @@
 #===============================================================================
-# Revamps base Essentials code related to the player's Pokedex to allow for
+# Revamps base Essentials code related to the player's Pokedex to allow for 
 # plugin compatibility.
 #===============================================================================
 
@@ -38,7 +38,7 @@ class PokemonPokedexInfo_Scene
       @sprites["formback"].zoom_y = (sp_data.front_sprite_scale.to_f / sp_data.back_sprite_scale)
     end
   end
-
+  
   #-----------------------------------------------------------------------------
   # Gets all displayable species forms. Includes shiny and shadow forms.
   #-----------------------------------------------------------------------------
@@ -64,7 +64,7 @@ class PokemonPokedexInfo_Scene
         #-----------------------------------------------------------------------
         # Shiny single-gendered
         #-----------------------------------------------------------------------
-        if $player.pokedex.seen_form?(@species, real_gender, sp.form, false, false) && Settings::POKEDEX_SHINY_FORMS
+        if $player.pokedex.seen_form?(@species, real_gender, sp.form, true, false) && Settings::POKEDEX_SHINY_FORMS
           ret[last_ret + 1] = [sp.form_name, form_gender, sp.form, true, false]
           last_ret = ret.length
         end
@@ -87,7 +87,7 @@ class PokemonPokedexInfo_Scene
           #---------------------------------------------------------------------
           # Shiny Male/Female
           #---------------------------------------------------------------------
-          if $player.pokedex.seen_form?(@species, real_gender, sp.form, false, false) && Settings::POKEDEX_SHINY_FORMS
+          if $player.pokedex.seen_form?(@species, real_gender, sp.form, true, false) && Settings::POKEDEX_SHINY_FORMS
             ret[last_ret + 1] = [sp.form_name, real_gender, sp.form, true, false]
             last_ret = ret.length
           end
@@ -129,11 +129,11 @@ class PokemonPokedexInfo_Scene
     end
     return ret
   end
-
+  
   def pbChooseForm
     index = 0
     @available.length.times do |i|
-      if @available[i][1] == @gender &&
+      if @available[i][1] == @gender && 
          @available[i][2] == @form   &&
          @available[i][3] == @shiny  &&
          @available[i][4] == @gmax   &&
@@ -145,7 +145,7 @@ class PokemonPokedexInfo_Scene
     oldindex = -1
     loop do
       if oldindex != index
-        $player.pokedex.set_last_form_seen(@species,
+        $player.pokedex.set_last_form_seen(@species, 
           @available[index][1], # Gender
           @available[index][2], # Form
           @available[index][3], # Shiny
@@ -178,7 +178,7 @@ class PokemonPokedexInfo_Scene
     @sprites["uparrow"].visible   = false
     @sprites["downarrow"].visible = false
   end
-
+  
   def drawPageForms
     @sprites["background"].setBitmap(_INTL("Graphics/Pictures/Pokedex/bg_forms"))
     overlay = @sprites["overlay"].bitmap
@@ -186,7 +186,7 @@ class PokemonPokedexInfo_Scene
     shadow = Color.new(168, 184, 184)
     formname = ""
     @available.each do |i|
-      if i[1] == @gender &&
+      if i[1] == @gender && 
          i[2] == @form   &&
          i[3] == @shiny  &&
          i[4] == @gmax   &&
@@ -222,44 +222,44 @@ end
 class Player < Trainer
   class Pokedex
     SEEN_ARRAY = [ # Species
-      [            # Species[Male]
-        [          # Species[Male][Non Shiny]
+      [            # Species[Male]   
+        [          # Species[Male][Non Shiny] 
           [        # Species[Male][Non Shiny][Non G-max]
             []     # Species[Male][Non Shiny][Non G-max][Form]
-          ],
+          ], 
           [        # Species[Male][Non Shiny][G-max]
             []     # Species[Male][Non Shiny][G-max][Form]
           ]
-        ],
+        ], 
         [          # Species[Male][Shiny]
           [        # Species[Male][Shiny][Non G-max]
             []     # Species[Male][Shiny][Non G-max][Form]
-          ],
+          ], 
           [        # Species[Male][Shiny][G-max]
             []     # Species[Male][Shiny][G-max][Form]
           ]
-        ]
-      ],
-      [            # Species[Female]
+        ] 
+      ],  
+      [            # Species[Female] 
         [          # Species[Female][Non Shiny]
           [        # Species[Female][Non Shiny][Non G-max]
             []     # Species[Female][Non Shiny][Non G-max][Form]
-          ],
+          ], 
           [        # Species[Female][Non Shiny][G-max]
             []     # Species[Female][Non Shiny][G-max][Form]
           ]
-        ],
-        [          # Species[Female][Shiny]
+        ], 
+        [          # Species[Female][Shiny]  
           [        # Species[Female][Shiny][Non G-max]
             []     # Species[Female][Shiny][Non G-max][Form]
-          ],
+          ], 
           [        # Species[Female][Shiny][G-max]
             []     # Species[Female][Shiny][G-max][Form]
           ]
-        ]
-      ]
+        ] 
+      ]   
     ]
-
+    
     def seen_form?(species, gender, form, shiny = nil, gmax = nil)
       species_id = GameData::Species.try_get(species)&.species
       return false if species_id.nil?
@@ -274,7 +274,7 @@ class Player < Trainer
       shiny = (shiny) ? 1 : 0
       return @seen_forms[species_id][gender][shiny][gmax][form] == true
     end
-
+    
     def seen_forms_count(species)
       species_id = GameData::Species.try_get(species)&.species
       return 0 if species_id.nil?
@@ -293,20 +293,20 @@ class Player < Trainer
       end
       return ret
     end
-
+    
     def last_form_seen(species)
       @last_seen_forms[species] ||= []
-      return @last_seen_forms[species][0] || 0,
-             @last_seen_forms[species][1] || 0,
-             @last_seen_forms[species][2] || false,
+      return @last_seen_forms[species][0] || 0, 
+             @last_seen_forms[species][1] || 0, 
+             @last_seen_forms[species][2] || false, 
              @last_seen_forms[species][3] || false,
              @last_seen_forms[species][4] || nil
     end
-
+    
     def set_last_form_seen(species, gender = 0, form = 0, shiny = false, gmax = false, shadow = nil)
       @last_seen_forms[species] = [gender, form, shiny, gmax, shadow]
     end
-
+    
     def register(species, gender = 0, form = 0, shiny = false, should_refresh_dexes = true, gmax = false, shadow = false)
       if species.is_a?(Pokemon)
         species_data = species.species_data
@@ -334,7 +334,7 @@ class Player < Trainer
       @last_seen_forms[species] = [gender, form, shiny, gmax, shadow] if @last_seen_forms[species] == []
       self.refresh_accessible_dexes if should_refresh_dexes
     end
-
+    
     def register_last_seen(pkmn)
       validate pkmn => Pokemon
       species_data = pkmn.species_data
@@ -342,21 +342,21 @@ class Player < Trainer
       form = 0 if species_data.form_name.nil? || species_data.form_name.empty?
       @last_seen_forms[pkmn.species] = [pkmn.gender, form, pkmn.shiny?, pkmn.gmax?, pkmn.shadowPokemon?]
     end
-
+	
     def set_shadow_pokemon_owned(species)
       species_id = GameData::Species.try_get(species)&.species
       return if species_id.nil?
       @owned_shadow[species_id] = true
-      @owned_shadow[species] = true if species != species_id
+      @owned_shadow[species] = true if species != species_id 
       self.refresh_accessible_dexes
     end
-
+	
     def owned_shadow_pokemon?(species)
       species_id = GameData::Species.try_get(species)&.species
       return false if species_id.nil?
       return @owned_shadow[species] || @owned_shadow[species_id]
     end
-
+	
     def owned_shadow_species?(species)
       species_id = GameData::Species.try_get(species)&.id
       return false if species_id.nil?

@@ -374,6 +374,7 @@ def pbApplyWildAttributes(pkmn)
       when :celestial  then pokemon.celestial     = pkmn_hash[:celestial]  if PluginManager.installed?("Pokémon Birthsigns")
       when :dynamaxlvl then pokemon.raid_dmax_lvl = pkmn_hash[:dynamaxlvl] if PluginManager.installed?("ZUD Mechanics")
       when :gmaxfactor then pokemon.gmax_factor   = pkmn_hash[:gmaxfactor] if PluginManager.installed?("ZUD Mechanics")
+      when :mastery    then pokemon.master_moveset                         if PluginManager.installed?("PLA Battle Styles")
       end
     end
     #---------------------------------------------------------------------------

@@ -23,6 +23,7 @@ BaseMoney = 60
 [RIVAL1]
 Name = Rival
 Gender = Male
+BattleBGM = semple_Honey_Jet_Coaster
 BaseMoney = 16
 #-------------------------------
 [RIVAL2]
@@ -418,7 +419,7 @@ Gender = Male
 [LEADER_Ivy]
 Name = Gym Leader
 BaseMoney = 60
-BattleBGM = Battle Gym Leader
+BattleBGM = BW 999 Battle! (World Champion)
 VictoryBGM = Battle victory leader
 Gender = Female
 SkillLevel = 100
@@ -426,6 +427,7 @@ SkillLevel = 100
 [BUGMASTER]
 Name = Bug Master
 Gender = Male
+BattleBGM = LEADER_RoyalBattle
 BaseMoney = 16
 SkillLevel = 100
 #-------------------------------

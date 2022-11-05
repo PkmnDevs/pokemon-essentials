@@ -15,14 +15,16 @@ class Battle::Scene::FightMenu < Battle::Scene::MenuBase
   DynamaxButton    = 3
   StylesButton     = 4
   ZodiacButton     = 5
+  CustomButton	   = 6
 
   def initialize(viewport, z)
     super(viewport)
     self.x = 0
     self.y = Graphics.height - 96
-    @battler   = nil
-    @shiftMode = 0
-    @focusMode = 0
+    @battler     = nil
+    @shiftMode   = 0
+    @focusMode   = 0
+    @battleStyle = -1
     if USE_GRAPHICS
       @buttonBitmap  = AnimatedBitmap.new(_INTL("Graphics/Pictures/Battle/cursor_fight"))
       @typeBitmap    = AnimatedBitmap.new(_INTL("Graphics/Pictures/types"))
@@ -42,6 +44,9 @@ class Battle::Scene::FightMenu < Battle::Scene::MenuBase
       if PluginManager.installed?("Pokémon Birthsigns")
         path = "Graphics/Plugins/Birthsigns/"
         @battleButtonBitmap[ZodiacButton]     = AnimatedBitmap.new(path + "cursor_zodiac")
+      end
+      if !nil_or_empty?(Settings::CUSTOM_MECH_BUTTON_PATH)
+        @battleButtonBitmap[CustomButton] = AnimatedBitmap.new(_INTL(Settings::CUSTOM_MECH_BUTTON_PATH))
       end
       @chosen_button = NoButton
       background = IconSprite.new(0, Graphics.height - 96, viewport)
@@ -135,9 +140,16 @@ class Battle::Scene::FightMenu < Battle::Scene::MenuBase
     end
     @battleButton.bitmap = @battleButtonBitmap[@chosen_button].bitmap
     @battleButton.x = self.x + 120
-    @battleButton.y = self.y - @battleButtonBitmap[@chosen_button].height / 2
-    @battleButton.src_rect.height = @battleButtonBitmap[@chosen_button].height / 2
-    @battleButton.src_rect.y = (@mode - 1) * @battleButtonBitmap[@chosen_button].height / 2
+    case @chosen_button
+    when StylesButton
+      @battleButton.y = self.y - @battleButtonBitmap[@chosen_button].height / 6
+      @battleButton.src_rect.height = @battleButtonBitmap[@chosen_button].height / 6
+      @battleButton.src_rect.y = @battleStyle * @battleButtonBitmap[@chosen_button].height / 6
+    else
+      @battleButton.y = self.y - @battleButtonBitmap[@chosen_button].height / 2
+      @battleButton.src_rect.height = @battleButtonBitmap[@chosen_button].height / 2
+      @battleButton.src_rect.y = (@mode - 1) * @battleButtonBitmap[@chosen_button].height / 2
+    end
     mode = @shiftMode + @focusMode
     @battleButton.x = self.x + ((mode > 0) ? 204 : 120)
     @battleButton.z = self.z - 1
@@ -156,6 +168,7 @@ class Battle::Scene::FightMenu < Battle::Scene::MenuBase
     end
     @overlay.bitmap.clear
     textPos = []
+    imagePos = []
     @buttons.each_with_index do |button, i|
       next if !@visibility["button_#{i}"]
       x = button.x - self.x + (button.src_rect.width / 2)
@@ -165,8 +178,13 @@ class Battle::Scene::FightMenu < Battle::Scene::MenuBase
         moveNameBase = button.bitmap.get_pixel(10, button.src_rect.y + 34)
       end
       textPos.push([moves[i].short_name, x, y, 2, moveNameBase, TEXT_SHADOW_COLOR])
+      if PluginManager.installed?("PLA Battle Styles") && @battler.style_trigger > 0
+        next if !moves[i].mastered?
+        imagePos.push(["Graphics/Plugins/PLA Battle Styles/mastered_icon", button.x - self.x, button.y - self.y + 3])
+      end
     end
     pbDrawTextPositions(@overlay.bitmap, textPos)
+    pbDrawImagePositions(@overlay.bitmap, imagePos)
   end
 
   def refresh
@@ -200,9 +218,9 @@ class Battle
     p2 = (PluginManager.installed?("ZUD Mechanics"))      ? pbCanUltraBurst?(idxBattler)  : false
     p3 = (PluginManager.installed?("ZUD Mechanics"))      ? pbCanZMove?(idxBattler)       : false
     p4 = (PluginManager.installed?("ZUD Mechanics"))      ? pbCanDynamax?(idxBattler)     : false
-    p5 = (PluginManager.installed?("PLA Battle Styles"))  ? pbCanStrongStyle?(idxBattler) : false
-    p6 = (PluginManager.installed?("PLA Battle Styles"))  ? pbCanAgileStyle?(idxBattler)  : false
-    p7 = (PluginManager.installed?("Pokémon Birthsigns")) ? pbCanZodiacPower?(idxBattler) : false
+    p5 = (PluginManager.installed?("PLA Battle Styles"))  ? pbCanUseStyle?(idxBattler)    : false
+    p6 = (PluginManager.installed?("Pokémon Birthsigns")) ? pbCanZodiacPower?(idxBattler) : false
+    p7 = pbCanCustom?(idxBattler)
     @scene.pbFightMenu(idxBattler, p1, p2, p3, p4, p5, p6, p7) { |cmd|
       case cmd
       when -1   # Cancel
@@ -218,19 +236,19 @@ class Battle
       when -5   # Dynamax
         pbToggleRegisteredDynamax(idxBattler)     if PluginManager.installed?("ZUD Mechanics")
         next false
-      when -6   # Strong Style
-        pbToggleRegisteredStrongStyle(idxBattler) if PluginManager.installed?("PLA Battle Styles")
+      when -6   # Style
+        pbToggleRegisteredStyle(idxBattler)       if PluginManager.installed?("PLA Battle Styles")
         next false
-      when -7   # Agile Style
-        pbToggleRegisteredAgileStyle(idxBattler)  if PluginManager.installed?("PLA Battle Styles")
-        next false
-      when -8   # Zodiac Powers
+      when -7   # Zodiac Powers
         pbToggleRegisteredZodiacPower(idxBattler) if PluginManager.installed?("Pokémon Birthsigns")
         next false
-      when -9   # Focus
+      when -8   # Focus
         pbToggleRegisteredFocus(idxBattler)       if PluginManager.installed?("Focus Meter System")
         next false
-      when -10  # Shift
+      when -9  # Custom mechanic
+        pbToggleRegisteredCustom(idxBattler)
+        next false
+      when 10  # Shift
         pbUnregisterMegaEvolution(idxBattler)
         if PluginManager.installed?("ZUD Mechanics")
           pbUnregisterUltraBurst(idxBattler)
@@ -243,6 +261,7 @@ class Battle
         pbUnregisterZodiacPower(idxBattler) if PluginManager.installed?("Pokémon Birthsigns")
         pbUnregisterFocus(idxBattler)       if PluginManager.installed?("Focus Meter System")
         pbRegisterShift(idxBattler)
+        pbUnregisterCustom(idxBattler)
         ret = true
       else
         next false if cmd < 0 || !@battlers[idxBattler].moves[cmd] ||
@@ -269,10 +288,46 @@ class Battle::Scene
       :ultra    => params[1] || false,
       :zmove    => params[2] || false,
       :dynamax  => params[3] || false,
-      :style    => (params[4] || params[5]) || false,
-      :zodiac   => params[6] || false
+      :style    => params[4] || false,
+      :zodiac   => params[5] || false,
+      :custom  	=> params[6] || false
     }
     return data
+  end
+  
+  def pbHidePluginUI
+    @battle.allBattlers.each { |b| @sprites["battler_icon#{b.index}"].visible = false }
+    pbHideMoveInfo
+    pbHideBattleInfo
+    pbHideFocusPanel
+  end
+  
+  def pbHideMoveInfo
+    if defined?(@moveUIToggle)
+      @moveUIToggle = false
+      @sprites["moveinfo"].visible = false
+      @moveUIOverlay.clear
+    end
+  end
+  
+  def pbHideBattleInfo
+    if defined?(@infoUIToggle)
+      @infoUIToggle = false
+      @sprites["infobitmap"].visible = false
+      @sprites["infotext"].visible = false
+      @sprites["infoselect"].visible = false
+      @infoUIOverlay1.clear
+      @infoUIOverlay2.clear
+    end
+  end
+  
+  def pbHideFocusPanel
+    if defined?(@focusToggle)
+      @focusToggle = false
+      @sprites["panel"].visible = false
+      @sprites["focus"].visible = false
+      @focusOverlay.clear
+    end
   end
   
   def pbFightMenu(idxBattler, *params)
@@ -288,15 +343,20 @@ class Battle::Scene
     if PluginManager.installed?("Focus Meter System")
       cw.focusMode = (@battle.pbCanUseFocus?(idxBattler)) ? 1 : 0
     end
+    if PluginManager.installed?("PLA Battle Styles")
+      cw.battleStyle = battler.style_trigger if @battle.pbCanUseStyle?(idxBattler)
+    end
     mechanicPossible = false
     cw.chosen_button = Battle::Scene::FightMenu::NoButton
     cw.chosen_button = Battle::Scene::FightMenu::MegaButton       if data[:mega]
     cw.chosen_button = Battle::Scene::FightMenu::UltraBurstButton if data[:ultra]
     cw.chosen_button = Battle::Scene::FightMenu::ZMoveButton      if data[:zmove]
     cw.chosen_button = Battle::Scene::FightMenu::DynamaxButton    if data[:dynamax]
-    cw.chosen_button = Battle::Scene::FightMenu::StyleButton      if data[:style]
+    cw.chosen_button = Battle::Scene::FightMenu::StylesButton     if data[:style]
     cw.chosen_button = Battle::Scene::FightMenu::ZodiacButton     if data[:zodiac]
-    mechanicPossible = (data[:mega] || data[:ultra] || data[:zmove] || data[:dynamax] || data[:style] || data[:zodiac])
+    cw.chosen_button = Battle::Scene::FightMenu::CustomButton     if data[:custom]
+    mechanicPossible = (data[:mega]  || data[:ultra]  || data[:zmove] || data[:dynamax] || 
+                        data[:style] || data[:zodiac] || data[:custom])
     cw.setIndexAndMode(moveIndex, (mechanicPossible) ? 1 : 0)
     needFullRefresh = true
     needRefresh = false
@@ -331,6 +391,10 @@ class Battle::Scene
           newMode = (@battle.pbRegisteredZodiacPower?(idxBattler)) ? 2 : 1
           cw.mode = newMode if newMode != cw.mode
         end
+        if data[:custom]
+          newMode = (@battle.pbRegisteredCustom?(idxBattler)) ? 2 : 1
+          cw.mode = newMode if newMode != cw.mode
+        end
         needRefresh = false
       end
       oldIndex = cw.index
@@ -350,17 +414,19 @@ class Battle::Scene
       end
       if cw.index != oldIndex
         pbPlayCursorSE
+        pbUpdateMoveInfoWindow(battler, cw.index) if defined?(@moveUIToggle)
       end
       #=========================================================================
       # Confirm Selection
       #=========================================================================
       if Input.trigger?(Input::USE)
+        pbHidePluginUI
         # Z-Move fails if held crystal and selected move are incompatible.
         if data[:zmove]
           if cw.mode == 2
-            itemname = battler.item.name
-            movename = battler.moves[cw.index].name
             if !battler.hasCompatibleZMove?(battler.moves[cw.index])
+              itemname = battler.item.name
+              movename = battler.moves[cw.index].name
               @battle.pbDisplay(_INTL("{1} is not compatible with {2}!", movename, itemname))
               if battler.power_trigger
                 battler.power_trigger = false
@@ -372,13 +438,11 @@ class Battle::Scene
         # Style fails if selected move has not yet been mastered.
         elsif data[:style]
           if cw.mode == 2
-            movename = battler.moves[cw.index].name
             if !battler.moves[cw.index].mastered?
+              movename = battler.moves[cw.index].name
               @battle.pbDisplay(_INTL("{1} needs to be mastered first before it may be used in that style!", movename))
-              if battler.power_trigger
-                battler.power_trigger = false
-                battler.display_base_moves
-              end
+              battler.style_trigger = 0
+              battler.toggle_style_moves
               break if yield -1
             end
           end
@@ -393,7 +457,8 @@ class Battle::Scene
       # Cancel Selection
       #=========================================================================
       elsif Input.trigger?(Input::BACK)
-        if data[:zmove] || data[:style]
+        pbHidePluginUI
+        if data[:zmove]
           battler.display_base_moves if battler.power_trigger
           battler.power_trigger = false
         elsif data[:dynamax]
@@ -403,6 +468,9 @@ class Battle::Scene
           end
         elsif data[:ultra]
           battler.power_trigger = false
+        elsif data[:style]
+          battler.style_trigger = 0
+          battler.toggle_style_moves
         end
         pbPlayCancelSE
         break if yield -1
@@ -444,6 +512,7 @@ class Battle::Scene
             battler.display_base_moves
             pbPlayCancelSE
           end
+          pbUpdateMoveInfoWindow(battler, cw.index) if defined?(@moveUIToggle)
           needFullRefresh = true
           break if yield -4
           needRefresh = true
@@ -460,28 +529,102 @@ class Battle::Scene
             battler.display_base_moves
             pbPlayCancelSE
           end
+          pbUpdateMoveInfoWindow(battler, cw.index) if defined?(@moveUIToggle)
           needFullRefresh = true
           break if yield -5
           needRefresh = true
         end
         #-----------------------------------------------------------------------
-        # Battle Styles
+        # PLA Battle Styles
         #-----------------------------------------------------------------------
         if data[:style]
-          battler.power_trigger = !battler.power_trigger
-          style = battler.battle_style
-          if battler.power_trigger
-            battler.display_style_moves(style)
-            pbPlayBattleButton
-          else
-            battler.display_base_moves
-            pbPlayCancelSE
+          pbHidePluginUI
+          pbPlayPLASelection
+          style_change = false
+          apply_style = false
+          cw.battleStyle = battler.style_trigger + 1
+          pbHideFocusPanel
+          show_info = Settings::SHOW_STYLE_INFO_DEFAULT
+          pbToggleStyleInfo(battler.style_trigger, true, show_info)
+          loop do
+            pbUpdate(cw)
+            old_style = battler.style_trigger
+            #-------------------------------------------------------------------
+            # Strong Style
+            if Input.trigger?(Input::LEFT)
+              case old_style
+              when 0 then battler.style_trigger = 1
+              when 2 then battler.style_trigger = 0
+              end
+              style_change = old_style != battler.style_trigger
+              pbPlayCursorSE if style_change
+            #-------------------------------------------------------------------
+            # Agile Style
+            elsif Input.trigger?(Input::RIGHT)
+              case old_style
+              when 0 then battler.style_trigger = 2
+              when 1 then battler.style_trigger = 0
+              end  
+              style_change = old_style != battler.style_trigger
+              pbPlayCursorSE if style_change
+            #-------------------------------------------------------------------
+            # Cancel style choice
+            elsif Input.trigger?(Input::BACK)
+              @battle.pbSetBattleMechanicUsage(idxBattler, "Style", 0)
+              battler.toggle_style_moves
+              battler.style_trigger = 0
+              cw.battleStyle = 0
+              pbToggleStyleInfo(0, false)
+              pbPlayPLACancel
+              break
+            #-------------------------------------------------------------------
+            # Toggles style info
+            elsif Input.trigger?(Input::SPECIAL)
+              if battler.style_trigger > 0
+                show_info = !show_info
+                pbSEPlay("GUI party switch")
+                pbToggleStyleInfo(battler.style_trigger, true, show_info)
+              end
+            #-------------------------------------------------------------------
+            # Confirm style choice
+            elsif Input.trigger?(Input::USE) || Input.trigger?(Input::ACTION)
+              if cw.battleStyle > 1
+                apply_style = true
+                pbPlayPLASelection
+              else
+                apply_style = true
+                battler.toggle_style_moves
+                battler.style_trigger = 0
+                cw.battleStyle = 0
+                pbPlayPLACancel
+              end
+              if battler.style_trigger > 0
+                @battle.pbSetBattleMechanicUsage(idxBattler, "Style", -1)
+                cw.mode = 1
+              else
+                @battle.pbSetBattleMechanicUsage(idxBattler, "Style", 0)
+              end
+            end
+            #-------------------------------------------------------------------
+            # Apply style changes
+            if style_change
+              new_style = battler.style_trigger
+              cw.battleStyle = new_style + 1
+              battler.toggle_style_moves(new_style)
+              pbShowWindow(FIGHT_BOX)
+              pbSelectBattler(idxBattler)
+              cw.refreshButtonNames
+              pbToggleStyleInfo(new_style, true, show_info)
+              style_change = false
+            end
+            if apply_style
+              cw.battleStyle += 2 if cw.battleStyle > 1
+              pbToggleStyleInfo(cw.battleStyle, false)
+              break
+            end
           end
           needFullRefresh = true
-          case style
-          when 1 then break if yield -6
-          when 2 then break if yield -7
-          end
+          break if yield -6
           needRefresh = true
         end
         #-----------------------------------------------------------------------
@@ -489,7 +632,15 @@ class Battle::Scene
         #-----------------------------------------------------------------------
         if data[:zodiac]
           pbPlayBattleButton
-          break if yield -8
+          break if yield -7
+          needRefresh = true
+        end
+        #-----------------------------------------------------------------------
+        # Custom Mechanic
+        #-----------------------------------------------------------------------
+        if data[:custom]
+          pbPlayDecisionSE
+          break if yield -9
           needRefresh = true
         end
       #=========================================================================
@@ -497,6 +648,7 @@ class Battle::Scene
       #=========================================================================
       elsif Input.trigger?(Input::SPECIAL)
         if cw.shiftMode > 0
+          pbHidePluginUI
           pbPlayDecisionSE
           break if yield -10
           needRefresh = true
@@ -505,6 +657,17 @@ class Battle::Scene
       #=========================================================================
       # Other Commands
       #=========================================================================
+      if PluginManager.installed?("Enhanced UI")
+        if Input.triggerex?(Settings::MOVE_INFO_KEY)
+          pbHideBattleInfo
+          pbHideFocusPanel
+          pbToggleMoveInfo(battler, cw.index)
+        elsif Input.triggerex?(Settings::BATTLE_INFO_KEY)
+          pbHideMoveInfo
+          pbHideFocusPanel
+          pbToggleBattleInfo
+        end
+      end
       if PluginManager.installed?("Focus Meter System")
         if Input.triggerex?(Settings::FOCUS_TRIGGER_KEY)
           case cw.focusMode
@@ -515,14 +678,16 @@ class Battle::Scene
             cw.focusMode = 1
             pbPlayCancelSE
           end
-          break if yield -9
+          break if yield -8
           needRefresh = true
         elsif Input.triggerex?(Settings::FOCUS_PANEL_KEY)
+          pbHideMoveInfo
+          pbHideBattleInfo
           pbToggleFocusPanel
         end
       end
     end
-    pbToggleFocusPanel(false) if PluginManager.installed?("Focus Meter System")
+    pbHidePluginUI
     @lastMove[idxBattler] = cw.index
   end
 end
