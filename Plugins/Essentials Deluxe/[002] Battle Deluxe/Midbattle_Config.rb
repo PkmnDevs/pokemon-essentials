@@ -298,7 +298,7 @@ module EssentialsDeluxe
   #-----------------------------------------------------------------------------
   POISON_IVY = {
     "beforeLast_foe" => {
-      :speech  => ["Impressive, but nature always wins. I choose you! Venus!"
+      :speech  => ["Impressive, but nature always wins. I choose you! Venus!"]
     },
     "mega_foe" => {
       :speech  => ["Scared of a little Sceptile are you? Well that's what you think, but it's not over yet. DIGI-VOLVE!"],

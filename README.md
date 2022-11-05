@@ -103,6 +103,13 @@ When we have a stable build in _pkmn-accord-dev_, we will push it to our master 
 
 __WHEN PULLING IN LATEST MARUNO CHANGES:__
 
+Best to just use this: https://reliccastle.com/resources/968/  
+(Download and place in Plugins folder).
+
+I used to use the "complex" way below, but Maruno moved/renamed several files and I didn't want to bother trying to keep track of all that right now.
+
+_Complex way of doing it:_
+
 1. Navigate to "our" _dev_ branch.
 
 2. Sync it with Maruno's _dev_ branch.
