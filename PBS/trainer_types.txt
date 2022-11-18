@@ -431,3 +431,11 @@ BattleBGM = LEADER_RoyalBattle
 BaseMoney = 16
 SkillLevel = 100
 #-------------------------------
+[LEADER_Shino]
+Name = Gym Leader
+BaseMoney = 80
+BattleBGM = Legends_RoyalBattle
+VictoryBGM = Legends_DarknessForetold
+Gender = Male
+SkillLevel = 100
+#-------------------------------
