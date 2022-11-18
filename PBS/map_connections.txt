@@ -42,17 +42,17 @@
 89,South,0,87,North,0
 # Route 2 (79) - Town Moot (81)
 79,East,0,81,West,28
-# MAP086 (86) - Town Moot (81)
+# Shino Park (86) - Town Moot (81)
 86,East,0,81,West,6
-# MAP088 (88) - Town Moot (81)
+# Grotto Beach (88) - Town Moot (81)
 88,North,0,81,South,0
 # Fat PokeCenter (77) - Route 2 (79)
 77,East,0,79,West,25
 # Gaymer Pond (78) - Route 2 (79)
 78,East,0,79,West,0
-# MAP086 (86) - Route 2 (79)
+# Shino Park (86) - Route 2 (79)
 86,South,0,79,North,20
-# MAP088 (88) - Route 2 (79)
+# Grotto Beach (88) - Route 2 (79)
 88,West,0,79,East,21
 # Route 1 (76) - Fat PokeCenter (77)
 76,East,0,77,West,0
@@ -60,7 +60,9 @@
 78,South,8,77,North,0
 # Gaymer Pond (78) - Route 1 (76)
 78,South,0,76,North,72
-# MAP086 (86) - Gaymer Pond (78)
+# Shino Park (86) - Gaymer Pond (78)
 86,South,0,78,North,61
-# MAP088 (88) - MAP086 (86)
+# Grotto Beach (88) - Shino Park (86)
 88,West,0,86,East,43
+# MAP091 (91) - Grotto Beach (88)
+91,North,0,88,South,2
