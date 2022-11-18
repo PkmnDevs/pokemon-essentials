@@ -199,7 +199,44 @@ Pokemon = SCEPTILE,19
     EV = 50,50,50,50,50,50
     Ball = NETBALL
     Ace = yes
-
+#-------------------------------
+[LEADER_Shino, Shino] # GYM 3
+Items = FULLRESTORE,MEGARING
+LoseText = "Never underestimate your opponent, no matter how small they may seem."
+Pokemon = FALINKS,28
+    Gender = male
+    Moves = FIRSTIMPRESSION,NORETREAT,REVERSAL,WITHDRAW
+    AbilityIndex = 0
+    IV = 31,31,31,31,31,31
+    EV = 50,50,50,50,50,50
+    Ball = PREMIERBALL
+Pokemon = PHEROMOSA,30
+    Form = 1
+    Name = Girth
+    Gender = female
+    Moves = DRAGONHAMMER,MEGADRAIN,HYPNOSIS,CONFUSION
+    AbilityIndex = 2
+    Item = SITRUSBERRY
+    IV = 31,31,31,31,31,31
+    EV = 50,50,50,50,50,50
+    Ball = SAFARIBALL
+Pokemon = MARSHADOW,29
+    Name = Venus
+    Gender = male
+    Moves = DOUBLETEAM,DRAGONPULSE,ENERGYBALL,SUBSTITUTE
+    Item = SCEPTILITE
+    IV = 31,31,31,31,31,31
+    EV = 50,50,50,50,50,50
+    Ball = NETBALL
+Pokemon = JOLTIK,33
+    Name = Venus
+    Gender = male
+    Moves = DOUBLETEAM,DRAGONPULSE,ENERGYBALL,SUBSTITUTE
+    Item = SCEPTILITE
+    IV = 31,31,31,31,31,31
+    EV = 50,50,50,50,50,50
+    Ball = NETBALL
+    Ace = yes
 
 #===============================
 ### Minibosses
