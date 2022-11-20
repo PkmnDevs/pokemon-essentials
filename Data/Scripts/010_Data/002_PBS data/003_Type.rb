@@ -67,7 +67,7 @@ end
 
 #===============================================================================
 
-module Effectiveness
+module Effectiveness # SEMPLE - changed multipliers:
   INEFFECTIVE            = 0
   NOT_VERY_EFFECTIVE_ONE = 1.5 # x0.75 multiplier
   NORMAL_EFFECTIVE_ONE   = 2

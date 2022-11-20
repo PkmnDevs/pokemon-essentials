@@ -1,4 +1,4 @@
-class Battle::Move
+class Battle::Move # SEMPLE - Search here on "Console.echo _INTL" and I probably added it.
   #=============================================================================
   # Move's type calculation
   #=============================================================================
@@ -442,7 +442,7 @@ class Battle::Move
     end
     # Critical hits
     if target.damageState.critical
-      if Settings::NEW_CRITICAL_HIT_RATE_MECHANICS
+      if Settings::NEW_CRITICAL_HIT_RATE_MECHANICS # SEMPLE - using New but changed it to 1.25 instead of 1.5
         multipliers[:final_damage_multiplier] *= 1.25
         Console.echo _INTL("\n[CRITICAL HIT! multiplier] 1.25")
       else
