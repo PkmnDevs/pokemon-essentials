@@ -23,7 +23,7 @@ BaseMoney = 60
 [RIVAL1]
 Name = Rival
 Gender = Male
-BattleBGM = semple_Honey_Jet_Coaster
+BattleBGM = semple_Chikatto-Chika-Chika
 BaseMoney = 16
 #-------------------------------
 [RIVAL2]
