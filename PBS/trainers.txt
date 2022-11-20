@@ -125,7 +125,7 @@ Pokemon = BLASTOISE,63
 #========v  CUSTOM  v==========================================================
 #==============================================================================
 [RIVAL1,ButtButt,1] # ROUTE 2
-LoseText = "Not too shabby."
+LoseText = "My dad beat me."
 Pokemon = SLAKOTH,20
     Gender = female
     Moves = SCRATCH,YAWN,COVET,SWAGGER
@@ -146,7 +146,39 @@ Pokemon = PIDGEOTTO,17
 Pokemon = SLAKING,15
     Ability = SHADOWTAG
 Pokemon = SQUIRTLE,18
-
+#-------------------------------
+[RIVAL1,ButtButt,4] # Water Snake Way
+Items = FULLRESTORE,FULLRESTORE,FULLRESTORE
+LoseText = "NANI!?"
+Pokemon = SLAKING,75
+    Ability = CUTECHARM
+    Gender = female
+    Moves = BELLYDRUM,HAMMERARM,PLAYROUGH,SUBSTITUTE
+    IV = 21,21,21,21,21,21
+Pokemon = CLEFABLE,69
+    Gender = female
+    Moves = FOLLOWME,METRONOME,MINIMIZE,LIGHTSCREEN
+    AbilityIndex = 0 # Cute Charm
+    IV = 21,21,21,21,21,21
+Pokemon = FERALIGATR,70
+    Gender = male
+    Moves = LIQUIDATION,REFLECT,ICICLECRASH,WHIRLPOOL
+    AbilityIndex = 2 # SHEER FORCE
+    IV = 21,21,21,21,21,21
+    Item = BINDINGBAND # Makes whirlpool twice as strong
+Pokemon = LANDORUS,70
+    Moves = BOUNCE,FAKEOUT,ROCKSLIDE,EARTHPOWER
+    AbilityIndex = 2 # SHEER FORCE
+    IV = 21,21,21,21,21,21
+Pokemon = KRICKETUNE,74
+    Moves = SCREECH,ACUPRESSURE,SWEETSCENT,STRINGSHOT
+    Ability = SIMPLE # Stats moves are doubled
+    IV = 21,21,21,21,21,21
+Pokemon = TALONFLAME,77
+    Gender = female
+    Moves = BRAVEBIRD,FLAREBLITZ,TAILWIND,ROOST
+    AbilityIndex = 0 # Flame Body
+    IV = 21,21,21,21,21,21
 
 #===============================
 ### GYM LEADERS
@@ -279,7 +311,7 @@ Pokemon = YANMEGA,19
 
 
 #===============================
-### Route 2
+### Route 1
 #===============================
 [CAMPER,Garret] # Route 1
 LoseText = "Farfetch'd? FARFETCH'D!? NOOOO"
@@ -507,3 +539,30 @@ Pokemon = GOOMY,15
 #===============================
 ###
 #===============================
+
+
+
+#===============================
+### Water Snake Way
+#===============================
+[SWIMMER2_F,Brittany] # Water Snake Way
+LoseText = "Uh oh! My swimsuit is falling off!"
+Pokemon = FARFETCHD,9
+#-------------------------------
+[SWIMMER2_M,Hasselhof] # Water Snake Way
+LoseText = "Guess it's back to Shell City for me.."
+Pokemon = LOPUNNY,10
+    Gender = male
+    Shiny = yes
+#-------------------------------
+[TUBER2_M,Shortround] # Water Snake Way
+LoseText = "Okey Dokie!"
+Pokemon = FARFETCHD,9
+#-------------------------------
+[SWIMMER2_F,AnneFrank] # Water Snake Way
+# LoseText = "Drowns."
+Pokemon = FARFETCHD,9
+#-------------------------------
+[TUBER2_F,LisaBurger] # Water Snake Way
+LoseText = "I don't know if I will ever make it back to shore."
+Pokemon = FARFETCHD,9

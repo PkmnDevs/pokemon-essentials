@@ -489,3 +489,11 @@ Outdoor = true
 MapPosition = 0,0,0 #temp value to avoid crashing
 ShowArea = true
 BattleBack = city
+#-------------------------------
+[091] # Water Snake Way
+Name = Water Snake Way
+Outdoor = true
+MapPosition = 0,0,0 #temp value to avoid crashing
+ShowArea = true
+HealingSpot = 91,55,15
+BattleBack = water
