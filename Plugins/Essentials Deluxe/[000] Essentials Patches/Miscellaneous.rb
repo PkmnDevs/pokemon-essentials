@@ -45,7 +45,7 @@ end
 class DayCare
   module EggGenerator
     module_function
-    
+
     def generate(mother, father)
       if mother.male? || father.female? || mother.genderless?
         mother, father = father, mother
@@ -135,7 +135,7 @@ end
 
 
 #-------------------------------------------------------------------------------
-# Party Screen compatibility.
+# Party Screen compatibility. #SEMPLE TODO fix compatibility with LAMR plugin
 #-------------------------------------------------------------------------------
 class PokemonPartyScreen
   def pbPokemonScreen
