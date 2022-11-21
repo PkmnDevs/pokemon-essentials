@@ -233,7 +233,7 @@ Pokemon = SCEPTILE,19
     Ace = yes
 #-------------------------------
 [LEADER_Shino, Shino] # GYM 3
-Items = FULLRESTORE,MEGARING
+Items = FULLRESTORE
 LoseText = "Never underestimate your opponent, no matter how small they may seem."
 Pokemon = PHEROMOSA,30
     Name = Flik
