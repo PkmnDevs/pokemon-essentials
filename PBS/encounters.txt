@@ -382,3 +382,12 @@ OldRod
     15,FEEBAS,10,17
     10,BIBAREL,13,19
     15,SURSKIT,13,19
+#-------------------------------
+[091] # Water Snake Way
+Water,5
+    30,CLAWITZER,60,70
+    10,BLASTOISE,60,70
+    20,GYARADOS,60,70
+    15,CRAMORANT,60,70
+    10,BARBARACLE,60,70
+    15,SHARPEDO,60,70
