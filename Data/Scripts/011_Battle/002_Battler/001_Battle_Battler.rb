@@ -242,8 +242,8 @@ class Battle::Battler
     # SEMPLE - also changing speed, but by not as much to keep good balancing.
     # stageMul = [2, 2, 2, 2, 2, 2, 2, 3, 4, 5, 6, 7, 8]
     # stageDiv = [8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 2, 2]
-    stageMul_spd = [4, 4, 4, 4, 4, 4, 4, 5, 6, 7, 8, 9, 10]
-    stageDiv_spd = [10, 9, 8, 7, 6, 5, 4, 4, 4, 4, 4, 4, 4]
+    stageMul = [4, 4, 4, 4, 4, 4, 4, 5, 6, 7, 8, 9, 10]
+    stageDiv = [10, 9, 8, 7, 6, 5, 4, 4, 4, 4, 4, 4, 4]
     stage = @stages[:SPEED] + 6
     speed = @speed * stageMul[stage] / stageDiv[stage]
     speedMult = 1.0

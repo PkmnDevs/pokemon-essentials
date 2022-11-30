@@ -297,7 +297,7 @@ Pokemon = STARYU,16
     Ball = DIVEBALL
     Ace = yes
 #-------------------------------
-[BUGMASTER,Shino] # Town Moot; MiniBoss: EVIOLITE
+[BUGMASTER,Ness] # Town Moot; MiniBoss: EVIOLITE
 LoseText = "..."
 Pokemon = KARRABLAST,16
     Moves = REFLECT,CONFUSERAY,PROTECT
