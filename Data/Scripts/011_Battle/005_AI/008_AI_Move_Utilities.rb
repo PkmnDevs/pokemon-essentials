@@ -152,8 +152,14 @@ class Battle::AI
 
   def pbRoughStat(battler, stat, skill)
     return battler.pbSpeed if skill >= PBTrainerAI.highSkill && stat == :SPEED
-    stageMul = [2, 2, 2, 2, 2, 2, 2, 3, 4, 5, 6, 7, 8]
-    stageDiv = [8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 2, 2]
+    # SEMPLE - def and atk boosts are over powered. Increasing values by 4 because that number seemed to have the best balance.
+    # stageMul = [2, 2, 2, 2, 2, 2, 2, 3, 4, 5, 6, 7, 8]
+    # stageDiv = [8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 2, 2]
+    stageMul = [6, 6, 6, 6, 6, 6, 6, 7, 8, 9, 10, 11, 12]
+    stageDiv = [12, 11, 10, 9, 8, 7, 6, 6, 6, 6, 6, 6, 6]
+    # SEMPLE - also changing speed, but by not as much to keep good balancing.
+    stageMul_spd = [4, 4, 4, 4, 4, 4, 4, 5, 6, 7, 8, 9, 10]
+    stageDiv_spd = [10, 9, 8, 7, 6, 5, 4, 4, 4, 4, 4, 4, 4]
     stage = battler.stages[stat] + 6
     value = 0
     case stat
@@ -161,7 +167,7 @@ class Battle::AI
     when :DEFENSE         then value = battler.defense
     when :SPECIAL_ATTACK  then value = battler.spatk
     when :SPECIAL_DEFENSE then value = battler.spdef
-    when :SPEED           then value = battler.speed
+    when :SPEED           then return ((battler.speed).to_f * stageMul_spd[stage] / stageDiv_spd[stage]).floor
     end
     return (value.to_f * stageMul[stage] / stageDiv[stage]).floor
   end
@@ -608,8 +614,11 @@ class Battle::AI
     # Calculation
     accStage = [[modifiers[:accuracy_stage], -6].max, 6].min + 6
     evaStage = [[modifiers[:evasion_stage], -6].max, 6].min + 6
-    stageMul = [3, 3, 3, 3, 3, 3, 3, 4, 5, 6, 7, 8, 9]
-    stageDiv = [9, 8, 7, 6, 5, 4, 3, 3, 3, 3, 3, 3, 3]
+    # SEMPLE - acc/eva attack boosts are over powered. Increasing values by 6 because that number seemed to have the best balance.
+    # stageMul = [3, 3, 3, 3, 3, 3, 3, 4, 5, 6, 7, 8, 9]
+    # stageDiv = [9, 8, 7, 6, 5, 4, 3, 3, 3, 3, 3, 3, 3]
+    stageMul = [9, 9, 9, 9, 9, 9, 9, 10, 11, 12, 13, 14, 15]
+    stageDiv = [15, 14, 13, 12, 11, 10, 9, 9, 9, 9, 9, 9, 9]
     accuracy = 100.0 * stageMul[accStage] / stageDiv[accStage]
     evasion  = 100.0 * stageMul[evaStage] / stageDiv[evaStage]
     accuracy = (accuracy * modifiers[:accuracy_multiplier]).round

@@ -1138,8 +1138,11 @@ class Battle::Move::CategoryDependsOnHigherDamagePoisonTarget < Battle::Move::Po
 
   def pbOnStartUse(user, targets)
     target = targets[0]
-    stageMul = [2, 2, 2, 2, 2, 2, 2, 3, 4, 5, 6, 7, 8]
-    stageDiv = [8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 2, 2]
+    # SEMPLE - def and atk boosts are over powered. Increasing values by 4 because that number seemed to have the best balance.
+    # stageMul = [2, 2, 2, 2, 2, 2, 2, 3, 4, 5, 6, 7, 8]
+    # stageDiv = [8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 2, 2]
+    stageMul = [6, 6, 6, 6, 6, 6, 6, 7, 8, 9, 10, 11, 12]
+    stageDiv = [12, 11, 10, 9, 8, 7, 6, 6, 6, 6, 6, 6, 6]
     # Calculate user's effective attacking values
     attack_stage         = user.stages[:ATTACK] + 6
     real_attack          = (user.attack.to_f * stageMul[attack_stage] / stageDiv[attack_stage]).floor
@@ -1183,8 +1186,11 @@ class Battle::Move::CategoryDependsOnHigherDamageIgnoreTargetAbility < Battle::M
 
   def pbOnStartUse(user, targets)
     # Calculate user's effective attacking value
-    stageMul = [2, 2, 2, 2, 2, 2, 2, 3, 4, 5, 6, 7, 8]
-    stageDiv = [8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 2, 2]
+    # SEMPLE - def and atk boosts are over powered. Increasing values by 4 because that number seemed to have the best balance.
+    # stageMul = [2, 2, 2, 2, 2, 2, 2, 3, 4, 5, 6, 7, 8]
+    # stageDiv = [8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 2, 2]
+    stageMul = [6, 6, 6, 6, 6, 6, 6, 7, 8, 9, 10, 11, 12]
+    stageDiv = [12, 11, 10, 9, 8, 7, 6, 6, 6, 6, 6, 6, 6]
     atk        = user.attack
     atkStage   = user.stages[:ATTACK] + 6
     realAtk    = (atk.to_f * stageMul[atkStage] / stageDiv[atkStage]).floor

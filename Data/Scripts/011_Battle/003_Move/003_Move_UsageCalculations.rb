@@ -111,8 +111,11 @@ class Battle::Move # SEMPLE - Search here on "Console.echo _INTL" and I probably
     # Calculation
     accStage = [[modifiers[:accuracy_stage], -6].max, 6].min + 6
     evaStage = [[modifiers[:evasion_stage], -6].max, 6].min + 6
-    stageMul = [3, 3, 3, 3, 3, 3, 3, 4, 5, 6, 7, 8, 9]
-    stageDiv = [9, 8, 7, 6, 5, 4, 3, 3, 3, 3, 3, 3, 3]
+    # SEMPLE - acc/eva attack boosts are over powered. Increasing values by 6 because that number seemed to have the best balance.
+    # stageMul = [3, 3, 3, 3, 3, 3, 3, 4, 5, 6, 7, 8, 9]
+    # stageDiv = [9, 8, 7, 6, 5, 4, 3, 3, 3, 3, 3, 3, 3]
+    stageMul = [9, 9, 9, 9, 9, 9, 9, 10, 11, 12, 13, 14, 15]
+    stageDiv = [15, 14, 13, 12, 11, 10, 9, 9, 9, 9, 9, 9, 9]
     accuracy = 100.0 * stageMul[accStage] / stageDiv[accStage]
     evasion  = 100.0 * stageMul[evaStage] / stageDiv[evaStage]
     accuracy = (accuracy * modifiers[:accuracy_multiplier]).round
@@ -127,7 +130,7 @@ class Battle::Move # SEMPLE - Search here on "Console.echo _INTL" and I probably
       target.damageState.affection_missed = true if r < threshold
       return false
     end
-    # Display output to console
+    # SEMPLE - Display output to console
     if r > threshold
       Console.echo _INTL("\n[ACCURACY ROLL] Modifiers: %s = " % [modifiers])
       Console.echo_lred _INTL("Miss Threshold: %d, Accuracy Roll: %d" % [threshold,r])
@@ -255,14 +258,18 @@ class Battle::Move # SEMPLE - Search here on "Console.echo _INTL" and I probably
     return target.defense, target.stages[:DEFENSE] + 6
   end
 
+  # SEMPLE was here adding in some console outputs
   def pbCalcDamage(user, target, numTargets = 1)
     return if statusMove?
     if target.damageState.disguise || target.damageState.iceFace
       target.damageState.calcDamage = 1
       return
     end
-    stageMul = [2, 2, 2, 2, 2, 2, 2, 3, 4, 5, 6, 7, 8]
-    stageDiv = [8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 2, 2]
+    # SEMPLE - def and atk boosts are over powered. Increasing values by 4 because that number seemed to have the best balance.
+    # stageMul = [2, 2, 2, 2, 2, 2, 2, 3, 4, 5, 6, 7, 8]
+    # stageDiv = [8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 2, 2]
+    stageMul = [6, 6, 6, 6, 6, 6, 6, 7, 8, 9, 10, 11, 12]
+    stageDiv = [12, 11, 10, 9, 8, 7, 6, 6, 6, 6, 6, 6, 6]
     # Get the move's type
     type = @calcType   # nil is treated as physical
     # Calculate whether this hit deals critical damage

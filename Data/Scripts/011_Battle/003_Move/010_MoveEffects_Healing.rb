@@ -131,8 +131,11 @@ class Battle::Move::HealUserByTargetAttackLowerTargetAttack1 < Battle::Move
 
   def pbEffectAgainstTarget(user, target)
     # Calculate target's effective attack value
-    stageMul = [2, 2, 2, 2, 2, 2, 2, 3, 4, 5, 6, 7, 8]
-    stageDiv = [8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 2, 2]
+    # SEMPLE - def and atk boosts are over powered. Increasing values by 4 because that number seemed to have the best balance.
+    # stageMul = [2, 2, 2, 2, 2, 2, 2, 3, 4, 5, 6, 7, 8]
+    # stageDiv = [8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 2, 2]
+    stageMul = [6, 6, 6, 6, 6, 6, 6, 7, 8, 9, 10, 11, 12]
+    stageDiv = [12, 11, 10, 9, 8, 7, 6, 6, 6, 6, 6, 6, 6]
     atk      = target.attack
     atkStage = target.stages[:ATTACK] + 6
     healAmt = (atk.to_f * stageMul[atkStage] / stageDiv[atkStage]).floor
