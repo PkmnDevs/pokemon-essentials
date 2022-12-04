@@ -1,0 +1,12 @@
+Name         = Semples Demo Teams
+Version      = 1.0.0
+Essentials   = 20.1
+Website      = none
+Credits      = Ridgeboy
+
+#===========================
+# Change Log
+#===========================
+# 1.0.0
+# Created some teams for the different level caps in the game
+#===========================
