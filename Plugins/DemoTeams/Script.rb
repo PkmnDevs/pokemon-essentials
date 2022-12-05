@@ -64,7 +64,7 @@ end
 # LEADER SHINO - Gym 3
 def demoteam38
   party = []
-  species = [:SANDSLASH, :SQUIRTLE, :PIDGEY, :LITWICK]
+  species = [:SANDSHREW, :WARTORTLE, :PIDGEOTTO, :LAMPENT]
   species.each do |id|
     party.push(id) if GameData::Species.exists?(id)
   end
@@ -76,26 +76,26 @@ def demoteam38
     $player.pokedex.register(pkmn)
     $player.pokedex.set_owned(species)
     case species
-    when :SANDSLASH
-      pkmn.learn_move(:POISONSTING)
-      pkmn.learn_move(:CRUSHCLAW)
-      pkmn.learn_move(:SANDTOMB)
-      pkmn.learn_move(:DEFENSECURL)
-    when :SQUIRTLE
-      pkmn.learn_move(:AQUATAIL)
+    when :SANDSHREW
+      pkmn.learn_move(:BULLDOZE)
+      pkmn.learn_move(:SLASH)
+      pkmn.learn_move(:DIG)
+      pkmn.learn_move(:ROLLOUT)
+    when :WARTORTLE
+      pkmn.learn_move(:WATERPULSE)
       pkmn.learn_move(:BITE)
-      pkmn.learn_move(:HYDROPUMP)
-      pkmn.learn_move(:SKULLBASH)
-    when :PIDGEY
+      pkmn.learn_move(:RAINDANCE)
+      pkmn.learn_move(:AQUATAIL)
+    when :PIDGEOTTO
       pkmn.learn_move(:FEATHERDANCE)
       pkmn.learn_move(:TWISTER)
       pkmn.learn_move(:WINGATTACK)
-      pkmn.learn_move(:ROOST)
-    when :LITWICK
+      pkmn.learn_move(:SANDATTACK)
+    when :LAMPENT
       pkmn.learn_move(:FIRESPIN)
       pkmn.learn_move(:CONFUSERAY)
       pkmn.learn_move(:HEX)
-      pkmn.learn_move(:EMBER)
+      pkmn.learn_move(:SHADOWBALL)
     end
     pkmn.record_first_moves
   end
