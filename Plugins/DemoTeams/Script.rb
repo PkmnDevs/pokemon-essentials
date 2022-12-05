@@ -61,6 +61,47 @@ def demoteam23
     pbMessage(_INTL("Filled party with level 23 demo Pokémon."))
 end
 
+# LEADER SHINO - Gym 3
+def demoteam38
+  party = []
+  species = [:SANDSLASH, :SQUIRTLE, :PIDGEY, :LITWICK]
+  species.each do |id|
+    party.push(id) if GameData::Species.exists?(id)
+  end
+  $player.party.clear
+  # Generate Pokémon of each species at level 38
+  party.each do |species|
+    pkmn = Pokemon.new(species, 38)
+    $player.party.push(pkmn)
+    $player.pokedex.register(pkmn)
+    $player.pokedex.set_owned(species)
+    case species
+    when :SANDSLASH
+      pkmn.learn_move(:POISONSTING)
+      pkmn.learn_move(:CRUSHCLAW)
+      pkmn.learn_move(:SANDTOMB)
+      pkmn.learn_move(:DEFENSECURL)
+    when :SQUIRTLE
+      pkmn.learn_move(:AQUATAIL)
+      pkmn.learn_move(:BITE)
+      pkmn.learn_move(:HYDROPUMP)
+      pkmn.learn_move(:SKULLBASH)
+    when :PIDGEY
+      pkmn.learn_move(:FEATHERDANCE)
+      pkmn.learn_move(:TWISTER)
+      pkmn.learn_move(:WINGATTACK)
+      pkmn.learn_move(:ROOST)
+    when :LITWICK
+      pkmn.learn_move(:FIRESPIN)
+      pkmn.learn_move(:CONFUSERAY)
+      pkmn.learn_move(:HEX)
+      pkmn.learn_move(:EMBER)
+    end
+    pkmn.record_first_moves
+  end
+  pbMessage(_INTL("Filled party with level 38 demo Pokémon."))
+end
+
 
 # RIVAL 4 - Water Snake Way
 def demoteam75
@@ -70,7 +111,7 @@ def demoteam75
       party.push(id) if GameData::Species.exists?(id)
     end
     $player.party.clear
-    # Generate Pokémon of each species at level 20
+    # Generate Pokémon of each species at level 75
     party.each do |species|
       pkmn = Pokemon.new(species, 75)
       $player.party.push(pkmn)
