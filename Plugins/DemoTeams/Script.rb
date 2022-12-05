@@ -106,7 +106,7 @@ end
 # RIVAL 4 - Water Snake Way
 def demoteam75
     party = []
-    species = [:CHARIZARD, :VENUSAUR, :BLASTOISE, :CORVIKNIGHT, :JOLTEON, :BRNOZONG]
+    species = [:CHARIZARD, :VENUSAUR, :BLASTOISE, :CORVIKNIGHT, :JOLTEON, :BRONZONG]
     species.each do |id|
       party.push(id) if GameData::Species.exists?(id)
     end

@@ -124,7 +124,7 @@ class Battle::Battler
     confusionMove.pbReduceDamage(self, self)
     self.hp -= @damageState.hpLost
     confusionMove.pbAnimateHitAndHPLost(self, [self])
-    @battle.pbDisplay(msg)   # "It hurt itself in its confusion!"
+    @battle.pbDisplay(msg)   # "It hurt itself in its ion!"
     confusionMove.pbRecordDamageLost(self, self)
     confusionMove.pbEndureKOMessage(self)
     pbFaint if fainted?

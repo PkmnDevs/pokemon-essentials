@@ -256,8 +256,15 @@ class Battle::Battler
       else
         @battle.pbCommonAnimation("Confusion", self)
         @battle.pbDisplay(_INTL("{1} is confused!", pbThis))
-        threshold = (Settings::MECHANICS_GENERATION >= 7) ? 33 : 50   # % chance
-        if @battle.pbRandom(100) < threshold
+        threshold = (Settings::MECHANICS_GENERATION >= 7) ? 45 : 50   # % chance # SEMPLE - changed confusion from 33:50 to 45:50
+        # SEMPLE - added confusion console log info
+        roll = @battle.pbRandom(100)
+        if roll < threshold
+          Console.echo_lred _INTL("[CONFUSION ROLL] Successful hit Threshold: %d, Roll: %d" % [threshold,roll])
+        else
+          Console.echo_lgreen _INTL("[CONFUSION ROLL] Successful hit Threshold: %d, Roll: %d" % [threshold,roll])
+        end
+        if roll < threshold
           pbConfusionDamage(_INTL("It hurt itself in its confusion!"))
           @lastMoveFailed = true
           return false

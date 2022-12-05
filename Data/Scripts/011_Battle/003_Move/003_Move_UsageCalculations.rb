@@ -130,7 +130,7 @@ class Battle::Move # SEMPLE - Search here on "Console.echo _INTL" and I probably
       target.damageState.affection_missed = true if r < threshold
       return false
     end
-    # SEMPLE - Display output to console
+    # SEMPLE - Display accuracy output to console
     if r > threshold
       Console.echo _INTL("\n[ACCURACY ROLL] Modifiers: %s = " % [modifiers])
       Console.echo_lred _INTL("Miss Threshold: %d, Accuracy Roll: %d" % [threshold,r])
