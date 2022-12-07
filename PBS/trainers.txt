@@ -311,6 +311,23 @@ Pokemon = SHEDINJA,19
 Pokemon = YANMEGA,19
     Moves = AIRSLASH,SILVERWIND,ROOST,ATTRACT
     Ace = yes
+#-------------------------------
+[SWIMMER2_F,Ursula] # Water Snake Way; MiniBoss: TBD
+LoseText = "..."
+Pokemon = DRAGONAIR,65
+    Moves = TOXICSPIKES,THUNDERWAVE,DRAGONRUSH,COIL
+Pokemon = GYARADOS,65
+    Moves = CRUNCH,THRASH,WATERFALL,THUNDERWAVE
+Pokemon = ONIX,65
+    Item = ASSAULTVEST
+    Moves = STEALTHROCK,HIGHHORSEPOWER,STONEEDGE,COIL
+Pokemon = SERPERIOR,65
+    Moves = LEAFSTORM,LEECHSEED,THIEF,COIL
+Pokemon = ARBOK,65
+    Moves = TOXICSPIKES,GUNKSHOT,COIL,SCREECH
+Pokemon = RAYQUAZA,65
+    Moves = DRAGONASCENT,DRACOMETEOR,ROOST,COIL
+    Ace = yes
 
 
 #===============================
