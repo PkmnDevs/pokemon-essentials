@@ -2499,7 +2499,10 @@ Battle::AbilityEffects::EndOfRoundGainItem.add(:HARVEST,
     next if battler.item
     next if !battler.recycleItem || !GameData::Item.get(battler.recycleItem).is_berry?
     if ![:Sun, :HarshSun].include?(battler.effectiveWeather)
-      next unless battle.pbRandom(100) < 50
+      # SEMPLE - Harvest chance reduced from 50% to 25% and print to console
+      rand = battle.pbRandom(100)
+      Console.echo_yellow _INTL("[HARVEST] Activate when roll below threshold: %d, Harvest's Roll: %d" % [25,rand])
+      next unless rand < 25 
     end
     battle.pbShowAbilitySplash(battler)
     battler.item = battler.recycleItem

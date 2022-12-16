@@ -297,7 +297,7 @@ module EssentialsDeluxe
       :text_1  => "Ash just turned his hat backwards! This is it! Life or death!"
     },
     "lowhp_foe" => {
-      :speech  => ["This is it {1}!",0,"\bHit that {1} with everything you've got!"],
+      :speech  => ["This is it {1}!",0,"Hit that {1} with everything you've got!"],
       :anim    => [:BULKUP, :Self],
       :playcry => true
     },
