@@ -482,7 +482,7 @@ Generation = 1
 #-------------------------------"""
 
 ### UNCOMMENT THIS TO TEST USING THE TEXT ABOVE, AND THEN COMMENT OUT THE "GRAB STRINGS" & "SAVE TO FILE" SECTIONS BELOW:
-# string_list = my_file.split("\n")
+string_list = my_file.split("\n")
 
 ### ==================
 ### ==  READ ME!!!  ==
@@ -490,20 +490,20 @@ Generation = 1
 # How to use this script:
 # Set the Desired Stat Total variables below.
 # Overwrite the /PBS/Pokemon.txt with the original values from the source https://github.com/PkmnDevs/pokemon-essentials (copy all, paste all).
-# Use Python v3.10 to run this file. ( $ py PBS\xBaseStatScript-Semple.py )
+# Use Python v3.10 to run this file. WIN:( $ py PBS\xBaseStatScript-Semple.py ) MAC:( $ python3 PBS/xBaseStatScript-Semple.py )
 
 # Desired Stat Totals:
 CHAIN0_BASIC = 530
 
 CHAIN1_BASIC = 320
 CHAIN1_STAGE1 = 545
-CHAIN1_EVO1 = 28 # Level to evolve from Basic to Stage 1
+CHAIN1_EVO1 = 42 # Level to evolve from Basic to Stage 1
 
 CHAIN2_BASIC = 290
 CHAIN2_STAGE1 = 420
-CHAIN2_STAGE2 = 580
-CHAIN2_EVO1 = 23 # Level to evolve from Basic to Stage 1
-CHAIN2_EVO2 = 40 # Level to evolve from Stage 1 to Stage 2
+CHAIN2_STAGE2 = 560
+CHAIN2_EVO1 = 32 # Level to evolve from Basic to Stage 1
+CHAIN2_EVO2 = 60 # Level to evolve from Stage 1 to Stage 2
 
 
 # ==================
@@ -511,9 +511,9 @@ CHAIN2_EVO2 = 40 # Level to evolve from Stage 1 to Stage 2
 # ==================
 ## See line ~380 above for testing
 
-my_file = open("./PBS/pokemon.txt")
-string_list = my_file.readlines()
-my_file.close()
+# my_file = open("./PBS/pokemon.txt")
+# string_list = my_file.readlines()
+# my_file.close()
 
 # ==================
 # ==  VARIABLES   ==
@@ -702,18 +702,18 @@ print(cantFind)
 # == SAVE TO FILE ==
 # ==================
 
-my_file = open("./PBS/pokemon.txt", "w")
-new_file_contents = "".join(newFileContents)
-my_file.write(new_file_contents)
-my_file.close()
+# my_file = open("./PBS/pokemon.txt", "w")
+# new_file_contents = "".join(newFileContents)
+# my_file.write(new_file_contents)
+# my_file.close()
 
-## Saving the arrays of pkmn that need to be looked into manually.
-content = []
-content.append("Pkmn that need their evolution method looked into, manually:\n")
-content.append(uniqueEvos)
-content.append("\nPkmn that were not in the API and need stats/evolutions to be looked into, manually:\n")
-content.append(cantFind)
-my_file = open("./PBS/pokemonManualEditing.txt", "w")
-new_file_contents = "".join([str(elem) for elem in content]) # Efficient code..? What's that?
-my_file.write(new_file_contents)
-my_file.close()
+# ## Saving the arrays of pkmn that need to be looked into manually.
+# content = []
+# content.append("Pkmn that need their evolution method looked into, manually:\n")
+# content.append(uniqueEvos)
+# content.append("\nPkmn that were not in the API and need stats/evolutions to be looked into, manually:\n")
+# content.append(cantFind)
+# my_file = open("./PBS/pokemonManualEditing.txt", "w")
+# new_file_contents = "".join([str(elem) for elem in content]) # Efficient code..? What's that?
+# my_file.write(new_file_contents)
+# my_file.close()

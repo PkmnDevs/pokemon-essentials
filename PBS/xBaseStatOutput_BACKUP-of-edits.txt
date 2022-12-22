@@ -1,0 +1,75 @@
+###### Some edits may be made to pokemon.txt 
+# This might be new pokemon, or changes to LearnSets, etc.
+# Yet if xBaseStatScript-Semple.py is ever run, it needs to be run against
+# the original pokemon.txt that does not contain edits (because it crunches
+# the base-stats numbers, and we need those to be the original values before crunching).
+##### SO THIS FILE IS A BACKUP OF ANY EDITS WE WANT TO KEEP 
+# after running that script on a clean pokemon.txt
+# These back up edits will need to be manually copy/pasted back into the new pokemon.txt
+
+###### Firstly, do this search and replace all
+## (so every pokemon can learn a semi-decent move to avoid any garbage early-learnsets):
+# SEARCH: TutorMoves = 
+# REPLACE: TutorMoves = SNARL,
+
+###### Second, add this entire CUSTOM thing back into the bottom of the new pokemon.txt
+
+#=============================
+#========v  CUSTOM  v=========
+#=============================
+
+#-------------------------------
+[SPIDERMAUL]
+Name = Spidermaul
+Types = BUG,DARK
+BaseStats = 80, 100, 80, 95, 80, 85
+GenderRatio = Genderless
+GrowthRate = Medium
+BaseExp = 600
+EVs = ATTACK,10,SPEED,5
+CatchRate = 3
+Happiness = 100
+Abilities = UNNERVE
+Moves = 8,INFESTATION,12,SCARYFACE,15,NIGHTSHADE,19,SHADOWSNEAK,28,SUCKERPUNCH,37,AGILITY,40,STICKYWEB,45,TOXICTHREAD,49,FURYSWIPES,53,SWORDSDANCE,58,FOCUSENERGY,61,FELLSTINGER
+TutorMoves = SNARL,ATTRACT,BOUNCE,BUGBITE,BUGBUZZ,CONFIDE,DIG,DOUBLETEAM,ELECTROWEB,ENDURE,FACADE,FLASH,FOULPLAY,FRUSTRATION,GIGADRAIN,GIGAIMPACT,HIDDENPOWER,HYPERBEAM,INFESTATION,LEECHLIFE,POISONJAB,PROTECT,PSYCHIC,REST,RETURN,ROUND,SIGNALBEAM,SLEEPTALK,SLUDGEBOMB,SMARTSTRIKE,SNORE,SOLARBEAM,STOMPINGTANTRUM,STRUGGLEBUG,SUBSTITUTE,SUNNYDAY,SWAGGER,SWORDSDANCE,THIEF,THROATCHOP,VENOSHOCK,XSCISSOR
+EggGroups = Bug,Humanlike
+HatchSteps = 3072
+Height = 3.0
+Weight = 110.5
+Color = Red
+Shape = Insectoid
+Category = Sith
+Pokedex = When Obi-Wan did a sweet flip to super kill Darth Maul, the top half of Maul's body fell and landed on a spider. Now he eats flies for breakfast.
+Generation = 11
+
+
+###### Finally, copy/paste these edits to where they belong:
+
+# === BELDUM ===
+Moves = 1,TACKLE,6,BULLETPUNCH,8,MIRACLEEYE,11,IRONDEFENSE,14,GYROBALL,16,PROTECT,18,MAGNETBOMB,22,PSYCHOCUT
+
+# === <pkmn name> ===
+
+
+# === <pkmn name> ===
+
+
+# === <pkmn name> ===
+
+
+# === <pkmn name> ===
+
+
+# === <pkmn name> ===
+
+
+# === <pkmn name> ===
+
+
+# === <pkmn name> ===
+
+
+# === <pkmn name> ===
+
+
+# === <pkmn name> ===
