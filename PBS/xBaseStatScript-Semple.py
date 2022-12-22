@@ -511,9 +511,9 @@ CHAIN2_EVO2 = 60 # Level to evolve from Stage 1 to Stage 2
 # ==================
 ## See line ~380 above for testing
 
-# my_file = open("./PBS/pokemon.txt")
-# string_list = my_file.readlines()
-# my_file.close()
+my_file = open("./PBS/pokemon.txt")
+string_list = my_file.readlines()
+my_file.close()
 
 # ==================
 # ==  VARIABLES   ==
