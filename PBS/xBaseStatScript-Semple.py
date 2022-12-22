@@ -482,7 +482,7 @@ Generation = 1
 #-------------------------------"""
 
 ### UNCOMMENT THIS TO TEST USING THE TEXT ABOVE, AND THEN COMMENT OUT THE "GRAB STRINGS" & "SAVE TO FILE" SECTIONS BELOW:
-string_list = my_file.split("\n")
+# string_list = my_file.split("\n")
 
 ### ==================
 ### ==  READ ME!!!  ==
@@ -702,18 +702,18 @@ print(cantFind)
 # == SAVE TO FILE ==
 # ==================
 
-# my_file = open("./PBS/pokemon.txt", "w")
-# new_file_contents = "".join(newFileContents)
-# my_file.write(new_file_contents)
-# my_file.close()
+my_file = open("./PBS/pokemon.txt", "w")
+new_file_contents = "".join(newFileContents)
+my_file.write(new_file_contents)
+my_file.close()
 
-# ## Saving the arrays of pkmn that need to be looked into manually.
-# content = []
-# content.append("Pkmn that need their evolution method looked into, manually:\n")
-# content.append(uniqueEvos)
-# content.append("\nPkmn that were not in the API and need stats/evolutions to be looked into, manually:\n")
-# content.append(cantFind)
-# my_file = open("./PBS/pokemonManualEditing.txt", "w")
-# new_file_contents = "".join([str(elem) for elem in content]) # Efficient code..? What's that?
-# my_file.write(new_file_contents)
-# my_file.close()
+## Saving the arrays of pkmn that need to be looked into manually.
+content = []
+content.append("Pkmn that need their evolution method looked into, manually:\n")
+content.append(uniqueEvos)
+content.append("\nPkmn that were not in the API and need stats/evolutions to be looked into, manually:\n")
+content.append(cantFind)
+my_file = open("./PBS/pokemonManualEditing.txt", "w")
+new_file_contents = "".join([str(elem) for elem in content]) # Efficient code..? What's that?
+my_file.write(new_file_contents)
+my_file.close()
