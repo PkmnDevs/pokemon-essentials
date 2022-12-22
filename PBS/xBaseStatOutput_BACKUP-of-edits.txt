@@ -11,6 +11,9 @@
 ## (so every pokemon can learn a semi-decent move to avoid any garbage early-learnsets):
 # SEARCH: TutorMoves = 
 # REPLACE: TutorMoves = SNARL,
+### and
+# SEARCH: GrowthRate = [Slow, Medium, Fast, Parabolic, Erratic, Fluctuating]
+# REPLACE: GrowthRate = Medium
 
 ###### Second, add this entire CUSTOM thing back into the bottom of the new pokemon.txt
 
