@@ -586,3 +586,17 @@ Pokemon = FARFETCHD,9
 [TUBER2_F,LisaBurger] # Water Snake Way
 LoseText = "I don't know if I will ever make it back to shore."
 Pokemon = FARFETCHD,9
+
+#===============================
+### DinkDank Cave
+#===============================
+[RUINMANIAC,Drake] # DinkDank Cave
+LoseText = "No..! Now I'm alone... and deep in DinkDank Cave... I cannot get out."
+Pokemon = PARASECT,90
+#-------------------------------
+[CRUSHGIRL,Elsa] # DinkDank Cave
+LoseText = "I can't believed I caved!"
+Pokemon = PRIMEAPE,77
+Pokemon = LICKITUNG,80
+Pokemon = DELIBIRD,75
+#-------------------------------
