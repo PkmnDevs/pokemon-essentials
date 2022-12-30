@@ -334,4 +334,28 @@ module EssentialsDeluxe
       :speech  => ["What if I asked you nicely to give up?"]
     }
   }
+
+  ##################################################
+  ##########     ELITE FOUR      ##################
+  ##################################################
+
+  #-----------------------------------------------------------------------------
+  # ELITE FOUR ROSDALE
+  #-----------------------------------------------------------------------------
+  ROSDALE = {
+    "beforeLast_foe" => {
+      :speech  => ["Impressive, but nature always wins. I choose you! Venus!"]
+    },
+    "mega_foe" => {
+      :speech  => ["Scared of a little Sceptile are you? Well that's what you think, but it's not over yet. DIGI-VOLVE!"],
+      :anim    => [1,"Shiny"],
+      :playcry => true
+    },
+    "fainted_foe" => {
+      :speech  => ["Hmph, only a minor setback."]
+    },
+    "halfhp_final_foe" => {
+      :speech  => ["What if I asked you nicely to give up?"]
+    }
+  }
 end

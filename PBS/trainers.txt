@@ -274,6 +274,65 @@ Pokemon = JOLTIK,42
     Ace = yes
 
 #===============================
+### Elite Four
+#===============================
+#-------------------------------
+[ELITEFOUR_Rosdale,Rosdale] # Elite Four
+Items = FULLRESTORE,MEGARING
+LoseText = "Am I the RINGO of the group?"
+Pokemon = BARBARACLE,85 # Good Candidate for the Full Restore
+    Name = Tarter Sauce
+    Gender = male
+    Moves = DOUBLETEAM,COIL,ROCKPOLISH,LIQUIDATION
+    Item = LEFTOVERS
+    AbilityIndex = 0 # TOUGH CLAWS = increase contact moves (liquidation's) power
+    IV = 31,31,31,31,31,31
+    EV = 70,70,70,70,70,70
+    Ball = LEVELBALL
+Pokemon = HONCHKROW,90
+    Gender = male
+    Name = Raven
+    Moves = NIGHTSLASH,HAZE,SKYATTACK,FOCUSENERGY # Aiming for Crits with Sky Attack
+    Item = RAZORCLAW # Increase Crit
+    AbilityIndex = 1 # Super Luck = increase crit chance
+    IV = 31,31,31,31,31,31
+    EV = 70,70,70,70,70,70
+    Ball = PREMIERBALL
+Pokemon = ESCAVALIER,90
+    Name = Drill Knight
+    Gender = male
+    Moves = SWORDSDANCE,XSCISSOR,CLOSECOMBAT,SMARTSTRIKE
+    Item = SITRUSBERRY
+    IV = 31,31,31,31,31,31
+    EV = 70,70,70,70,70,70
+    Ball = MASTERBALL
+Pokemon = HAXORUS,91
+    Name = Giga Zilla
+    Gender = male
+    Moves = DRAGONDANCE,DRAGONCLAW,EARTHQUAKE,POISONJAB
+    Item = SHELLBELL
+    IV = 31,31,31,31,31,31
+    EV = 70,70,70,70,70,70
+    Ball = REPEATBALL
+Pokemon = AVALUGG,88
+    Name = Lateau
+    Gender = male
+    Moves = RECOVER,CRUNCH,TRICKROOM,CURSE # Boost Atk + Def and then Crunch ftw
+    Ability = STRONGJAW # Increase biting moves (Crunch)
+    Item = BLACKGLASSES # Increase Dark (Crunch)
+    IV = 31,31,31,31,31,31
+    EV = 70,70,70,70,70,70
+    Ball = FRIENDBALL
+Pokemon = VIKAVOLT,88 # See if I can give it an x-accuracy in scripts
+    Name = SP. BEAM CANNON
+    Gender = male
+    Moves = THUNDER,HYPERBEAM
+    Item = WIDELENS
+    IV = 31,31,31,31,31,31
+    EV = 70,70,70,70,70,70
+    Ball = NETBALL
+
+#===============================
 ### Minibosses
 #===============================
 #-------------------------------

@@ -123,33 +123,96 @@ def demoteam75
         pkmn.learn_move(:SUNNYDAY)
         pkmn.learn_move(:SLASH)
         pkmn.learn_move(:FLAMETHROWER)
+        pkmn.item=(:SITRUSBERRY)
       when :VENUSAUR
         pkmn.learn_move(:DOUBLETEAM)
         pkmn.learn_move(:TOXIC)
         pkmn.learn_move(:GIGADRAIN)
         pkmn.learn_move(:SOLARBEAM)
+        pkmn.item=(:SITRUSBERRY)
       when :BLASTOISE
         pkmn.learn_move(:SHELLSMASH)
         pkmn.learn_move(:ICEBEAM)
         pkmn.learn_move(:SURF)
         pkmn.learn_move(:SKULLBASH)
+        pkmn.item=(:SITRUSBERRY)
       when :CORVIKNIGHT
         pkmn.learn_move(:SCARYFACE)
         pkmn.learn_move(:DRILLPECK)
         pkmn.learn_move(:SWAGGER)
         pkmn.learn_move(:BRAVEBIRD)
+        pkmn.item=(:SITRUSBERRY)
       when :JOLTEON
         pkmn.learn_move(:DISCHARGE)
         pkmn.learn_move(:HONECLAWS)
         pkmn.learn_move(:THUNDER)
         pkmn.learn_move(:LASTRESORT)
+        pkmn.item=(:SITRUSBERRY)
       when :BRONZONG
         pkmn.learn_move(:PSYCHIC)
         pkmn.learn_move(:METALSOUND)
         pkmn.learn_move(:FUTURESIGHT)
         pkmn.learn_move(:EARTHQUAKE)
+        pkmn.item=(:SITRUSBERRY)
       end
       pkmn.record_first_moves
     end
     pbMessage(_INTL("Filled party with level 75 demo Pokémon."))
+end
+
+# Elite Four
+def demoteam90
+  party = []
+  species = [:CHARIZARD, :VENUSAUR, :BLASTOISE, :CORVIKNIGHT, :JOLTEON, :BRONZONG]
+  species.each do |id|
+    party.push(id) if GameData::Species.exists?(id)
+  end
+  $player.party.clear
+  # Generate Pokémon of each species at level 90
+  party.each do |species|
+    pkmn = Pokemon.new(species, 90)
+    $player.party.push(pkmn)
+    $player.pokedex.register(pkmn)
+    $player.pokedex.set_owned(species)
+    case species
+    when :CHARIZARD
+      pkmn.learn_move(:DRAGONBREATH)
+      pkmn.learn_move(:SUNNYDAY)
+      pkmn.learn_move(:SLASH)
+      pkmn.learn_move(:FLAMETHROWER)
+      pkmn.item=(:SITRUSBERRY)
+    when :VENUSAUR
+      pkmn.learn_move(:DOUBLETEAM)
+      pkmn.learn_move(:TOXIC)
+      pkmn.learn_move(:GIGADRAIN)
+      pkmn.learn_move(:SOLARBEAM)
+      pkmn.item=(:SITRUSBERRY)
+    when :BLASTOISE
+      pkmn.learn_move(:SHELLSMASH)
+      pkmn.learn_move(:ICEBEAM)
+      pkmn.learn_move(:SURF)
+      pkmn.learn_move(:SKULLBASH)
+      pkmn.item=(:SITRUSBERRY)
+    when :CORVIKNIGHT
+      pkmn.learn_move(:SCARYFACE)
+      pkmn.learn_move(:DRILLPECK)
+      pkmn.learn_move(:SWAGGER)
+      pkmn.learn_move(:BRAVEBIRD)
+      pkmn.item=(:SITRUSBERRY)
+    when :JOLTEON
+      pkmn.learn_move(:DISCHARGE)
+      pkmn.learn_move(:HONECLAWS)
+      pkmn.learn_move(:THUNDER)
+      pkmn.learn_move(:LASTRESORT)
+      pkmn.item=(:SITRUSBERRY)
+    when :BRONZONG
+      pkmn.learn_move(:PSYCHIC)
+      pkmn.learn_move(:METALSOUND)
+      pkmn.learn_move(:FUTURESIGHT)
+      pkmn.learn_move(:EARTHQUAKE)
+      pkmn.item=(:SITRUSBERRY)
+    end
+    pkmn.record_first_moves
+  end
+  pbMessage(_INTL("Filled party with level 90 demo Pokémon."))
 end

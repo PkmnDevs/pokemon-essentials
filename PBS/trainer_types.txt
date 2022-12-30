@@ -439,3 +439,10 @@ VictoryBGM = Legends_DarknessForetold
 Gender = Male
 SkillLevel = 100
 #-------------------------------
+[ELITEFOUR_Rosdale]
+Name = Elite Four
+Gender = Male
+BaseMoney = 100
+BattleBGM = Battle Elite
+VictoryBGM = Battle victory leader
+#-------------------------------
