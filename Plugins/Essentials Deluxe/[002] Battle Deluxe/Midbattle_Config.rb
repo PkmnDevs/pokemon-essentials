@@ -359,3 +359,20 @@ module EssentialsDeluxe
     }
   }
 end
+
+
+  ##################################################
+  ##########     MINI BOSSES      ##################
+  ##################################################
+
+  #-----------------------------------------------------------------------------
+  # EMILY - Route 3
+  #-----------------------------------------------------------------------------
+  EMILY = {
+    "beforeLast_foe" => {
+      :speech  => ["There's some Chicken Feets in it for you if you win this, Dovahkiin!"]
+    },
+    "fainted_foe" => {
+      :speech  => ["It's okay Rot, you can rest now (:"]
+    }
+  }

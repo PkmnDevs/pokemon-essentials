@@ -387,7 +387,43 @@ Pokemon = ARBOK,65
 Pokemon = RAYQUAZA,65
     Moves = DRAGONASCENT,DRACOMETEOR,ROOST,COIL
     Ace = yes
-
+#-------------------------------
+[COOLTRAINER_F,Emily] # Route 3; MiniBoss: TBD
+LoseText = "Great job! That was fun."
+Pokemon = CHARMANDER,25
+    Name = Rot
+    Moves = SMOKESCREEN,DRAGONBREATH,FIREFANG,HEATWAVE
+    Item = CHARCOAL
+    AbilityIndex = 0 # BLAZE : Boosts fire when below 1/3 hp
+    IV = 20,20,20,20,20,20
+    EV = 50,50,50,50,50,50
+    Ball = PREMIERBALL
+Pokemon = TOGEPI,25
+    Name = Tawgepi
+    Moves = METRONOME,YAWN,WISH,SWEETKISS
+    Item = ROCKYHELMET
+    AbilityIndex = 1 # SERENE GRACE : I forget
+    IV = 20,20,20,20,20,20
+    EV = 50,50,50,50,50,50
+    Ball = LOVEBALL
+Pokemon = TOTODILE,25
+    Name = Dylan
+    Moves = AQUATAIL,SUPERPOWER,SCREECH,SCREECH
+    Item = SITRUSBERRY
+    AbilityIndex = 0 # TORRENT : Boosts water when below 1/3 hp
+    IV = 20,20,20,20,20,20
+    EV = 50,50,50,50,50,50
+    Ball = LUXURYBALL
+Pokemon = LYCANROC,25
+    Name = Dovah
+    Shiny = yes
+    Moves = GRASSYGLIDE,CRUNCH,DOUBLETEAM,ROCKSLIDE
+    AbilityIndex = 0 # KEEN EYE : can't have its accuracy lowered
+    Item = GRASSGEM
+    IV = 20,20,20,20,20,20
+    EV = 50,50,50,50,50,50
+    Ball = CHERISHBALL
+    Ace = yes
 
 #===============================
 ### Route 1
