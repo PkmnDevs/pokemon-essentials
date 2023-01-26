@@ -4,8 +4,32 @@
 ##### MID BATTLE SCRIPTS ARE AT THE BOTTOM OF THIS FILE - SEMPLE
 # https://www.pokecommunity.com/showthread.php?p=10534994#post10534994
 
+
   #-----------------------------------------------------------------------------
-  # GYM LEADER ASH KETCUM
+  # ^^^ EXAMPLES ^^^
+  #
+  # vvv  CUSTOM  vvv
+  #-----------------------------------------------------------------------------
+
+  ##################################################
+  ##########        RIVAL         ##################
+  ##################################################
+
+  #-----------------------------------------------------------------------------
+  # RIVAL 4 - Water Snake Way
+  #-----------------------------------------------------------------------------
+  BUTTBUTT4 = {
+    "beforeLast_foe" => {
+      :speech  => ["My team knows how to work together. You can't beat us!"]
+    }
+  }
+
+  ##################################################
+  ##########     GYM LEADERS      ##################
+  ##################################################
+
+  #-----------------------------------------------------------------------------
+  # GYM LEADER ASH KETCUM - Oak's Lab
   #-----------------------------------------------------------------------------
   ASH_KETCHUM = {
     "turnCommand" => {
@@ -34,16 +58,10 @@
     }
   }
 
-
   #-----------------------------------------------------------------------------
-  # GYM LEADER ASH KETCUM
+  # GYM LEADER IVY - Grotto Gym
   #-----------------------------------------------------------------------------
   POISON_IVY = {
-    "turnCommand" => {
-      :speech  => ["I am Ash Ketchum! From Pallet Town!",
-                   "Time to die.  ..For you.  !!"],
-      :text_1  => "Ash just turned his hat backwards! This is it! Life or death!"
-    },
     "beforeLast_foe" => {
       :speech  => ["Impressive, but nature always wins. I choose you! Venus!"]
     },
@@ -56,7 +74,51 @@
       :speech  => ["Hmph, only a minor setback."]
     },
     "halfhp_final_foe" => {
-      :speech  => ["What if I asked you nicely to give up?"],
-      :playcry => true
+      :speech  => ["What if I asked you nicely to give up?"]
     }
   }
+
+  ##################################################
+  ##########     ELITE FOUR      ##################
+  ##################################################
+
+  #-----------------------------------------------------------------------------
+  # ELITE FOUR ROSDALE
+  #-----------------------------------------------------------------------------
+  ROSDALE = {
+    "beforeLast_foe" => {
+      :speech  => ["Impressive, but nature always wins. I choose you! Venus!"]
+    },
+    "mega_foe" => {
+      :speech  => ["Scared of a little Sceptile are you? Well that's what you think, but it's not over yet. DIGI-VOLVE!"],
+      :anim    => [1,"Shiny"],
+      :playcry => true
+    },
+    "fainted_foe" => {
+      :speech  => ["Hmph, only a minor setback."]
+    },
+    "halfhp_final_foe" => {
+      :speech  => ["What if I asked you nicely to give up?"]
+    }
+  }
+
+
+  ##################################################
+  ##########     MINI BOSSES      ##################
+  ##################################################
+
+  #-----------------------------------------------------------------------------
+  # EMILY - Route 3
+  #-----------------------------------------------------------------------------
+  EMILY = {
+    "beforeLast_foe" => {
+      :speech  => ["There's some Chicken Feets in it for you if you win this, Dovahkiin!"]
+    },
+    "fainted_foe" => {
+      :speech  => ["It's okay Rot, you can rest now (:"]
+    }
+  }
+
+
+end
+

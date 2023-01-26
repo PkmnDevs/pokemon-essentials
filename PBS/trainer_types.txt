@@ -409,6 +409,14 @@ VictoryBGM = Battle victory leader
 #=============================
 #========v  CUSTOM  v=========
 #=============================
+[RIVAL_EMILY]
+Name = Emily
+Gender = Female
+IntroBGM = The Shire
+BattleBGM = Sweet Victory Lyrics
+BaseMoney = 16
+SkillLevel = 100
+#-------------------------------
 [LEADER_Ash]
 Name = Gym Leader
 BaseMoney = 16
@@ -422,13 +430,6 @@ BaseMoney = 60
 BattleBGM = BW 999 Battle! (World Champion)
 VictoryBGM = Battle victory leader
 Gender = Female
-SkillLevel = 100
-#-------------------------------
-[BUGMASTER]
-Name = Bug Master
-Gender = Male
-BattleBGM = LEADER_RoyalBattle
-BaseMoney = 16
 SkillLevel = 100
 #-------------------------------
 [LEADER_Shino]
@@ -445,4 +446,11 @@ Gender = Male
 BaseMoney = 100
 BattleBGM = Battle Elite
 VictoryBGM = Battle victory leader
+#-------------------------------
+[BUGMASTER]
+Name = Bug Master
+Gender = Male
+BattleBGM = LEADER_RoyalBattle
+BaseMoney = 16
+SkillLevel = 100
 #-------------------------------

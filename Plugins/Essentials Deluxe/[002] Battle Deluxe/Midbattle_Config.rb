@@ -358,7 +358,6 @@ module EssentialsDeluxe
       :speech  => ["What if I asked you nicely to give up?"]
     }
   }
-end
 
 
   ##################################################
@@ -376,3 +375,5 @@ end
       :speech  => ["It's okay Rot, you can rest now (:"]
     }
   }
+
+end
